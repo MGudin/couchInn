@@ -1,7 +1,6 @@
 # **Entrevista**
 
 **Proyecto:** *CouchInn*
-
 **Identificacion:** *<Numero>*
 
 | **Preparada por:** *Grupo 24*                                                         |
