@@ -14,7 +14,7 @@
 
 **Fase en la que se encuentra el proyecto:** *Elicitacion de requerimientos*
 
-**Documentos a que se hacen referencias:** []
+**Documentos a que se hacen referencias:** [ https://github.com/chudix/couchInn/blob/master/documentacion/entrevista1.md ]
 
 ---
 
