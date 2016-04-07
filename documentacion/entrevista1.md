@@ -20,7 +20,7 @@
 
 **Lugar de la entrevista:** *Facultad de Informatica-UNLP*
 
-**sadasdad:** *17/03/2016 - 19hs - 30 *
+**Fecha/Hora/Duracion de la entrevista:** *17/03/2016 - 19hs - 30*
 
 ---
 
@@ -110,7 +110,7 @@
 
 ### Conclusion de la entrevista
 
-**Informe final:** * Esta primera entrevista sirvio como presentacion e introduccion a los requisitos generales del proyecto*
+**Informe final:** *Esta primera entrevista sirvio como presentacion e introduccion a los requisitos generales del proyecto*
 
 **Informacion obtenida en detalle:** *Se necesita sistematizar un blog de viajeros en donde los mismos deberan registrarse con nombre de usuario a traves de un email. Dichos usuarios podran realizar busquedas, solicitar y publicar alojamiento. Ademas existira una seccion de preguntas y respuestas que sera el medio de comunicacion entre los usuarios*
 
