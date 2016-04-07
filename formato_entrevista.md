@@ -31,9 +31,9 @@
 ---
 
 
-        **Pregunta:** *<Pregunta>*
+**Pregunta:** *<Pregunta>*
 
-        **Respuesta:** *Respuesta*
+**Respuesta:** *Respuesta*
 
 ---
 
