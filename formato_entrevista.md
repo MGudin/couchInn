@@ -1,6 +1,6 @@
 # **Entrevista**
 
----
+
 
 **Proyecto:** *CouchInn*
 
@@ -24,6 +24,17 @@
 
 ---
 
-**Entrevistado:** *nombre*   **cargo:** *cargo*.
-**Objetivo a lograr:** *<objetivo>
+**Entrevistado:** *<nombre>*   **cargo:** *<cargo>*
+
+**Objetivo a lograr:** *<objetivo>*
+
+---
+
+```
+**Pregunta:** *<Pregunta>*
+
+**Respuesta:** *Respuesta*
+
+```
+---
 
