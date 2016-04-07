@@ -30,6 +30,10 @@
 
 ---
 
+**Pregunta:** *¿Que los motiva a realizar la aplicacion?*
+
+**Respuesta:** *Tenemos un blog donde la gente ofrece y solicita estadias. No damos a basto con la administracion y ademas no tiene busquedas. Nuestra idea es sistematizar su funcionamiento en una pagina web.*
+
 
 **Pregunta:** *¿El sistema debe contar con un registro de usuarios?*
 
