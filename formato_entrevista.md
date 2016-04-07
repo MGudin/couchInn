@@ -30,11 +30,24 @@
 
 ---
 
-```
-**Pregunta:** *<Pregunta>*
 
-**Respuesta:** *Respuesta*
+        **Pregunta:** *<Pregunta>*
 
-```
+        **Respuesta:** *Respuesta*
+
 ---
 
+##### Conclusion de la entrevista
+**Informe final:**
+
+**Informacion obtenida en detalle:**
+
+**Informacion pendiente:**
+
+---
+
+**Documentos que se deben entregar:**
+
+**Documentos que debe entregar el entrevistado:**
+
+**Proxima entrevista:**
