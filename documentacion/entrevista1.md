@@ -20,7 +20,7 @@
 
 **Lugar de la entrevista:** *Facultad de Informatica-UNLP*
 
-**Fecha/Hora/Duracion de la entrevista:** *17/03/2016 - 19hs - 30 *
+**sadasdad:** *17/03/2016 - 19hs - 30 *
 
 ---
 
