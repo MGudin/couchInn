@@ -2,6 +2,8 @@
 
 
 Proyecto: *CouchInn*
+
+
 Revision: 1
 
 
@@ -14,6 +16,7 @@ Documento validado por las partes en la fecha:
 
 | Por el cliente | Por la empresa suministradora |
 | --- | --- |
+|     |     |
 |     |     |
 |aclaracion: | aclaracion: |
 
@@ -56,4 +59,9 @@ Documento validado por las partes en la fecha:
 
 4. APENDICES.
    
-      
+
+## INTRODUCCION
+
+
+## 1.1 PROPOSITO
+
