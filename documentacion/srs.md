@@ -49,7 +49,6 @@ Documento validado por las partes en la fecha:
       1. [Interfaces de Usuaios.](#3ia-interfaces-de-usuarios)
       2. [Interfaces de Hardware.](#3ib-interfaces-de-hardware)
       3. [Interfaces de Software.](#3ic-interfaces-de-software)
-
    2. [Requisitos funcionales.](#3ii-requisitos-funcionales)
    3. [Requisitos no funcionales](#3iii-requisitos-no-funcionales)
       1. [Requisitos de rendimiento.](#3iiia-requisitos-de-rendimiento)
