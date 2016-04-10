@@ -28,7 +28,7 @@ Documento validado por las partes en la fecha:
 ### Ficha del documento
 ### Contenido
 
-1. INTRODUCCION.[INTRODUCCION][]
+1. INTRODUCCION.
    1. Proposito.
    2. Alcance.
    3. Definiciones, acronimos y abreviaturas.
