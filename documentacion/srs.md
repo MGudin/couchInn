@@ -127,6 +127,7 @@ El sistema debe proporcionar las siguientes funcionalidades:
 
 **Actividades:** Moderacion de comentarios.
 
+---
 
 **Tipo de usuario:** Usuario Registrado
 
@@ -134,6 +135,7 @@ El sistema debe proporcionar las siguientes funcionalidades:
 
 **Actividades:** Realizacion de preguntas, respuestas. Creacion de hospedajes y pedido de alojamientos.
 
+---
 
 **Tipo de usuario:** Usuario Anonimo.
 
