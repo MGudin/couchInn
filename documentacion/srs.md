@@ -27,7 +27,6 @@ Documento validado por las partes en la fecha:
 
 ### Ficha del documento
 
-### Contenido
 
 1. [INTRODUCCION.](#introduccion)
    1. [Proposito.](#1i-proposito)
@@ -59,7 +58,7 @@ Documento validado por las partes en la fecha:
       6. [Portabilidad.](#3iiif-portabilidad)
    4. [Otros requisitos.](#3iv-otros-requisitos)
 
-   
+---   
 
 ## INTRODUCCION
 
