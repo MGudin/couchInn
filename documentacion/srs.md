@@ -49,16 +49,16 @@ Documento validado por las partes en la fecha:
       1. [Interfaces de Usuaios.](#3ia-interfaces-de-usuarios)
       2. [Interfaces de Hardware.](#3ib-interfaces-de-hardware)
       3. [Interfaces de Software.](#3ic-interfaces-de-software)
-      4. [Interfaces de comunicacion.](#3id-interfaces-de-comunicacion)
+
    2. [Requisitos funcionales.](#3ii-requisitos-funcionales)
    3. [Requisitos no funcionales](#3iii-requisitos-no-funcionales)
-      1. Requisitos de rendimiento.
-      2. Seguridad.
-      3. Fiabilidad.
-      4. Disponibilidad.
-      5. Mantenibilidad.
-      6. Portabilidad.
-   4. Otros requisitos.
+      1. [Requisitos de rendimiento.](#3iiia-requisitos-de-rendimiento)
+      2. [Seguridad.](#3iiib-seguridad)
+      3. [Fiabilidad.](#3iiic-fiabilidad)
+      4. [Disponibilidad.](#3iiid-disponibilidad)
+      5. [Mantenibilidad.](#3iiie-mantenibilidad)
+      6. [Portabilidad.](#3iiif-portabilidad)
+   4. [Otros requisitos.](#3iv-otros-requisitos)
 
    
 
