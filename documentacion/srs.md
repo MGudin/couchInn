@@ -85,14 +85,13 @@ un procedimiento establecido.
 valoración.
 - **Rango:** conjunto de niveles en que se divide una actividad o
 profesión
-- 
 
 ### 1.IV REFERENCIAS
 
-   | referencia | titulo | fecha | autor |
-   | ---        | ---    | ---   | ---   |
-   | 1          | [entrevista 1]  (https://github.com/chudix/couchInn/blob/master/documentacion/entrevista1.md) | 17/03/2016 | grupo 24 |
-   | 2          | [entrevista 2] (https://github.com/chudix/couchInn/blob/master/documentacion/entrevista2.md) | 1/4/2016 | grupo 24 |
+| referencia | titulo | fecha | autor |
+| ---        | ---    | ---   | ---   |
+| 1          | [entrevista 1]  (https://github.com/chudix/couchInn/blob/master/documentacion/entrevista1.md) | 17/03/2016 | grupo 24 |
+| 2          | [entrevista 2] (https://github.com/chudix/couchInn/blob/master/documentacion/entrevista2.md) | 1/4/2016 | grupo 24 |
 
 ### 1.V RESUMEN
 
@@ -123,15 +122,23 @@ El sistema debe proporcionar las siguientes funcionalidades:
 ### 2.III CARACTERISTICAS DE LOS USUARIOS
 
 **Tipo de usuario:** Administrador
+
 **Formacion:** Uso de PC.
+
 **Actividades:** Moderacion de comentarios.
 
+
 **Tipo de usuario:** Usuario Registrado
+
 **Formacion:** Uso de PC.
+
 **Actividades:** Realizacion de preguntas, respuestas. Creacion de hospedajes y pedido de alojamientos.
 
+
 **Tipo de usuario:** Usuario Anonimo.
+
 **Formacion:** Uso de PC.
+
 **Actividades:** Navegacion limitada del sitio, pudiendo unicamente ver las ofertas de alojamiento
 
 
@@ -181,7 +188,7 @@ con una gama de colores propios reprentativos de la marca CouchInn
 (N/A)
 
 
-#### 3.I.b INTERFACES DE SOFTWARE
+#### 3.I.c INTERFACES DE SOFTWARE
 
 Las donaciones a través de tarjeta de crédito se realizarán mediante el sistema de Software de MercadoPago.
 
