@@ -7,6 +7,8 @@ Proyecto: *CouchInn*
 Revision: 1
 
 
+---
+
 | fecha | revision | autor | verificado |
 | --- | --- | --- | --- |
 | 10/4/2016 | 1 | Grupo 24 |
@@ -19,6 +21,7 @@ Documento validado por las partes en la fecha:
 |     |     |
 |aclaracion: | aclaracion: |
 
+---
 
 ## Contenido
 
