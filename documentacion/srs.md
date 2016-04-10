@@ -114,7 +114,10 @@ el trabajo inicial.
 El sistema debe proporcionar las siguientes funcionalidades:
 
 - Registro de usuarios.
+- Inicio y cierre de sesión. 
+- Busqueda filtrada a través de diferentes criterios.
 - Publicación de hospedajes y solicitud del mismo.
+- Modificación de hospedajes.
 - Medio de comunicación mediante preguntas y respuestas.
 - Sistema de donaciones.
 - Especificación de rangos.
