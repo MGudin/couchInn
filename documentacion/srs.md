@@ -30,26 +30,26 @@ Documento validado por las partes en la fecha:
 ### Contenido
 
 1. [INTRODUCCION.](#introduccion)
-   1. [Proposito.](#1i-proposito
+   1. [Proposito.](#1i-proposito)
    2. [Alcance.](#1ii-alcance)
    3. [Definiciones, acronimos y abreviaturas.](#1iii-definiciones-acronimos-y-abreviaturas)
    4. [Referencias.](#1iv-referencias)
    5. [Resumen.](#1v-resumen)
 
-2. DESCRIPCION GENERAL.
-   1. Perspectiva del Producto.
-   2. Funcionalidades del producto.
-   3. Caracteristicas de los usuarios.
-   4. Restricciones.
-   5. Suposiciones y dependencias.
-   6. Evolucion previsible del sistema.
+2. [DESCRIPCION GENERAL.](#descripcion-general)
+   1. [Perspectiva del Producto.](#2i-perspectiva-del-producto)
+   2. [Funcionalidades del producto.](#2ii-funcionalidades-del-producto)
+   3. [Caracteristicas de los usuarios.](#2iii-caracteristicas-de-los-usuarios)
+   4. [Restricciones.](#2iv-restricciones)
+   5. [Suposiciones y dependencias.](#2v-suposiciones-y-dependencias)
+   6. [Evolucion previsible del sistema.](#2vi-evolucion-previsible-del-sistema)
 
-3. REQUISITOS ESPECIFICOS
-   1. Requisitos comunes de los interfaces
-      1. Interfaces de Usuaios.
-      2. Interfaces de Hardware.
-      3. Interfaces de Software.
-      4. Interfaces de comunicacion.
+3. [REQUISITOS ESPECIFICOS](#requisitos-especificos)
+   1. [Requisitos comunes de los interfaces](#3i-requisitos-comunes-de-las-interfaces)
+      1. [Interfaces de Usuaios.](#3ia-interfaces-de-usuarios)
+      2. [Interfaces de Hardware.](#3ib-interfaces-de-hardware)
+      3. [Interfaces de Software.](#3ic-interfaces-de-software)
+      4. [Interfaces de comunicacion.](#3id-interfaces-de-comunicacion)
    2. Requisitos funcionales.
    3. Requisitos no funcionales
       1. Requisitos de rendimiento.
