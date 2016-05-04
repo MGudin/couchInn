@@ -1,3 +1,28 @@
+# Plan de Gestion De Proyecto
+
+
+Proyecto: *CouchInn*
+
+
+Revision: 1
+
+
+---
+
+| fecha      | revision | autor    | verificado |
+| ---        | ---      | ---      | ---        |
+| 04/06/2016 | 1        | Grupo 24 |            |
+
+
+Documento validado por las partes en la fecha:
+
+| Por el cliente | Por la empresa suministradora |
+| --- | --- |
+|     |     |
+|aclaracion: | aclaracion: |
+
+---
+
 
 ## INTRODUCCION
 
