@@ -74,7 +74,7 @@ proyecto es de $63200
 | 1          | [entrevista 1]  (https://github.com/chudix/couchInn/blob/master/documentacion/entrevista1.md) | 17/03/2016 | grupo 24 |
 | 2          | [entrevista 2] (https://github.com/chudix/couchInn/blob/master/documentacion/entrevista2.md) | 1/04/2016 | grupo 24 |
 | 3          | [SRS] (https://github.com/chudix/couchInn/blob/master/documentacion/srs.md) | 10/04/2016  | grupo 24 |
-| 4          | [DER] (https://github.com/chudix/couchInn/blob/master/documentacion/CouchInnDB.pdf)| | 20/04/2016 | grupo 24 |
+| 4          | [DER] (https://github.com/chudix/couchInn/blob/master/documentacion/CouchInnDB.pdf)| 20/04/2016 | grupo 24 |
 
 
 ## 3 Definiciones y acronimos
