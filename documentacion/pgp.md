@@ -175,6 +175,7 @@ documento.
 | Diseno de interfaz | 3 | 4  hs semanales | 12 horas semanales|
 | Implementacion | 3 | 8 hs semanales | 24 horas semanales|
 
+### 5.II.c Asignacion de presupuesto
 
 ### 5.III Plan de control.
 
@@ -236,19 +237,19 @@ NA
 + Diseño de interfaz
 + Analisis de riesgo.
 
-### 7.IIII Plan de aseguramiento de calidad.
+### 7.IV Plan de aseguramiento de calidad.
 NA
 
-### 7.IIIII Plan de revisiones y auditorias
+### 7.V Plan de revisiones y auditorias
 NA
 
-### 7.IIIIII Plan de resolucion de problemas.
+### 7.VI Plan de resolucion de problemas.
 NA
 
-### 7.IIIIIII Plan de administracion de terceros.
+### 7.VII Plan de administracion de terceros.
 NA
 
-### 7.IIIIIIII Plan de mejoras en el proceso.
+### 7.VIII Plan de mejoras en el proceso.
 NA
 
 ## 8 Planes adicionales
