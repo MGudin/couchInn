@@ -18,7 +18,6 @@ comunicación entre visitantes y dueños de hospedajes del territorio
 Argentino. El presente documento esta dirigido a desarrolladores,
 aunque será validado y aprobado por ambas partes. 
 
-
 ### 1.I.b Supuestos y restricciones
 
 + Se utilizara como metodologia de desarrollo scrum
@@ -28,8 +27,7 @@ datos MySQL.
 + Sera necesario la contratacion de un servidor externo(web hosting)
 + Por ser una aplicacion web, correra sobre un navegador web en un
 dispositivo con conexion a internet.
-+ ??? que poner en tiempo de desarrollo -> cronograma
-+ ??? presupuesto? -> calcular con las cosas FN
++ El tiempo de desarrollo de la aplicacion sera de 2 meses (16/5/2016 - 16/7/2016)
 + Se debera utilizar el logo de la empresa.
 
 ### 1.I.c Entregables del proyecto.
@@ -40,9 +38,9 @@ dispositivo con conexion a internet.
 
 + Demo 3: Sabado 16/07/16
 
-### 1.I.d Calendario y resumen del presupuesto.  El sistema finalizado
-se entregará el sábado 16 de Julio de 2016.  El presupuesto del
-proyecto es de $  ???
+### 1.I.d Calendario y resumen del presupuesto.
+El sistema finalizado se entregará el sábado 16 de Julio de 2016.  El presupuesto del
+proyecto es de $63200
 
 ## 2 Documentos referenciados
 
@@ -50,12 +48,8 @@ proyecto es de $  ???
 | ---        | ---    | ---   | ---   |
 | 1          | [entrevista 1]  (https://github.com/chudix/couchInn/blob/master/documentacion/entrevista1.md) | 17/03/2016 | grupo 24 |
 | 2          | [entrevista 2] (https://github.com/chudix/couchInn/blob/master/documentacion/entrevista2.md) | 1/04/2016 | grupo 24 |
-| 3          | [SRS]
-| (https://github.com/chudix/couchInn/blob/master/documentacion/srs.md)
-| | 10/04/2016  | grupo 24 |
-| 4 | [DER]
-| (https://github.com/chudix/couchInn/blob/master/documentacion/CouchInnDB.pdf)
-| | 20/04/2016 | grupo 24 |
+| 3          | [SRS] (https://github.com/chudix/couchInn/blob/master/documentacion/srs.md) | 10/04/2016  | grupo 24 |
+| 4          | [DER] (https://github.com/chudix/couchInn/blob/master/documentacion/CouchInnDB.pdf)| | 20/04/2016 | grupo 24 |
 
 
 ## 3 Definiciones y acronimos
@@ -79,9 +73,6 @@ La estructura interna se conformara acorde a la metodologia de scrum,
 esto significa que sera descentralizada controlada. Los
 desarrolladores del equipo seran coordinados por el scrum master que
 sera quien tenga relacion directa con el cliente.
-
-
-IMAGEN
 
 
 ### 4.III Roles y responsabilidades.
@@ -117,12 +108,14 @@ auto­organizada, será los encargados de desarrollar el producto.
 +   Santiago Mayahara
 +   Fernan Nestier
 +   Matias Garcia
+
 Con tiempo estimado de trabajo de 5 dias por semana, 6 horas por dia.
 
 **Testers:** El personal a cargo de realizacion de pruebas sera:
 +   Santiago Mayahara
 +   Fernan Nestier
 +   Matias Garcia
+
 Con tiempo estimado de trabajo de 3 dias por semana, 2 horas por dia.
 
 **Entrevistadores:**El personal a cargo de la realizacion de las
@@ -130,16 +123,17 @@ entrevistas sera:
 +   Santiago Mayahara
 +   Fernan Nestier
 +   Matias Garcia
+
 Con tiempo estimado de trabajo de 1 dias por semana, 1/2 horas por dia.
 
 ### 5.I.b Plan de adquisicion de recursos.
 
-| recurso | cantidad | tiempo | precio x unidad | precio total |
-| ---     | ---      | ---    | ---             | ---          |
-| servidor | 1 | 12 meses | $3000 | $3000 |
-| dominio | 1  | 12 meses | us$60 | us$60 |
-| servicio de pivotal tracker | 1 | 3 meses | $400/mes | $1200 |
-| servidor mysql | 1 | - | $0 | $0 |
+| recurso                     | cantidad | tiempo   | precio x unidad | precio total |
+| ---                         | ---      | ---      | ---             | ---          |
+| servidor                    | 1        | 12 meses | $3000           | $3000        |
+| dominio                     | 1        | 12 meses | us$60           | us$60        |
+| servicio de pivotal tracker | 1        | 3 meses  | $400/mes        | $1200        |
+| servidor mysql              | 1        | -        | $0              | $0           |
 
 
 ### 5.I.c Plan de entrenamiento del personal del protecto.
@@ -165,17 +159,27 @@ documento.
 
 ### 5.II.b Asignacion de esfuerzo
 
-| Actividad | cantidad | tiempo unitario (hs) | tiempo total (hs)  total |
-| ---	    | ---      | ---                  | ---		         |
-| Elicitacion de requisitos | 3 | 2 horas semanales | 6 horas semanales  |
-| Creacion de la pila del producto | 3 | 2 hs semanales | 6 horas semanales|
-| Diseno de base de datos | 3 | 3  hs semanales | 9 horas semanales|
-| Planificacion del proyecto | 3 | 2 hs semanales | 6 horas semanales|
-| Analisis de riesgos | 3 | 3  hs semanales | 9 horas semanales|
-| Diseno de interfaz | 3 | 4  hs semanales | 12 horas semanales|
-| Implementacion | 3 | 8 hs semanales | 24 horas semanales|
+| Actividad                        | cantidad | tiempo unitario (hs) | tiempo: sub-total (hs por semana) |
+| ---	                           | ---      | ---                  | ---		                 |
+| Elicitacion de requisitos        | 3        | 2 horas semanales    | 6 horas                           |                
+| Creacion de la pila del producto | 3        | 2 hs semanales       | 6 horas                           |
+| Diseno de base de datos          | 3        | 3 hs semanales       | 9 horas                           |
+| Planificacion del proyecto       | 3        | 3 hs semanales       | 9 horas                           |
+| Analisis de riesgos              | 3        | 3 hs semanales       | 9 horas                           |
+| Diseno de interfaz               | 3        | 3 hs semanales       | 9 horas                           |
+| Implementacion                   | 3        | 18 hs semanales      | 54 horas                          |
+|                                  |          | total                | 102 horas
+
 
 ### 5.II.c Asignacion de presupuesto
+El presupuesto queda establecido por la cantidad total de horas de trabajo mas los gastos en recursos establecidos
+previamente. Por lo tanto:
+
+Horas de trabajo: 102hs semanales * 8 semanas de desarrollo = 816hs
+Monto por hora: $75
+Gastos en recursos: $5100
+
+PRESUPUESTO: $66300
 
 ### 5.III Plan de control.
 
