@@ -282,6 +282,6 @@ NA
 NA
 
 ## 8 Planes adicionales
-Plan de backup: Se seguirá un plan de backup semanal, en el que se corroborará que el sistema funcione correctamente, sobre todo en sus partes críticas, y se generará una copia de respaldo de la base de datos y cualquier información que se considere relevante en el momento.
-Plan de instalación: Una vez finalizado el desarrollo del sistema, se instalará y pondrá en producción el sistema, como también se prepararan todos los componentes necesarios para el correcto funcionamiento del sistema, sean: motor de base de datos MySQL, servidor web, etc.
-Plan de mantenimiento: Durante los primeros 3 meses G24 se hara responsable del mantenimiento del sistema en forma gratuita, pasado ese periodo el cliente podra contratar un abono de mantenimiento mensial o llamar al soporte tecnico cuando lo considere necesario.
+**Plan de backup:** Se seguirá un plan de backup semanal, en el que se corroborará que el sistema funcione correctamente, sobre todo en sus partes críticas, y se generará una copia de respaldo de la base de datos y cualquier información que se considere relevante en el momento.
+**Plan de instalación:** Una vez finalizado el desarrollo del sistema, se instalará y pondrá en producción el sistema, como también se prepararan todos los componentes necesarios para el correcto funcionamiento del sistema, sean: motor de base de datos MySQL, servidor web, etc.
+**Plan de mantenimiento:** Durante los primeros 3 meses G24 se hara responsable del mantenimiento del sistema en forma gratuita, pasado ese periodo el cliente podra contratar un abono de mantenimiento mensial o llamar al soporte tecnico cuando lo considere necesario.
