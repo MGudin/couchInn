@@ -22,7 +22,7 @@ aunque será validado y aprobado por ambas partes.
 ### 1.I.b Supuestos y restricciones
 
 + Se utilizara como metodologia de desarrollo scrum
-+ El desarrollo se realizara en Python2.7 sobre el framwork Django1.9
++ El desarrollo se realizara en Python2.7 sobre el framework Django1.9
 + Se utilizara para la persistencia de los datos el motor de base de
 datos MySQL.
 + Sera necesario la contratacion de un servidor externo(web hosting)
@@ -60,7 +60,7 @@ proyecto es de $  ???
 
 ## 3 Definiciones y acronimos
 
-# TODO: !
+Framework: Es un conjunto estandarizado de conceptos, prácticas y criterios para enfocar un tipo de problemática particular que sirve como referencia, para enfrentar y resolver nuevos problemas de índole similar.
 
 ## 4 Organizacion del proyecto
 
@@ -165,7 +165,16 @@ documento.
 
 ### 5.II.b Asignacion de esfuerzo
 
-#TODO:
+| Actividad | cantidad | tiempo unitario (hs) | tiempo total (hs)  total |
+| ---	    | ---      | ---                  | ---		         |
+| Elicitacion de requisitos | 3 | 2 horas semanales | 6 horas semanales  |
+| Creacion de la pila del producto | 3 | 2 hs semanales | 6 horas semanales|
+| Diseno de base de datos | 3 | 3  hs semanales | 9 horas semanales|
+| Planificacion del proyecto | 3 | 2 hs semanales | 6 horas semanales|
+| Analisis de riesgos | 3 | 3  hs semanales | 9 horas semanales|
+| Diseno de interfaz | 3 | 4  hs semanales | 12 horas semanales|
+| Implementacion | 3 | 8 hs semanales | 24 horas semanales|
+
 
 ### 5.III Plan de control.
 
@@ -226,3 +235,23 @@ NA
 + Plan de gestion de producto.
 + Diseño de interfaz
 + Analisis de riesgo.
+
+### 7.IIII Plan de aseguramiento de calidad.
+NA
+
+### 7.IIIII Plan de revisiones y auditorias
+NA
+
+### 7.IIIIII Plan de resolucion de problemas.
+NA
+
+### 7.IIIIIII Plan de administracion de terceros.
+NA
+
+### 7.IIIIIIII Plan de mejoras en el proceso.
+NA
+
+## 8 Planes adicionales
+Plan de backup: Se seguirá un plan de backup semanal, en el que se corroborará que el sistema funcione correctamente, sobre todo en sus partes críticas, y se generará una copia de respaldo de la base de datos y cualquier información que se considere relevante en el momento.
+Plan de instalación: Una vez finalizado el desarrollo del sistema, se instalará y pondrá en producción el sistema, como también se prepararan todos los componentes necesarios para el correcto funcionamiento del sistema, sean: motor de base de datos MySQL, servidor web, etc.
+Plan de mantenimiento: Durante los primeros 3 meses G24 se hara responsable del mantenimiento del sistema en forma gratuita, pasado ese periodo el cliente podra contratar un abono de mantenimiento mensial o llamar al soporte tecnico cuando lo considere necesario.
