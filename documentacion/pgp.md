@@ -80,6 +80,8 @@ proyecto es de $63200
 ## 3 Definiciones y acronimos
 
 Framework: Es un conjunto estandarizado de conceptos, prácticas y criterios para enfocar un tipo de problemática particular que sirve como referencia, para enfrentar y resolver nuevos problemas de índole similar.
+Testers: Personas que se encargan de probar las funcionalidades del sistema.
+Backup:copia y archivo de datos de la computadora de modo que se puede utilizar para restaurar la información original después de una eventual pérdida de datos.
 
 ## 4 Organizacion del proyecto
 
