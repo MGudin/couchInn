@@ -27,7 +27,7 @@ Documento validado por las partes en la fecha:
 
 ### Ficha del documento
 
-1. Tabla de administracion de tratamiento de riesgos.
+1. [Tabla de administracion de tratamiento de riesgos](#tabla-de-administracion-de-tratamientos-de-riesgos).
 
 
 2. Plan de administracion de riesgos.
