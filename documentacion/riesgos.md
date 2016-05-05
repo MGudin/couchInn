@@ -45,6 +45,14 @@ Documento validado por las partes en la fecha:
 | 3         | Dificultad para entender nuevos requerimientos | 40% | 2 | El scrum master??? |     |
 | 4         | Algun miembro del equipo abandona el proyecto | 20% | 3 | Grupo 24 | |
 | 5         | Cortes de luz                     | 20%          | 4       | Grupo 24     |       |
+| 6         | Falla de comunicacion con el servidor| 20%       | 4       | Grupo 24     |       |
+| 7         | Falta de comunicacion con el cliente | 40%       | 3       | Grupo 24     |       |
+| 8         | Personal insuficiente                | 25%       | 2       | Grupo 24     |       |
+| 9         | Personal no capacitado               | 30%       | 2       | Grupo 24     |       |
+| 10        | El cliente deja de necesitar el producto(?| 5%  | 1       | Grupo 24      |       |
+| 11        | Perdida de datos                     | 5%       | 1       | Grupo 24      |       |
+| 12        | Mala calidad de producto             | 10%      | 2       | Grupo 24      |       |
+
 
 ## Plan de administracion de riesgos.
 
