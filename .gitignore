@@ -62,4 +62,6 @@ target/
 .ipynb_checkpoints
 
 *.*~
-#Esto es un comment
+#Esto es un comment*.sqlite
+*.sqlite3
+*.pyc
