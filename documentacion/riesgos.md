@@ -35,8 +35,16 @@ Documento validado por las partes en la fecha:
 
 ## Tabla de administracion de tratamiento de riesgos.
 
-| id Riesgo | Nombre | Probabilidad | Impacto | Responsable | Estado |
-| ---       | ---    | ---          | ---     | ---         | ---    |
+??? Estado?
+
+| id Riesgo | Nombre                            | Probabilidad | Impacto | Responsable | Estado |
+| ---       | ---                               | ---          | ---     | ---         | ---    |
+| 0         | El presupuesto no es realista     | 30%          | 2       | Grupo 24    |        |
+| 1         | Cambio de requerimientos          | 75%          | 2       | Grupo 24    |        |
+| 2         | Retrasos en la fecha de entrega   | 30%          | 3       | Grupo 24    |        |
+| 3         | Dificultad para entender nuevos requerimientos | 40% | 2 | El scrum master??? |     |
+| 4         | Algun miembro del equipo abandona el proyecto | 20% | 3 | Grupo 24 | |
+| 5         | Cortes de luz                     | 20%          | 4       | Grupo 24     |       |
 
 ## Plan de administracion de riesgos.
 
