@@ -1,4 +1,4 @@
-# Especificacion de requisitos de software
+# Plan de Gestion de Proyecto
 
 
 Proyecto: *CouchInn*
@@ -11,7 +11,7 @@ Revision: 1
 
 | fecha | revision | autor | verificado |
 | --- | --- | --- | --- |
-| 19/6/2016 | 1 | Grupo 24 |
+| 18/5/2016 | 1 | Grupo 24 |
 
 
 Documento validado por las partes en la fecha:
