@@ -80,7 +80,6 @@ Documento validado por las partes en la fecha:
 
 
 **Estrategia de mitigacion(Anulacion/Minimizacion):** El cliente valida el requerimiento en el srs. 
-
 Se abarcaran primero los requerimientos en los que el cliente este seguro y se consideren con menor 
 posibilidad de cambio, por lo tanto impliquen el menor retraso en los tiempos estipulados.
 
@@ -108,6 +107,50 @@ ayudando a la comprension de los nuevos requisitos.
 
 **Plan de contingencia:** Se postergaran los plazos el tiempo suficiente para que el equipo pueda comprender
 los nuevos requerimientos.
+
+---
+
+**id Riesgo:** 7   **nombre:** Falta de comunicacion con el cliente  **Fecha:** 18/5/2016 
+
+
+**Descripcion:** La comunicacion con el cliente no es la adecuada de acuerdo a la metodologia
+de desarrollo scrumm
+
+
+**Probabilidad:** 40%     **impacto:** 3
+
+
+**Responsable:** Santiago Mayahara     **clase:** proyecto 
+
+
+**Estrategia de mitigacion(Anulacion/Minimizacion):** El Scrum master debera crear los canales adecuados
+para que el cliente forme parte en el desarrollo del producto. Se organizaran reuniones diaras con el cliente
+para fomentar la participacion del mismo.
+
+
+**Plan de contingencia:** Se retrasara el desarrollo del producto
+
+---
+
+**id Riesgo:** 20   **nombre:** Caida del servidor de pruebas  **Fecha:** 18/5/2016 
+
+
+**Descripcion:** El servidor donde se prueba el desarrollo del producto se encuentra
+fuera de funcionamiento
+
+
+**Probabilidad:** 35%     **impacto:** 3
+
+
+**Responsable:** Fernan Nestier     **clase:** proyecto 
+
+
+**Estrategia de mitigacion(Anulacion/Minimizacion):** Se utilizaran servidores locales a las estaciones de trabajo
+para la prueba momentanea de nuevas funcionalidades.
+
+
+**Plan de contingencia:** Se evaluara la contratacion de un servidores alternativos, considerando la baja del 
+actual servidor.
 
 ---
 
