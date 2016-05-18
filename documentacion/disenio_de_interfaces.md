@@ -122,13 +122,13 @@ En ciertos casos, se brindará un link con acceso a la pagina anterior. (Por eje
 listado de búsquedas)
 
 
-[campo_invalido]: https://github.com/chudix/couchInn/tree/master/documentacion/img/campoinvalido.png "Campo invalido"
-[404error]: https://github.com/chudix/couchInn/tree/master/documentacion/img/404.png "URL no encontrada"
-[login_error]: https://github.com/chudix/couchInn/tree/master/documentacion/img/loginerror.png "Error de Log In "
-[perfil]: https://github.com/chudix/couchInn/tree/master/documentacion/img/perfil.png "Pantalla de perfil "
-[busqueda]: https://github.com/chudix/couchInn/tree/master/documentacion/img/busqueda.png "busqueda"
-[publicacion]: https://github.com/chudix/couchInn/tree/master/documentacion/img/publicacion.png "Pantalla de publicacion"
-[altahospedaje]: https://github.com/chudix/couchInn/tree/master/documentacion/img/altahospedaje.png "Alta de Hospadaje"
-[signin]: https://github.com/chudix/couchInn/tree/master/documentacion/img/signin.png "Sign in"
-[login]: https://github.com/chudix/couchInn/tree/master/documentacion/img/login.png "Log In"
-[index]: https://github.com/chudix/couchInn/tree/master/documentacion/MockUp/index.png "Index"
+[campo_invalido]: https://github.com/chudix/couchInn/blob/master/documentacion/img/campoinvalido.png "Campo invalido"
+[404error]: https://github.com/chudix/couchInn/blob/master/documentacion/img/404.png "URL no encontrada"
+[login_error]: https://github.com/chudix/couchInn/blob/master/documentacion/img/loginerror.png "Error de Log In "
+[perfil]: https://github.com/chudix/couchInn/blob/master/documentacion/img/perfil.png "Pantalla de perfil "
+[busqueda]: https://github.com/chudix/couchInn/blob/master/documentacion/img/busqueda.png "busqueda"
+[publicacion]: https://github.com/chudix/couchInn/blob/master/documentacion/img/publicacion.png "Pantalla de publicacion"
+[altahospedaje]: https://github.com/chudix/couchInn/blob/master/documentacion/img/altahospedaje.png "Alta de Hospadaje"
+[signin]: https://github.com/chudix/couchInn/blob/master/documentacion/img/signin.png "Sign in"
+[login]: https://github.com/chudix/couchInn/blob/master/documentacion/img/login.png "Log In"
+[index]: https://github.com/chudix/couchInn/blob/master/documentacion/MockUp/index.png "Index"
