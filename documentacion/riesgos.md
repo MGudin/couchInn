@@ -56,3 +56,8 @@ Documento validado por las partes en la fecha:
 
 ## Plan de administracion de riesgos.
 
+
+## imagen
+![alt text][imagen]
+
+[imagen]: https://github.com/chudix/couchInn/blob/master/documentacion/650_1200.jpg "imagen"
