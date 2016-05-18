@@ -25,13 +25,13 @@ Documento validado por las partes en la fecha:
 
 ## Contenido
 
-1. Diseño de interfaces
-   1. Tipos de interfaz a utilizar.
-   2. Tratamiento de errores.
-   3. Manejo de prevencion de errores.
-   4. Generacion de ayudas.
-   5. Definicion de atajos.
-   6. Manejo de salidas.
+1. [Diseño de interfaces](#1-diseño-de-interfaces)
+   1. [Tipos de interfaz a utilizar.](#11-tipos-de-interfaz-a-utilizar)
+   2. [Tratamiento de errores.](#12-tratamiento-de-errores)
+   3. [Manejo de prevencion de errores.](#13-manejo-de-prevencion-de-errores)
+   4. [Generacion de ayudas.](#14-generacion-de-ayudas)
+   5. [Definicion de atajos.](#15-definicion-de-atajos)
+   6. [Manejo de salidas.](#16-manejo-de-salidas)
 
 
 ## 1. Diseño de interfaces.
@@ -40,7 +40,7 @@ Documento validado por las partes en la fecha:
 
 #### index
 
-![alt text][index]
+![index][index]
 
 
 #### Log In
@@ -131,4 +131,4 @@ listado de búsquedas)
 [altahospedaje]: https://github.com/chudix/couchInn/tree/master/documentacion/img/altahospedaje.png "Alta de Hospadaje"
 [signin]: https://github.com/chudix/couchInn/tree/master/documentacion/img/signin.png "Sign in"
 [login]: https://github.com/chudix/couchInn/tree/master/documentacion/img/login.png "Log In"
-[index]: https://github.com/chudix/couchInn/tree/master/documentacion/img/index.png "Index"
+[index]: https://github.com/chudix/couchInn/tree/master/documentacion/MockUp/index.png "Index"
