@@ -33,12 +33,13 @@ Documento validado por las partes en la fecha:
    5. [Definicion de atajos.](#15-definicion-de-atajos)
    6. [Manejo de salidas.](#16-manejo-de-salidas)
 
+---
 
 ## 1. Diseño de interfaces.
 
 ### 1.1 Tipos de interfaz a utilizar.
 
-#### index
+#### 1.1.1 Index
 
 ![index][index]
 
