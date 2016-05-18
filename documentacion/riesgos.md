@@ -67,6 +67,28 @@ Documento validado por las partes en la fecha:
 
 ## Plan de administracion de riesgos.
 
+**id Riesgo:** 1   **nombre:** Cambio de requerimientos  **Fecha:** 18/5/2016 
+
+
+**Descripcion:** El cliente realiza un cambio en los requerimientos del proyecto previamente establecidos
+
+
+**Probabilidad:** 75%     **impacto:** 2
+
+
+**Responsable:** Fernan Nestier     **clase:** proyecto 
+
+
+**Estrategia de mitigacion(Anulacion/Minimizacion):** El cliente valida el requerimiento en el srs. 
+
+Se abarcaran primero los requerimientos en los que el cliente este seguro y se consideren con menor 
+posibilidad de cambio, por lo tanto impliquen el menor retraso en los tiempos estipulados.
+
+
+**Plan de contingencia:** Deberan reevaluarse los tiempos de desarrollo
+
+---
+
 **id Riesgo:** idRiesgo   **nombre:** un nombre del requerimiento  **Fecha:** una fecha 
 
 
