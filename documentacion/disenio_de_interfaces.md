@@ -128,7 +128,7 @@ listado de búsquedas)
 [perfil]: https://github.com/chudix/couchInn/blob/master/documentacion/img/perfil.png "Pantalla de perfil "
 [busqueda]: https://github.com/chudix/couchInn/blob/master/documentacion/img/busqueda.png "busqueda"
 [publicacion]: https://github.com/chudix/couchInn/blob/master/documentacion/img/publicacion.png "Pantalla de publicacion"
-[altahospedaje]: https://github.com/chudix/couchInn/blob/master/documentacion/img/altahospedaje.png "Alta de Hospadaje"
+[altahospedaje]: https://github.com/chudix/couchInn/blob/master/documentacion/img/alta_hospedaje.jpg "Alta de Hospadaje"
 [signin]: https://github.com/chudix/couchInn/blob/master/documentacion/img/signin.png "Sign in"
 [login]: https://github.com/chudix/couchInn/blob/master/documentacion/img/login.png "Log In"
 [index]: https://github.com/chudix/couchInn/blob/master/documentacion/MockUp/Index.png "Index"
