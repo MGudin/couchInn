@@ -122,13 +122,13 @@ En ciertos casos, se brindará un link con acceso a la pagina anterior. (Por eje
 listado de búsquedas)
 
 
-[campo_invalido]: https://github.com/chudix/couchInn/blob/master/documentacion/MockUp/campoinvalido.png "Campo invalido"
-[404error]: https://github.com/chudix/couchInn/blob/master/documentacion/MockUp/404.png "URL no encontrada"
-[login_error]: https://github.com/chudix/couchInn/blob/master/documentacion/MockUp/loginerror.png "Error de Log In "
+[campo_invalido]: https://github.com/chudix/couchInn/blob/master/documentacion/MockUp/signin_error.png "Campo invalido"
+[404error]: https://github.com/chudix/couchInn/blob/master/documentacion/MockUp/404_error.png "URL no encontrada"
+[login_error]: https://github.com/chudix/couchInn/blob/master/documentacion/MockUp/login_error.png "Error de Log In "
 [perfil]: https://github.com/chudix/couchInn/blob/master/documentacion/MockUp/perfil.png "Pantalla de perfil "
 [busqueda]: https://github.com/chudix/couchInn/blob/master/documentacion/MockUp/busqueda.png "busqueda"
 [publicacion]: https://github.com/chudix/couchInn/blob/master/documentacion/MockUp/publicacion.png "Pantalla de publicacion"
 [altahospedaje]: https://github.com/chudix/couchInn/blob/master/documentacion/MockUp/alta_hospedaje.jpg "Alta de Hospadaje"
 [signin]: https://github.com/chudix/couchInn/blob/master/documentacion/MockUp/signin.png "Sign in"
 [login]: https://github.com/chudix/couchInn/blob/master/documentacion/MockUp/login.png "Log In"
-[index]: https://github.com/chudix/couchInn/blob/master/documentacion/MockUp/Index.png "Index"
+[index]: https://github.com/chudix/couchInn/blob/master/documentacion/MockUp/index.png "Index"
