@@ -35,6 +35,9 @@ Documento validado por las partes en la fecha:
       6. [Resultado de Busqueda](#116-resultado-de-busqueda)
       7. [Pantalla de Perfil](#117-pantalla-de-perfil)
    2. [Tratamiento de errores.](#12-tratamiento-de-errores)
+      1. [Error de Log In](#121-error-de-log-in)
+      2. [URL No Encontrada](#122-url-no-encontrada)
+      3. [Campo Invalido](#123-campo-invalido)
    3. [Manejo de prevencion de errores.](#13-manejo-de-prevencion-de-errores)
    4. [Generacion de ayudas.](#14-generacion-de-ayudas)
    5. [Definicion de atajos.](#15-definicion-de-atajos)
@@ -76,13 +79,13 @@ El sistema mostrara un mensaje reportando el problema que haya ocurrido.
 
 A continuacion se veran varios ejemplos:
 
-#### Error de Log In
+#### 1.2.1 Error de Log In
 ![alt text][login_error]
 
-#### URL no encontrada
+#### 1.2.2 URL no encontrada
 ![alt text][404error]
 
-#### Campo invalido
+#### 1.2.3 Campo invalido
 ![alt text][campo_invalido]
 
 
