@@ -62,7 +62,7 @@ Documento validado por las partes en la fecha:
 #### Pantalla de perfil
 ![alt text][perfil]
 
-### 1.b Tratamiento de errores.
+### 1.2 Tratamiento de errores.
 
 El sistema mostrara un mensaje reportando el problema que haya ocurrido. 
 
@@ -78,7 +78,7 @@ A continuacion se veran varios ejemplos:
 ![alt text][campo_invalido]
 
 
-### 1.c Manejo de prevencion de errores.
+### 1.3 Manejo de prevencion de errores.
 
 Siempre que exista un campo a rellenar, se permitirá únicamente el uso de los caracteres
 validos para evitar errores.
@@ -88,20 +88,20 @@ En caso de eventos en los cuales sean definitivos (Dar de baja hospedaje, elimin
 etc.), se mostrara un mensaje esperando la confirmación del usuario.
 
 
-### 1.d Generacion de ayudas.
+### 1.4 Generacion de ayudas.
 
 El sistema contará con una sección de “Preguntas frecuentes” donde se repondrán dudas
 básicas sobre el sistema, destinado especialmente a los usuarios finales. Además se
 entregará un manual donde se expliquen las funcionalidad del usuario administrador.
 
 
-### 1.e Definicion de atajos.
+### 1.5 Definicion de atajos.
 
 Los atajos serán los brindados por el navegador que este utilizando el usuario durante el
 uso del sistema.
 
 
-### 1.f Manejo de salidas
+### 1.6 Manejo de salidas
 
 Dado que el sistema es utilizado a través de un navegador web, las opciones de retorno y
 cierre se podrán realizar desde el mismo navegador. Sin embargo, se añaden los siguientes
