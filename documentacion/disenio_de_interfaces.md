@@ -27,6 +27,13 @@ Documento validado por las partes en la fecha:
 
 1. [Diseño de interfaces](#1-diseño-de-interfaces)
    1. [Tipos de interfaz a utilizar.](#11-tipos-de-interfaz-a-utilizar)
+      1. [Index](#111-index)
+      2. [Log In](#112-log-in)
+      3. [Sign In](#113-sign-in)
+      4. [Alta de Hospedaje](#114-alta-de-hospedaje)
+      5. [Pantalla de Publicacion](#115-pantalla-de-publicacion)
+      6. [Resultado de Busqueda](#116-resultado-de-busqueda)
+      7. [Pantalla de Perfil](#117-pantalla-de-perfil)
    2. [Tratamiento de errores.](#12-tratamiento-de-errores)
    3. [Manejo de prevencion de errores.](#13-manejo-de-prevencion-de-errores)
    4. [Generacion de ayudas.](#14-generacion-de-ayudas)
@@ -44,23 +51,23 @@ Documento validado por las partes en la fecha:
 ![index][index]
 
 
-#### Log In
+#### 1.1.2 Log In
 ![alt text][login]
 
 
-#### Sign In
+#### 1.1.3 Sign In
 ![alt text][signin]
 
-#### Alta de Hospedaje
+#### 1.1.4 Alta de Hospedaje
 ![alt text][altahospedaje]
 
-#### Pantalla de Publicacion
+#### 1.1.5 Pantalla de Publicacion
 ![alt text][publicacion]
 
-#### Resultado de Busqueda
+#### 1.1.6 Resultado de Busqueda
 ![alt text][busqueda]
 
-#### Pantalla de perfil
+#### 1.1.7 Pantalla de perfil
 ![alt text][perfil]
 
 ### 1.2 Tratamiento de errores.
