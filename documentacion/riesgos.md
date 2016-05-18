@@ -89,7 +89,29 @@ posibilidad de cambio, por lo tanto impliquen el menor retraso en los tiempos es
 
 ---
 
-**id Riesgo:** idRiesgo   **nombre:** un nombre del requerimiento  **Fecha:** una fecha 
+**id Riesgo:** 3   **nombre:** Dificultad para entender nuevos requerimientos  **Fecha:** 18/5/2016 
+
+
+**Descripcion:**  El equipo de desarrollo no entiende nuevos requerimientos que puedan surgir.
+
+
+**Probabilidad:** 40%     **impacto:** 2
+
+
+**Responsable:** Matias Garcia     **clase:** proyecto 
+
+
+**Estrategia de mitigacion(Anulacion/Minimizacion):** Se realizara una nueva elicitacion de requerimientos.
+El cliente es parte del desarrollor del producto, manteniendo una fluida comunicacion con el equipo
+ayudando a la comprension de los nuevos requisitos.
+
+
+**Plan de contingencia:** Se postergaran los plazos el tiempo suficiente para que el equipo pueda comprender
+los nuevos requerimientos.
+
+---
+
+**id Riesgo:** idRiesgo   **nombre:** un nombre del requerimiento  **Fecha:** 18/5/2016 
 
 
 **Descripcion:** una descripcion pertinente
@@ -101,7 +123,7 @@ posibilidad de cambio, por lo tanto impliquen el menor retraso en los tiempos es
 **Responsable:** el responsable     **clase:** proyecto 
 
 
-**Estrategia:** una estrategia.
+**Estrategia de mitigacion(Anulacion/Minimizacion):** una estrategia.
 
 
 **Plan de contingencia:** un plan de contingencia
