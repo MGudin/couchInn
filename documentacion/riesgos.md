@@ -68,6 +68,7 @@ Documento validado por las partes en la fecha:
 ## Plan de administracion de riesgos.
 
 | *id Riesgo* | *nombre:* un nombre del requerimiento  *Fecha:* una fecha |
+| ---         | --- |
 | el id       | *Descripcion:* una descripcion pertinente                  |
 | *Probabilidad* |                                                         |
 | en porcentaje  |   |
