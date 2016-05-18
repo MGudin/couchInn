@@ -67,13 +67,14 @@ Documento validado por las partes en la fecha:
 
 ## Plan de administracion de riesgos.
 
-| *id Riesgo* | *nombre:* un nombre del requerimiento  *Fecha:* una fecha |
-| ---         | --- |
-| el id       | *Descripcion:* una descripcion pertinente                  |
-| *Probabilidad* |                                                         |
-| en porcentaje  |   |
-| *impacto* |  |
-| un impacto |  |
-| *Responsable:* el responsable | *clase:* proyecto |
-| estrategia: una estrategia |
-| *Plan de contingencia:* un plan de contingencia |
+*id Riesgo:* idRiesgo   *nombre:* un nombre del requerimiento  *Fecha:* una fecha 
+---
+*Descripcion:* una descripcion pertinente
+---
+*Probabilidad:* Un porcentaje   *impacto:* un impacto
+---
+*Responsable:* el responsable *clase:* proyecto 
+---
+*Estrategia:* una estrategia.
+---
+*Plan de contingencia:* un plan de contingencia
