@@ -131,4 +131,4 @@ listado de búsquedas)
 [altahospedaje]: https://github.com/chudix/couchInn/blob/master/documentacion/img/altahospedaje.png "Alta de Hospadaje"
 [signin]: https://github.com/chudix/couchInn/blob/master/documentacion/img/signin.png "Sign in"
 [login]: https://github.com/chudix/couchInn/blob/master/documentacion/img/login.png "Log In"
-[index]: https://github.com/chudix/couchInn/blob/master/documentacion/MockUp/index.png "Index"
+[index]: https://github.com/chudix/couchInn/blob/master/documentacion/MockUp/Index.png "Index"
