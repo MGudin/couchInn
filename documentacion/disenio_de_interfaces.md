@@ -25,18 +25,18 @@ Documento validado por las partes en la fecha:
 
 ## Contenido
 
-### 1. Diseño de interfaces
-####    1.a Tipos de interfaz a utilizar.
-####    1.b Tratamiento de errores.
-####    1.c Manejo de prevencion de errores.
-####    1.d Generacion de ayudas.
-####    1.e Definicion de atajos.
-####    1.f Manejo de salidas.
+1. Diseño de interfaces
+   1. Tipos de interfaz a utilizar.
+   2. Tratamiento de errores.
+   3. Manejo de prevencion de errores.
+   4. Generacion de ayudas.
+   5. Definicion de atajos.
+   6. Manejo de salidas.
 
 
 ## 1. Diseño de interfaces.
 
-### 1.a Tipos de interfaz a utilizar.
+### 1.1 Tipos de interfaz a utilizar.
 
 #### index
 
