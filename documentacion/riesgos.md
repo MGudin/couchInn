@@ -154,22 +154,87 @@ actual servidor.
 
 ---
 
-**id Riesgo:** idRiesgo   **nombre:** un nombre del requerimiento  **Fecha:** 18/5/2016 
+**id Riesgo:** 0   **nombre:** El presupuesto no es realista  **Fecha:** 18/5/2016 
 
 
-**Descripcion:** una descripcion pertinente
+**Descripcion:** Se generan gastos que superan los estipulados.
 
 
-**Probabilidad:** Un porcentaje     **impacto:** un impacto
+**Probabilidad:** 30%     **impacto:** 2
 
 
-**Responsable:** el responsable     **clase:** proyecto 
+**Responsable:** Matias Garcia     **clase:** proyecto 
 
 
-**Estrategia de mitigacion(Anulacion/Minimizacion):** una estrategia.
+**Estrategia de mitigacion(Anulacion/Minimizacion):** Se intenta calcular de la forma más apropiada posible los costos
+para cubrir los gastos enmateriales y mano de obra permitiendo un margen mínimo de error.
 
 
-**Plan de contingencia:** un plan de contingencia
+**Plan de contingencia:** Si se produce un gasto grande inesperado, se reevaluaran los costos de producción
+del sistema y se reestructurarán los documentos correspondientes.
+
+---
+
+**id Riesgo:** 9   **nombre:** Personal no capacitado  **Fecha:** 18/5/2016 
+
+
+**Descripcion:**  El personal no está familiarizada con el lenguaje o las metodologías de la empresa.	
+
+
+**Probabilidad:** 30%     **impacto:** 2
+
+
+**Responsable:** Santiago Mayahara     **clase:** proyecto 
+
+
+**Estrategia de mitigacion(Anulacion/Minimizacion):** Se intenta conseguir personal que conozca el lenguaje y las estrategias
+de programación utilizadas.
+
+
+**Plan de contingencia:** Se capacitará el personal deficiente en los campos que sean necesarios.
+
+---
+
+| 2         | Retrasos en la fecha de entrega                               | 30%          | 3       | Fernan Nestier    | latente |
+**id Riesgo:** 2   **nombre:** Retrasos en la fecha de entrega  **Fecha:** 18/5/2016 
+
+
+**Descripcion:** No se entrega el proyecto en la fecha pactada.
+
+
+**Probabilidad:** 30%     **impacto:** 3
+
+
+**Responsable:** Fernan Nestier     **clase:** proyecto 
+
+
+**Estrategia de mitigación(Anulacion/Minimizacion):** Realización de un cronograma de tiempos plausibles para cada tarea.
+Reuniones semanales para comprobar el cumplimiento del cronograma. Reserva de un plazo de tiempo para atender posibles retrasos.
+
+
+**Plan de contingencia:** Rearmar un cronograma realista, convencer al cliente que acepte los nuevos plazos.
+
+---
+
+**id Riesgo:** 21   **nombre:** El sistema no cumple con los requisitos  **Fecha:** 18/5/2016 
+
+
+**Descripcion:** Los requerimientos solicitados por los clientes fueron interpretados erróneamente por los miembros del 
+equipo de desarrollo.
+
+
+Probabilidad:** 30%     **impacto:** 1
+
+
+**Responsable:** Matias Garcia     **clase:** proyecto 
+
+
+**Estrategia de mitigacion(Anulacion/Minimizacion):** Realización de una etapa de elicitación de requerimientos completa,
+que consista de entrevistas y cuestionarios periódicos.Entregas periódicas de instancias de prueba del sistema.
+
+
+**Plan de contingencia:**  Repetir la etapa de elicitación de requerimientos y conseguir que el cliente acepte lo 
+especificado.Reservar tiempo para poder realizar los cambios necesarios en el producto de software
 
 ---
 
