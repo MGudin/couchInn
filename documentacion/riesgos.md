@@ -35,7 +35,6 @@ Documento validado por las partes en la fecha:
 
 ## Tabla de administracion de tratamiento de riesgos.
 
-??? Estado?
 
 | id Riesgo | Nombre                                                        | Probabilidad | Impacto | Responsable       | Estado  |
 | ---       | ---                                                           | ---          | ---     | ---               | ---     |
@@ -195,7 +194,6 @@ de programación utilizadas.
 
 ---
 
-| 2         | Retrasos en la fecha de entrega                               | 30%          | 3       | Fernan Nestier    | latente |
 **id Riesgo:** 2   **nombre:** Retrasos en la fecha de entrega  **Fecha:** 18/5/2016 
 
 
@@ -235,6 +233,3 @@ que consista de entrevistas y cuestionarios periódicos.Entregas periódicas de 
 
 **Plan de contingencia:**  Repetir la etapa de elicitación de requerimientos y conseguir que el cliente acepte lo 
 especificado.Reservar tiempo para poder realizar los cambios necesarios en el producto de software
-
----
-
