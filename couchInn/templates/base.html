@@ -1,0 +1,47 @@
+{% load static %}
+
+<html>
+<head>
+<title>{% block title %}CouchInn{% endblock %}</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.css' %}" />
+<script src={% static 'js/jquery-2.2.4.js' %}></script>
+<script src={% static 'js/bootstrap.min.js' %}></script>
+<script src={% static 'js/jquery-ui.js' %}></script>
+<script>
+$(function() {
+    $( ".datepicker" ).datepicker({dateFormat: 'dd/mm/yy'});
+    });
+</script>
+
+</head>
+<body>
+<div class="header">
+    <div class="container-fluid">
+        {% block menu %}
+        {% endblock menu %}
+    </div>
+</div>
+
+<div class='container-fluid'>
+<div class="row">
+    <div class='col-md-10 col-md-offset-1'>
+        {% if error_messages %}
+        {% for error in error_messages %}
+        <div class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            {{ error }} 
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+<br>
+{% block content %}This is the default content!{% endblock %}
+
+</div>
+</body>
+</html>

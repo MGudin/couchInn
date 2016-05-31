@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Oficinas{% endblock %}
+{% block content %}
+<div class="row">
+  <div class='col-md-10 col-md-offset-1'>
+    <br>
+    {% if lodgments %}
+
+    <br>
+    <div class="panel panel-default">
+      <div class="panel-heading">Hospedajes</div>
+      <table class='table'>
+        <tr>
+          <th> Fecha de inicio </th>
+          <th> Fecha de fin </th>
+          <th> Puntaje </th>
+          <th> Lugares disponibles </th>
+          <th> Categoria </th>
+        </tr>
+        {% for lodgment in lodgments %}
+        <tr>
+          <td>{{ lodgment.initial_date }}</td>
+          <td>{{ lodgment.finish_date }}</td>
+          <td>{{ lodgment.score }}</td>
+          <td>{{ lodgment.vacancy }}</td>
+          <td>{{ lodgment.category }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    {% else %}
+    <p>En este momento no hay hospedajes disponibles.</p>
+    {% endif %}
+    </ br>
+  </div>
+  {% endblock %}
