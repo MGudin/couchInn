@@ -7,9 +7,6 @@ alphanumeric = RegexValidator(r'^[0-9a-zA-Z]*$', 'Solo caracteres alfanumericos 
 
 class Category(models.Model):
     name = models.CharField('Nombre:', max_length=50, unique=True, validators=[alphanumeric])
-    reservations_available = models.IntegerField('Cantidad de personas',
-          validators =[MinValueValidator(1)]
-          )
 
     class Meta:
         verbose_name ='Categoria'

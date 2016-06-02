@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 from django.db import models
@@ -6,11 +7,33 @@ from django.contrib.auth.models import User
 from app.backend.models import Category
 
 # Create your models here.
+class Place(models.Model):
+    name = models.TextField('Nombre', max_length=50)
+    direction = models.TextField('Dirección', max_length=100)
+    city = models.TextField('Ciudad', max_length=100)
+    province = models.TextField('Provincia', max_length=100)
+    score = models.FloatField('Valoración', default=0, 
+        validators = [
+            MaxValueValidator(5),
+            MinValueValidator(0)
+            ]
+        )
+    user = models.ForeignKey(User, default=None)
+
+    class Meta:
+        verbose_name ='Lugar'
+        verbose_name_plural ='Lugares'
+
+
 class Lodgment(models.Model):
+    description = models.TextField('Descripción', max_length=500)
     create_date = models.DateTimeField(auto_now_add=True)
     initial_date = models.DateField('Fecha de inicio')
     finish_date = models.DateField('Fecha de fin')
-    score = models.FloatField('Valoracion', default=0, 
+    reservations_available = models.IntegerField('Cantidad de personas',
+            validators =[MinValueValidator(1)]
+            )
+    score = models.FloatField('Valoración', default=0, 
         validators = [
             MaxValueValidator(5),
             MinValueValidator(0)
@@ -18,6 +41,7 @@ class Lodgment(models.Model):
         )
     category = models.ForeignKey(Category)
     author = models.ForeignKey(User, default=None)
+    place = models.ForeignKey(Place)
 
     class Meta:
         verbose_name ='Hospedaje'
@@ -53,7 +77,7 @@ class Review(models.Model):
     text = models.TextField('Resenia', max_length=500)
     create_date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User)
-    score = models.FloatField('Valoracion', default=0, 
+    score = models.FloatField('Valoración', default=0, 
         validators = [
           MaxValueValidator(5),
           MinValueValidator(0)
