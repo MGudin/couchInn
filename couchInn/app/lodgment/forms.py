@@ -1,15 +1,15 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from models import Category, Lodgment
-
-class CategoryForm(forms.ModelForm):
-    
-    class Meta:
-        model = Category
-        fields = ['name']
-
+from models import Lodgment
+from crispy_forms.helper import FormHelper
 
 class LodgmentForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(LodgmentForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.form_tag = False
+
     initial_date = forms.DateField(label='Fecha de inicio',input_formats=['%d/%m/%Y'], widget= forms.DateInput(attrs={'class':'datepicker'}))
     finish_date = forms.DateField(label='Fecha de fin',input_formats=['%d/%m/%Y'], widget= forms.DateInput(attrs={'class':'datepicker'}))
     
