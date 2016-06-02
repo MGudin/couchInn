@@ -19,6 +19,10 @@ class Lodgment(models.Model):
     category = models.ForeignKey(Category)
     author = models.ForeignKey(User, default=None)
 
+    class Meta:
+        verbose_name ='Hospedaje'
+        verbose_name_plural ='Hospedajes'
+
 
 class Request(models.Model):
     PENDING = 'PE'
@@ -40,6 +44,11 @@ class Request(models.Model):
       return self.state
 
 
+    class Meta:
+        verbose_name ='Solicitud'
+        verbose_name_plural ='Solicitudes'
+
+
 class Review(models.Model):
     text = models.TextField('Resenia', max_length=500)
     create_date = models.DateTimeField(auto_now_add=True)
@@ -54,3 +63,7 @@ class Review(models.Model):
 
     def __str__(self):
       return self.text
+
+    class Meta:
+        verbose_name ='Resenia'
+        verbose_name_plural ='Resenias'
