@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Editar Categoria{% endblock %}
+{% block content %}
+
+<div class="form_container">
+  <form method="post" action='{% url "backend:edit_category" category.id %}'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type='submit' value="Editar" />
+  </form>
+</div>
+{% endblock %}

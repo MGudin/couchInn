@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Backend{% endblock %}
+{% block content %}
+<div class="row">
+  <div class='col-md-10 col-md-offset-1'>
+    <br>
+    {% if categories %}
+
+    <br>
+    <div class="panel panel-default">
+      <div class="panel-heading">Categorias de Hospedajes</div>
+      <table class='table'>
+        <tr>
+          <th> Nombre </th>
+          <th> Cantidad de personas </th>
+          <th> </th>
+          <th> </th>
+          <th> </th>
+        </tr>
+        {% for category in categories %}
+        <tr>
+          <td>{{ category.name }}</td>
+          <td>{{ category.reservations_available }}</td>
+          <td><a type='button' href='{% url "backend:edit_category" category.id %}'>Editar</a></td>
+          <td><a type='button' href='{% url "backend:show_category" category.id %}'>Ver</a></td>
+          <td><a type='button' href='{% url "backend:delete_category" category.id %}'>Borrar</a></td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    {% else %}
+    <p>En este momento no hay categorias disponibles.</p>
+    {% endif %}
+
+    <a type='button' href='{% url "backend:new_category" %}'>Crear</a>
+    </ br>
+  </div>
+  {% endblock %}
