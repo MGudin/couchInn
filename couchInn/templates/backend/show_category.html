@@ -8,7 +8,6 @@
     <br>
     <div class="">
       <div class=""><h1>{{category.name}}</h1></div>
-      <p>Cantidad de personas: {{ category.reservations_available }}</p>
       <a type='button' href='{% url "backend:edit_category" category.id %}'>Editar</a>
       <a type='button' href='{% url "backend:delete_category" category.id %}'>Borrar</a>
     </div>

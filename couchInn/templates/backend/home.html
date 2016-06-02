@@ -20,7 +20,6 @@
         {% for category in categories %}
         <tr>
           <td>{{ category.name }}</td>
-          <td>{{ category.reservations_available }}</td>
           <td><a type='button' href='{% url "backend:edit_category" category.id %}'>Editar</a></td>
           <td><a type='button' href='{% url "backend:show_category" category.id %}'>Ver</a></td>
           <td><a type='button' href='{% url "backend:delete_category" category.id %}'>Borrar</a></td>
