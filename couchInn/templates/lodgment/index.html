@@ -15,6 +15,9 @@
           <th> Fecha de fin </th>
           <th> Puntaje </th>
           <th> Categoria </th>
+          <th> </th>
+          <th> </th>
+          <th> </th>
         </tr>
         {% for lodgment in lodgments %}
         <tr>
@@ -22,6 +25,9 @@
           <td>{{ lodgment.finish_date }}</td>
           <td>{{ lodgment.score }}</td>
           <td>{{ lodgment.category }}</td>
+          <td><a type='button' href='{% url "lodgment:edit_lodgment" lodgment.id %}'>Editar</a></td>
+          <td><a type='button' href='{% url "lodgment:detail" lodgment.id %}'>Ver</a></td>
+          <td><a type='button' href='{% url "lodgment:delete_lodgment" lodgment.id %}'>Borrar</a></td>
         </tr>
         {% endfor %}
       </table>

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Editar Hospedaje{% endblock %}
+{% block content %}
+<div class="form_container">
+    <form method="post" action='{% url "lodgment:edit_lodgment" lodgment.id %}'>
+        {% crispy form %}
+        <input type='submit' value="Editar" />
+    </form>
+</div>
+{% endblock %}
