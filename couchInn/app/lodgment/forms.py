@@ -3,6 +3,7 @@ from django.core.exceptions import ValidationError
 from models import Lodgment
 from crispy_forms.helper import FormHelper
 from app.backend.models import Category
+import datetime
 
 class LodgmentForm(forms.ModelForm):
 

@@ -4,10 +4,11 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from models import Category
 from forms import CategoryForm
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required 
 # Create your views here.
 
 @login_required
+@permission_required('backend.add_category')
 def new_category(request):
     form = CategoryForm(request.POST or None)
     if form.is_valid():
@@ -17,6 +18,7 @@ def new_category(request):
     return render(request,'backend/new_category.html',{'form':form})
 
 @login_required
+@permission_required('backend.change_category')
 def edit_category(request, category_id):
     category = get_object_or_404(Category, pk=category_id)
     form = CategoryForm(request.POST or None, instance = category)
@@ -36,6 +38,7 @@ def home(request):
     return render(request,'backend/home.html',{'categories': categories})
 
 @login_required
+@permission_required('backend.delete_category')
 def delete_category(request, category_id):
     u = get_object_or_404(Category, pk=category_id)
     if u.is_used():

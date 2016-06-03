@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% if user.is_authenticated %}
+<p>Usted no tiene permisos para realizar esta operacion</p>
+{% endif %}
+<form class='form_container' action="." method="post">
+    {% csrf_token %}
+    {{ form | crispy }}
+    {% if next  %}
+    <input type='hidden' name="next" value="{{ next }}"/>
+    {% else %}
+    <input type='hidden' name="next" value="{% url 'lodgment:index' %}"/>
+    {% endif %}
+    <input type="submit" value="Login"/>
+</form>
+{% endblock %}

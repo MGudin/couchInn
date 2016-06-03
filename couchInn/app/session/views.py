@@ -9,7 +9,8 @@ def signup(request):
         user_form = forms.CouchinnUserCreationForm(request.POST)
         if user_form.is_valid():
             print "paso el form"
-            user_form.save()
+            # user_form.save()
+            request.user=user_form.save()
             return render(request, 'session/signup_succesfull.html')
         else:
             return render(request, 'session/signup.html',{'user_form': user_form})
