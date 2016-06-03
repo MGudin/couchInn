@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
@@ -26,9 +27,15 @@ def show_category(request, category_id):
     return render(request,'backend/show_category.html',{'category': category})
 
 def home(request):
-    categories = Category.objects.all()
+    categories = Category.objects.exclude(deleted=True)
     return render(request,'backend/home.html',{'categories': categories})
 
 def delete_category(request, category_id):
-    u = get_object_or_404(Category, pk=category_id).delete()
+    u = get_object_or_404(Category, pk=category_id)
+    if u.is_used():
+        u.deleted=True
+        u.save()
+    else:
+        u.delete()
+
     return HttpResponseRedirect(reverse('backend:home'))

@@ -2,6 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from models import Lodgment
 from crispy_forms.helper import FormHelper
+from app.backend.models import Category
 
 class LodgmentForm(forms.ModelForm):
 
@@ -12,6 +13,7 @@ class LodgmentForm(forms.ModelForm):
 
     initial_date = forms.DateField(label='Fecha de inicio',input_formats=['%d/%m/%Y'], widget= forms.DateInput(attrs={'class':'datepicker'}))
     finish_date = forms.DateField(label='Fecha de fin',input_formats=['%d/%m/%Y'], widget= forms.DateInput(attrs={'class':'datepicker'}))
+    category = forms.ModelChoiceField(queryset=Category.actives.all(), label='Tipo de hospedaje')
     
     class Meta:
         model = Lodgment

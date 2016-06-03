@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% if lodgment %}
+{% block title %}Hospedaje{% endblock %}
+{% block content %}
+<div class="row">
+    <div class='col-md-10 col-md-offset-1'>
+  <DL>
+    <DT><STRONG>Tipo de hospedaje:</STRONG>
+    <DD>{{lodgment.category}}
+    <DT><STRONG>Fecha de inicio:</STRONG>
+    <DD>{{lodgment.initial_date}}
+    <DT><STRONG>Fecha de fin:</STRONG>
+    <DD>{{lodgment.finish_date}}
+    <DT><STRONG>Descripcion:</STRONG>
+    <DD>{{lodgment.description}}
+    <DT><STRONG>Lo creo:</STRONG>
+    <DD>{{lodgment.author.username}}
+    <DT><STRONG>Puntaje:</STRONG>
+    <DD>{{lodgment.score}}
+  </DL>
+</div>
+{% endblock %}
+{% endif %}

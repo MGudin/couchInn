@@ -24,6 +24,9 @@ class Place(models.Model):
         verbose_name ='Lugar'
         verbose_name_plural ='Lugares'
 
+    def __str__(self):
+        return self.name
+
 
 class Lodgment(models.Model):
     description = models.TextField('Descripción', max_length=500)
@@ -41,11 +44,15 @@ class Lodgment(models.Model):
         )
     category = models.ForeignKey(Category)
     author = models.ForeignKey(User, default=None)
-    place = models.ForeignKey(Place)
+    place = models.ForeignKey(Place, verbose_name='Lugar')
+    deleted = models.BooleanField(default=False)
 
     class Meta:
         verbose_name ='Hospedaje'
         verbose_name_plural ='Hospedajes'
+
+    def is_used(self):
+        return self.request_set.exists()
 
 
 class Request(models.Model):

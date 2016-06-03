@@ -18,6 +18,8 @@ from . import views
 
 urlpatterns = [
     url(r'^(?P<lodgment_id>[0-9]+)/detalle/$', views.detail, name='detail'),
+    url(r'^(?P<lodgment_id>[0-9]+)/editar/$', views.edit_lodgment, name='edit_lodgment'),
+    url(r'^(?P<lodgment_id>[0-9]+)/borrar/$', views.delete_lodgment, name='delete_lodgment'),
     url(r'^nuevo/$', views.new, name='new'),
     url(r'^$', views.index, name='index'),
 ]
