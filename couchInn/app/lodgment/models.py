@@ -27,6 +27,9 @@ class Place(models.Model):
     def __str__(self):
         return self.name
 
+class LodgmentManager(models.Manager):
+    def get_queryset(self):
+        return super(LodgmentManager, self).get_queryset().filter(deleted=False)
 
 class Lodgment(models.Model):
     description = models.TextField('Descripción', max_length=500)
@@ -47,12 +50,14 @@ class Lodgment(models.Model):
     place = models.ForeignKey(Place, verbose_name='Lugar')
     deleted = models.BooleanField(default=False)
 
+    objects = models.Manager()
+    actives = LodgmentManager()
     class Meta:
         verbose_name ='Hospedaje'
         verbose_name_plural ='Hospedajes'
 
     def is_used(self):
-        return self.request_set.exists()
+        return self.request_set.filter(state='acepted').exists()
 
 
 class Request(models.Model):
@@ -60,9 +65,9 @@ class Request(models.Model):
     REJECTED = 'RJ'
     ACEPTED = 'AC'
     STATE_CHOICES = (
-        (PENDING, 'en espera'),
-        (REJECTED, 'rechazado'),
-        (ACEPTED, 'aceptado'),
+        (PENDING, 'pending'),
+        (REJECTED, 'rejected'),
+        (ACEPTED, 'acepted'),
     )
     create_date = models.DateTimeField(auto_now_add=True)
     initial_date = models.DateField('Fecha de inicio')

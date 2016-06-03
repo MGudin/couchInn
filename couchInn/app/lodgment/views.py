@@ -7,8 +7,8 @@ from forms import LodgmentForm
 
 def index(request):
     try:
-        lodgments = Lodgment.objects.all()
-    except e:
+        lodgments = Lodgment.actives.all()
+    except Exception as e:
         print e
        
     return render(request,'lodgment/index.html',{'lodgments':lodgments})
