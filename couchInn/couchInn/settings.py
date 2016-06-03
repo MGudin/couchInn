@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # third party apps
+    'crispy_forms',
     'django_countries', #give us countryfield ;)
     # our apps 
     'app.lodgment',
