@@ -23,9 +23,12 @@ class LodgmentForm(forms.ModelForm):
     def clean(self):
         cleaned_data = super(LodgmentForm, self).clean()
         try:
+            today = datetime.date.today()
             init = cleaned_data.get('initial_date')
             end = cleaned_data.get('finish_date')
-            if end < init :
+            if today >= init or today >= end:
+                raise forms.ValidationError('Las fechas tiene que ser mayores que la actual')
+            if end <= init :
                 raise forms.ValidationError('La fecha de fin tiene que ser mayor que la de inicio')
         except TypeError as e:
             print e
