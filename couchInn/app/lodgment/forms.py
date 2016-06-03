@@ -17,7 +17,7 @@ class LodgmentForm(forms.ModelForm):
     
     class Meta:
         model = Lodgment
-        exclude = ('create_date','reservations_taken','score')
+        exclude = ('create_date','reservations_taken','score','deleted','author')
 
     def clean(self):
         cleaned_data = super(LodgmentForm, self).clean()
