@@ -43,7 +43,7 @@ class CouchinnUserCreationForm(UserCreationForm):
 
     def clean_email(self):
         email = self.cleaned_data.get("email")
-        if User.objects.get(email=email):
+        if User.objects.filter(email=email):
             raise ValidationError('El email ya esta en uso')
         return email
     
