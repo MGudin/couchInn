@@ -37,8 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # third party apps
+    'django_countries', #give us countryfield ;)
+    # our apps 
     'app.lodgment',
     'app.backend',
+    'app.session',
 ]
 
 MIDDLEWARE_CLASSES = [
