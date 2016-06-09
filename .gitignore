@@ -69,3 +69,7 @@ target/
 
 
 \#*.*#
+
+*.old
+media/
+imagenes/
