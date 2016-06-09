@@ -2,9 +2,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from models import Lodgment
-from forms import LodgmentForm
 from django.contrib.auth.decorators import login_required
+from django.forms import formset_factory
+
+from .models import Lodgment, Place
+from .forms import LodgmentForm, PlaceForm
+from app.gallery.forms import PhotoForm
+from app.gallery.models import Gallery, Photo
 
 def index(request):
     try:
@@ -49,3 +53,32 @@ def delete_lodgment(request, lodgment_id):
         u.delete()
 
     return HttpResponseRedirect(reverse('lodgment:index'))
+
+
+def create_place(request):
+    place_form = PlaceForm(request.POST or None)
+    PForm = formset_factory(PhotoForm, extra=3)
+    photo_form = PForm(request.POST or None, request.FILES or None)
+    import pdb;
+    if request.method == 'POST':
+        if place_form.is_valid() and photo_form.is_valid():
+            gallery = Gallery()
+            gallery.save()
+            place = place_form.save(commit=False)
+            place.user = request.user
+            place.gallery = gallery
+            place.save()
+            for form in photo_form:
+                if form:
+                    photo = form.save(commit=False)
+                    photo.place = place
+                    photo.gallery = gallery
+                    photo.save()            
+            return HttpResponseRedirect(reverse('lodgment:index_place'))
+
+    return render(request,'place/new.html', {'place_form' : place_form,
+                                             'photo_form': photo_form })
+
+def index_place(request):
+    places = Place.objects.all()
+    return render(request, 'place/index.html',{'places': places})

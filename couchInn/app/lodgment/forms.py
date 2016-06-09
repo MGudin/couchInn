@@ -1,9 +1,12 @@
+import datetime
 from django import forms
 from django.core.exceptions import ValidationError
-from models import Lodgment
+
 from crispy_forms.helper import FormHelper
+
+from models import Lodgment, Place
 from app.backend.models import Category
-import datetime
+
 
 class LodgmentForm(forms.ModelForm):
 
@@ -34,3 +37,22 @@ class LodgmentForm(forms.ModelForm):
             print e
 
         return cleaned_data
+
+
+class PlaceForm(forms.ModelForm):
+#    photo = forms.ImageField()
+
+    def __init__(self, *args, **kwargs):
+        super(PlaceForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.form_tag = False
+
+    class Meta:
+        model = Place
+        exclude = ('score', 'user', 'gallery')
+        widgets = {
+            'name' : forms.TextInput,
+            'direction' : forms.TextInput,
+            'city' : forms.TextInput,
+            'province' : forms.TextInput,
+            }

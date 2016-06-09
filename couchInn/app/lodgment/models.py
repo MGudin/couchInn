@@ -4,7 +4,9 @@ from __future__ import unicode_literals
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator 
 from django.contrib.auth.models import User
+
 from app.backend.models import Category
+from app.gallery.models import Gallery
 
 # Create your models here.
 class Place(models.Model):
@@ -18,11 +20,12 @@ class Place(models.Model):
             MinValueValidator(0)
             ]
         )
-    user = models.ForeignKey(User, default=None)
+    user = models.ForeignKey(User, default=None, editable=False)
+    gallery = models.ForeignKey(Gallery, default=None, on_delete=models.CASCADE, editable=False)
 
     class Meta:
-        verbose_name ='Lugar'
-        verbose_name_plural ='Lugares'
+        verbose_name ='Inmueble'
+        verbose_name_plural ='Inmuebles'
 
     def __str__(self):
         return self.name
@@ -32,6 +35,7 @@ class LodgmentManager(models.Manager):
         return super(LodgmentManager, self).get_queryset().filter(deleted=False)
 
 class Lodgment(models.Model):
+    title = models.CharField('Titulo', max_length=50, default='sin titulo')
     description = models.TextField('Descripción', max_length=500)
     create_date = models.DateTimeField(auto_now_add=True)
     initial_date = models.DateField('Fecha de inicio')
@@ -49,6 +53,7 @@ class Lodgment(models.Model):
     author = models.ForeignKey(User, default=None)
     place = models.ForeignKey(Place, verbose_name='Lugar')
     deleted = models.BooleanField(default=False)
+    
 
     objects = models.Manager()
     actives = LodgmentManager()

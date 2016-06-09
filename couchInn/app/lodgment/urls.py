@@ -21,5 +21,7 @@ urlpatterns = [
     url(r'^(?P<lodgment_id>[0-9]+)/editar/$', views.edit_lodgment, name='edit_lodgment'),
     url(r'^(?P<lodgment_id>[0-9]+)/borrar/$', views.delete_lodgment, name='delete_lodgment'),
     url(r'^nuevo/$', views.new, name='new'),
+    url(r'^nuevo/inmueble/$', views.create_place, name='new_place'),
+    url(r'^index/inmueble/$', views.index_place, name='index_place'),
     url(r'^$', views.index, name='index'),
 ]

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Oficinas{% endblock %}
+{% block content %}
+<div class="row">
+  <div class='col-md-10 col-md-offset-1'>
+    <br>
+    {% if places %}
+
+    <br>
+    <div class="panel panel-default">
+      <div class="panel-heading">inmuebles</div>
+      <table class='table'>
+        <tr>
+          <th></th>
+          <th> nombre </th>
+          <th> direccion </th>
+          <th> ciudad </th>
+          <th> provincia </th>
+          <th> valoracion </th>
+          
+          <th> </th>
+          <th> </th>
+          <th> </th>
+        </tr>
+        {% for place in places %}
+        <tr>
+          <td> <img src="{{ place.gallery.photo_set.first.photo.url }}" /> </td>
+          <td>{{ place.name }}</td>
+          <td>{{ place.direction }}</td>
+          <td>{{ place.city }}</td>
+          <td>{{ place.province }}</td>
+          <td>{{ place.score }}</td>
+          <td><a type='button' href='#'>Ver</a></td>
+          {% if user.is_authenticated %}
+          <td><a type='button' href='#'>Editar</a></td>
+          <td><a type='button' href='#'>Borrar</a></td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    {% else %}
+    <p>En este momento no hay inmuebles cargados.</p>
+    {% endif %}
+    </ br>
+  </div>
+  {% endblock %}
