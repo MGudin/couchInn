@@ -2,10 +2,19 @@
 {% load crispy_forms_tags %}
 {% block title %}Editar Hospedaje{% endblock %}
 {% block content %}
-<div class="form_container">
-    <form method="post" action='{% url "lodgment:edit_lodgment" lodgment.id %}'>
-        {% crispy form %}
-        <input type='submit' value="Editar" />
-    </form>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="box box-success">
+      <div class="box-header with-border">
+        <h3 class="box-title">{{ lodgment.title }}</h3>
+        <div>
+          <form method="post" action='{% url "lodgment:edit_lodgment" lodgment.id %}' role="form">
+            {% crispy form %}
+            <input type='submit' value="Editar" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
