@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="box box-solid box-default">
+      <div class="box-header with-border">
+        <h3 class="box-title"> donaciones realizadas </h3>
+      </div>
+      {% if donations %}
+      <div class="box-body table-responsive no-padding">
+        <table class="table table-hover">
+          <tbody>
+            <tr>
+              <th> donacion </th>
+              <th> fecha </th>
+            </tr>
+
+            {% for donation in donations %}
+            <tr>
+              <td> $ {{ donation.amount }} </td>
+              <td> {{ donation.donation_date }} </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% else %}
+      <p> Usted no ha realizado ninguna donacion aun :( </p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+  {% endblock content%}

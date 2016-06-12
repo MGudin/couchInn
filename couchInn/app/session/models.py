@@ -17,4 +17,5 @@ class CouchinnUser(models.Model):
     gender = models.CharField(max_length=1, choices=AVAILABLE_GENDERS)
     as_tenant_rank = models.SmallIntegerField(default=0)
     as_host_rank = models.SmallIntegerField(default=0)
-    donations = models.FloatField(default=0)
+    premium = models.BooleanField(default=False, editable=False)
+    total_donations = models.PositiveIntegerField(default=0, editable=False)

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'app.backend',
     'app.session',
     'app.gallery',
+    'app.donation',
 ]
 
 MIDDLEWARE_CLASSES = [

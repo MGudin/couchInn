@@ -20,14 +20,15 @@
     <!-- required plugin for fixed layout -->
     <script src={% static 'AdminLTE-2.3.3/plugins/slimScroll/jquery.slimscroll.min.js' %}></script>
   </head>
-  <body class="skin-green fixed" >
+  <body {% if request.user.is_authenticated %} class="skin-green fixed" {% else %} class="skin-green layout-top-nav" {% endif %}  >
     <div class="wrapper">
       <header class="main-header">
-        <a href="{% url 'lodgment:index'%}" class="logo">CouchInn</a>
+        {% if request.user.is_authenticated %} <a href="{% url 'lodgment:index'%}" class="logo">CouchInn</a> {% endif %}
+        
         <nav class="navbar navbar-static-top">
           <div class="container-fluid">
             <div class="navbar-header">
-
+              {% if not request.user.is_authenticated %} <a href="{% url 'lodgment:index'%}" class="navbar-brand" >CouchInn</a> {% endif %}
               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                 <i class="fa fa-bars"></i>
               </button>
@@ -35,6 +36,7 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-collapse">
+
               <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
                   <input type="text" class="form-control" id="navbar-search-input" placeholder="Search">
@@ -44,6 +46,8 @@
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'lodgment:new'%}">Crear Hospedaje <span class="sr-only">(current)</span></a></li>
                 <li><a href="{% url 'lodgment:new_place'%}">Agregar inmueble <span class="sr-only">(current)</span></a></li>
+                <li><a href="{% url 'donation:donate'%}">Donar <span class="sr-only">(current)</span></a></li>
+                
                 
                 {% if request.user.is_superuser %}
                 <li><a href="{% url 'backend:home'%}">Panel de administracion</a></li>
@@ -109,6 +113,7 @@
                 <li><a href="#">Recibidas</a></li>
               </ul>
             </li>
+            <li> <a href="{% url 'donation:index' %}"> mis donaciones </a> </li>
           </ul><!-- /.sidebar-menu -->
 
         </div><!-- /.sidebar -->

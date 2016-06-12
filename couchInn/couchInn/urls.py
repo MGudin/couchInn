@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^admin/', include('app.backend.urls', namespace='backend')),
     url(r'^', include('app.lodgment.urls', namespace='lodgment')),
+    url(r'^', include('app.donation.urls', namespace='donation')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)  
