@@ -14,4 +14,5 @@ urlpatterns = [
              'template_name':'session/login.html',
             },name='login'),
     url(r'^singnup/$', views.signup, name='signup'),
+    url(r'^profile$', views.profile, name='profile'),
 ]
