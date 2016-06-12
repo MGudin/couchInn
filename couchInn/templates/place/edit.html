@@ -6,17 +6,13 @@
   <div class="col-md-6 col-md-offset-3">
     <div class="box box-success">
       <div class="box-header with-border">
-        <h3 class="box-title">nuevo inmueble</h3>
+        <h3 class="box-title">editar inmueble</h3>
         <div>
           <div class="form_container">
-            <form method="post" action="{% url 'lodgment:new_place'%}" enctype="multipart/form-data">
+            <form method="post" action="{% url 'lodgment:edit_place' place.id  %}" enctype="multipart/form-data">
               {% crispy place_form %}
-              {{ photo_form.management_form }}
-              {% for form in photo_form %}
-              {% crispy form %}
-              {% endfor %}
-              
-              <input type='submit' value="Crear" />
+              {% crispy photo_form %}
+              <input type='submit' value="Modficar" />
             </form>
           </div>
         </div>

@@ -17,11 +17,13 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^(?P<lodgment_id>[0-9]+)/detalle/$', views.detail, name='detail'),
-    url(r'^(?P<lodgment_id>[0-9]+)/editar/$', views.edit_lodgment, name='edit_lodgment'),
-    url(r'^(?P<lodgment_id>[0-9]+)/borrar/$', views.delete_lodgment, name='delete_lodgment'),
+    url(r'^hospedaje/(?P<lodgment_id>[0-9]+)/$', views.detail, name='detail'),
+    url(r'^hospedaje/editar/(?P<lodgment_id>[0-9]+)/$', views.edit_lodgment, name='edit_lodgment'),
+    url(r'^hospedaje/borrar/(?P<lodgment_id>[0-9]+)/$', views.delete_lodgment, name='delete_lodgment'),
     url(r'^nuevo/$', views.new, name='new'),
-    url(r'^nuevo/inmueble/$', views.create_place, name='new_place'),
-    url(r'^index/inmueble/$', views.index_place, name='index_place'),
+    url(r'^inmueble/eliminar/(?P<place_id>[0-9]+)/$', views.delete_place, name='delete_place'),
+    url(r'^inmueble/editar/(?P<place_id>[0-9]+)/$', views.edit_place, name='edit_place'),
+    url(r'^inmueble/nuevo$', views.create_place, name='new_place'),
+    url(r'^inmuebles/$', views.index_place, name='index_place'),
     url(r'^$', views.index, name='index'),
 ]

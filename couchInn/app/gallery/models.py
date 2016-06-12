@@ -11,6 +11,6 @@ class Gallery(models.Model):
 
 class Photo(models.Model):
     title = models.CharField('titulo', max_length=20, default='untitled')
-    photo = models.ImageField(upload_to='places')
+    photo = models.ImageField(upload_to='places', blank=True)
     position = models.PositiveIntegerField(default=0)
     gallery = models.ForeignKey(Gallery, default=None, on_delete=models.CASCADE, editable=False)

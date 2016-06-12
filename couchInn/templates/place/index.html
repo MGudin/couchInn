@@ -8,7 +8,7 @@
 
     <br>
     <div class="panel panel-default">
-      <div class="panel-heading">inmuebles</div>
+      <div class="panel-heading">Mis Inmuebles</div>
       <table class='table'>
         <tr>
           <th></th>
@@ -23,8 +23,13 @@
           <th> </th>
         </tr>
         {% for place in places %}
+        {% if not place.deleted %}
         <tr>
-          <td> <img src="{{ place.gallery.photo_set.first.photo.url }}" /> </td>
+          {% if place.gallery.photo_set.exists %}
+          <td> <img class="thumbnail" src="{{ place.gallery.photo_set.first.photo.url }}" /> </td>
+          {% else %}
+          <td> <img class="thumbnail" src="/media/default-placeholder.png" /> </td>
+          {% endif %}
           <td>{{ place.name }}</td>
           <td>{{ place.direction }}</td>
           <td>{{ place.city }}</td>
@@ -32,8 +37,9 @@
           <td>{{ place.score }}</td>
           <td><a type='button' href='#'>Ver</a></td>
           {% if user.is_authenticated %}
-          <td><a type='button' href='#'>Editar</a></td>
-          <td><a type='button' href='#'>Borrar</a></td>
+          <td><a type='button' href="{% url 'lodgment:edit_place' place.id %}">Editar</a></td>
+          <td><a type='button' href="{% url 'lodgment:delete_place' place.id %}">Borrar</a></td>
+          {% endif %}
           {% endif %}
         </tr>
         {% endfor %}

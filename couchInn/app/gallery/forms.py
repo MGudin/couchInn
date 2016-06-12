@@ -22,3 +22,8 @@ class PhotoForm(forms.ModelForm):
             'photo' : ImagePreviewWidget()
             }
             
+
+class PhotoFormHelper(FormHelper):
+    def __init__(self, *args, **kwargs):
+        super(PhotoFormHelper, self).__init__(*args, **kwargs)
+        self.form_tag = False

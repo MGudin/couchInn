@@ -1,24 +1,103 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% if lodgment %}
 {% block title %}Hospedaje{% endblock %}
 {% block content %}
 <div class="row">
-    <div class='col-md-10 col-md-offset-1'>
-  <DL>
-    <DT><STRONG>Tipo de hospedaje:</STRONG>
-    <DD>{{lodgment.category}}
-    <DT><STRONG>Fecha de inicio:</STRONG>
-    <DD>{{lodgment.initial_date}}
-    <DT><STRONG>Fecha de fin:</STRONG>
-    <DD>{{lodgment.finish_date}}
-    <DT><STRONG>Descripcion:</STRONG>
-    <DD>{{lodgment.description}}
-    <DT><STRONG>Lo creo:</STRONG>
-    <DD>{{lodgment.author.username}}
-    <DT><STRONG>Puntaje:</STRONG>
-    <DD>{{lodgment.score}}
-  </DL>
+  <div class="col-md-10 col-md-offset-1">
+    <div class="box box-solid box-default">
+      <div class="box-header">
+        <h3 class="box-title"> Detalles de Hospedaje </h3>
+      </div>
+      <div class="box-body">
+        <div class="row">
+          
+          <div class="col-md-6">
+            {% if lodgment.place.gallery.photo_set.exists %}
+            <div id="carousel" class="carousel slide" data-ride="carousel">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                {% for photo in lodgment.place.gallery.photo_set.all %}
+                {% if forloop.first %}
+                <li data-target="#carousel" data-slide-to="{{forloop.counter}}" class="active"></li>
+                {% else %}
+                <li data-target="#carousel" data-slide-to="{{forloop.counter}}"></li>
+                {% endif %}
+                {% endfor %}
+              </ol>
+
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner" role="listbox">
+                {% for photo in lodgment.place.gallery.photo_set.all %}
+                {% if forloop.first %}
+                <div class="item active">
+                  {% else %}
+                  <div class="item">
+                    {% endif %}
+                  <img class="show" src={{ photo.photo.url }} />
+                </div>
+                
+                {% endfor %}
+              </div>
+              <!-- Controls -->
+              <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+            {% else %}
+            <img  class="show" src="{% static 'default-placeholder.png' %}" />
+            {% endif %}
+        </div>
+        <div class="col-md-6">
+          <div class="info-box">
+            <!-- Apply any bg-* class to to the icon to color it -->
+            <span class="info-box-icon bg-yellow glyphicon glyphicon-star"></span>
+            <div class="info-box-content">
+              <span class="info-box-text">Valoracion de Inmueble</span>
+              <span class="info-box-number">{{ lodgment.place.score }}</span>
+            </div><!-- /.info-box-content -->
+          </div><!-- /.info-box -->
+          <div class="col-md-6">
+            <div class="callout callout-success">
+              <h4>Fecha de inicio</h4>
+              <p>{{ lodgment.initial_date }}</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="callout callout-danger">
+              <h4>Fecha de fin</h4>
+              <p>{{ lodgment.finish_date }}</p>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="box-footer">
+        <dl class="dl-horizontal">
+          <dt><strong>Descripcion:</strong></dt>
+          <dd>{{lodgment.description}}</dd>
+          <dt><strong>Tipo de hospedaje:</strong></dt>
+          <dd>{{lodgment.category}}</dd>
+          <dt><strong>Publicado por:</strong></dt>
+          <dd><a href="#"> {{lodgment.author.username}}</a></dd>
+          <dt><strong>Ciudad:</strong></dt>
+          <dd>{{lodgment.place.city}}</dd>
+          <dt><strong>Provincia:</strong></dt>
+          <dd>{{lodgment.place.province}}</dd>
+          <dt><strong>direccion:</strong></dt>
+          <dd>{{lodgment.place.direction}}</dd>
+          
+
+        </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 {% endblock %}
 {% endif %}

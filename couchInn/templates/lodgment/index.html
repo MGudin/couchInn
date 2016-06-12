@@ -11,6 +11,7 @@
       <div class="panel-heading">Hospedajes</div>
       <table class='table'>
         <tr>
+          <th> </th>
           <th> Fecha de inicio </th>
           <th> Fecha de fin </th>
           <th> Puntaje </th>
@@ -21,6 +22,12 @@
         </tr>
         {% for lodgment in lodgments %}
         <tr>
+          {% if lodgment.place.gallery.photo_set.all.exists %}
+          <td> <img class="thumbnail" src="{{ lodgment.place.gallery.photo_set.first.photo.url }}" /> </td>
+          {% else %}
+          <td> <img class="thumbnail" src="/media/default-placeholder.png" /> </td>
+          {% endif %}
+
           <td>{{ lodgment.initial_date }}</td>
           <td>{{ lodgment.finish_date }}</td>
           <td>{{ lodgment.score }}</td>
