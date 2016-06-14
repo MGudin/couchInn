@@ -15,4 +15,6 @@ urlpatterns = [
             },name='login'),
     url(r'^singnup/$', views.signup, name='signup'),
     url(r'^profile$', views.profile, name='profile'),
+    url(r'^profile/editar$', views.edit_profile, name='edit_profile'),
+    
 ]

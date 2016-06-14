@@ -5,7 +5,7 @@
   <div class="col-md-4">
     <div class="box box-primary">
       <div class="box-body box-profile">
-        <h3 class="profile-username"> {{request.user}}</h3>
+        <h3 class="profile-username text-center"> {{request.user}}</h3>
         <p class="text-muted text-center"> {{request.user.email}}</p>
         <ul class="list-group listgroup-unbordered">
           <!-- <li class="list-group-item"> -->
@@ -24,6 +24,15 @@
             <b> Telefono </b>
             <p class="pull-right">{{ profile.telephone }} </p>
         </li>
+          <li class="list-group-item">
+            <b> Nacionalidad </b>
+            <p class="pull-right">{{ profile.nationality.name }} </p>
+        </li>
+          <li class="list-group-item">
+            <b> sexo </b>
+            <p class="pull-right">{{ profile.gender }} </p>
+        </li>
+
         <li class="list-group-item">
             <b> Valoracion-Inquilino </b>
             <p class="pull-right">{{ profile.as_host_rank }} </p>
@@ -35,10 +44,10 @@
         
           <li class="list-group-item">
             <b> total de donaciones </b>
-            <p class="pull-right"> {{ profile.total_donations }} </p>
+            <p class="pull-right"> $ {{ profile.total_donations }} </p>
           </li>
         </ul>
-        <a href="#" class="btn btn-primary btn-block"> Editar perfil </a>
+        <a href="{% url 'session:edit_profile' %}" class="btn btn-primary btn-block"> Editar perfil </a>
       </div>
     </div>
   </div>

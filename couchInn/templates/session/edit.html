@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Nuevo inmueble{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="box box-success">
+      <div class="box-header with-border">
+        <h3 class="box-title">editar Perfil</h3>
+        <div>
+          <div class="form_container">
+            <form method="post" action="{% url 'session:edit_profile' %}" >
+              {% crispy user_form %}
+              {% crispy profile_form %}
+              <input type='submit' value="Modficar" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

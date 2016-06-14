@@ -5,6 +5,9 @@ from django_countries.fields import LazyTypedChoiceField
 from django_countries import countries
 from django.core.validators import RegexValidator
 from django.core.exceptions import ValidationError
+
+from crispy_forms.helper import FormHelper
+
 from models import CouchinnUser
 
 
@@ -15,12 +18,13 @@ alphanumeric_validator = RegexValidator('^[A-Za-z0-9]+$',
 numeric_validator = RegexValidator('^[0-9]+$',
                                    message='El valor debe contener solo numeros')
 
-alphabetic_validator = RegexValidator('^[A-Za-z]+$',
+alphabetic_validator = RegexValidator('^[A-Za-z\s]+$',
                                       message='El valor debe contener solo letras del alfabeto')
 
+GENDER_CHOICES = [('Masculino', 'Masculino'), ('Femenino','Femenino')]
 
 class CouchinnUserCreationForm(UserCreationForm):
-    GENDER_CHOICES = [('M', 'Masculino'), ('F','Femenino')]
+    
     username = forms.CharField(label="usuario",
                                required=True,
                                validators=[alphanumeric_validator])
@@ -62,3 +66,46 @@ class CouchinnUserCreationForm(UserCreationForm):
             )
             couchinn_user.save()
         return user
+
+class ProfileForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(ProfileForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.form_tag = False
+
+
+    nationality = LazyTypedChoiceField(choices=countries)
+
+    gender = forms.ChoiceField(label='Sexo',
+                               choices=GENDER_CHOICES,
+                               widget=forms.RadioSelect(),
+                               required=True)
+
+
+    class Meta:
+        model = CouchinnUser
+        fields = ('telephone', 'nationality', 'gender' )
+
+
+
+class UserForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(UserForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.form_tag = False
+
+        
+    first_name = forms.CharField(label='nombre',
+                                 required=True,
+                                 validators=[alphabetic_validator])
+    last_name = forms.CharField(label='Apellido',
+                                validators=[alphabetic_validator],
+                                required=True)
+
+
+    class Meta:
+        model = User
+        exclude = ('email',)
+        fields = ('first_name', 'last_name')
