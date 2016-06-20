@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Oficinas{% endblock %}
+{% block title %}Counchin{% endblock %}
 {% block content %}
 <div class="row">
   <div class='col-md-10 col-md-offset-1'>
@@ -38,7 +38,7 @@
               <td><a type='button' href='{% url "lodgment:edit_lodgment" lodgment.id %}'>Editar</a></td>
               <td><a type='button' href='{% url "lodgment:delete_lodgment" lodgment.id %}'>Borrar</a></td>
             {% else %}
-              <td><a type='button' href='#'>Solicitar</a></td>
+            <td><a type='button' href='{% url 'lodgment:new_request' lodgment.id %}'>Solicitar</a></td>
             {% endif %}
           {% endif %}
         </tr>

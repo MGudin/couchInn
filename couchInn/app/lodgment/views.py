@@ -4,9 +4,10 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory, modelformset_factory, inlineformset_factory
+from django.contrib import messages
 
-from .models import Lodgment, Place
-from .forms import LodgmentForm, PlaceForm
+from .models import Lodgment, Place, Request
+from .forms import LodgmentForm, PlaceForm, RequestForm
 from app.gallery.forms import PhotoForm, PhotoFormHelper
 from app.gallery.models import Gallery, Photo
 from app.gallery.widgets import ImagePreviewWidget
@@ -138,3 +139,35 @@ def user_lodgment(request):
         print e
        
     return render(request,'lodgment/index.html',{'lodgments':lodgments})
+
+
+@login_required
+def new_request(request, lodgment_id):
+    try:
+        lodgment = Lodgment.actives.get(pk=lodgment_id)
+    except Exception as e:
+        print lodgment
+        print e
+        messages.error(request, 'El couch solicitado no existe mas.')
+        return redirect(reverse('lodgment:index'))
+    form = RequestForm(request.POST or None)
+    if form.is_valid():
+       n_request = form.save(commit=False)
+       n_request.author = request.user
+       n_request.state = 'pending'
+       n_request.lodgment = lodgment
+       messages.success(request, 'La solicitud a sido enviada.')
+       n_request.save()
+       return redirect(reverse('lodgment:index'))
+    return render(request,'lodgment/new_request.html',{'form':form, 'lodgment_id':lodgment_id})
+
+
+@login_required
+def request_index(request):
+    try:
+        requests = Request.objects.filter(author=request.user)
+        print requests
+    except Exception as e:
+        print e
+
+    return render(request,'lodgment/request_index.html',{'requests':requests})

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Solicitud de hospedaje{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <h3 class="box-title"> Solicitud de hospedaje </h3>
+                <div>
+                    <!-- <div class="form_container"> -->
+                    <form method="post" action="{% url 'lodgment:new_request' lodgment_id %}" role="form">
+                        {% csrf_token %}
+                        {% crispy form %}
+                        <input type='submit' value="Crear" />
+                    </form>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Counchin{% endblock %}
+{% block content %}
+<div class="row">
+    <div class='col-md-10 col-md-offset-1'>
+        <br>
+        {% if requests %}
+
+        <br>
+        <div class="panel panel-default">
+            <div class="panel-heading">Tus solicitudes</div>
+            <table class='table'>
+                <tr>
+                    <th> Fecha de inicio </th>
+                    <th> Fecha de fin </th>
+                    <th> Estado </th>
+                    <th> </th>
+                    <th> </th>
+                    <th> </th>
+                </tr>
+                {% for request in requests %}
+                <tr>
+                    <td>{{ request.initial_date }}</td>
+                    <td>{{ request.finish_date }}</td>
+                    <td>{{ request.get_state }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        {% else %}
+        <p>En este momento no tenes solicitudes.</p>
+        {% endif %}
+        </ br>
+    </div>
+    {% endblock %}

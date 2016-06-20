@@ -9,6 +9,12 @@ from django.contrib.auth.models import User
 from app.backend.models import Category
 from app.gallery.models import Gallery
 
+ESTADO={
+        'pending':'pendiente',
+        'reject':'rechazada',
+        'acepted':'aceptada',
+        }
+
 # Create your models here.
 class PlaceManager(models.Manager):
     def get_queryset(self):
@@ -104,6 +110,10 @@ class Request(models.Model):
         verbose_name ='Solicitud'
         verbose_name_plural ='Solicitudes'
 
+    def get_state(self):
+        return ESTADO[self.state] 
+
+
 
 class Review(models.Model):
     text = models.TextField('Resenia', max_length=500)
@@ -123,3 +133,4 @@ class Review(models.Model):
     class Meta:
         verbose_name ='Resenia'
         verbose_name_plural ='Resenias'
+
