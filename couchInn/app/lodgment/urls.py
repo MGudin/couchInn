@@ -20,6 +20,7 @@ urlpatterns = [
     url(r'^hospedaje/(?P<lodgment_id>[0-9]+)/$', views.detail, name='detail'),
     url(r'^hospedaje/editar/(?P<lodgment_id>[0-9]+)/$', views.edit_lodgment, name='edit_lodgment'),
     url(r'^hospedaje/borrar/(?P<lodgment_id>[0-9]+)/$', views.delete_lodgment, name='delete_lodgment'),
+    url(r'^mishospedajes/$', views.user_lodgment, name='user_lodgment'),
     url(r'^nuevo/$', views.new, name='new'),
     url(r'^inmueble/eliminar/(?P<place_id>[0-9]+)/$', views.delete_place, name='delete_place'),
     url(r'^inmueble/editar/(?P<place_id>[0-9]+)/$', views.edit_place, name='edit_place'),

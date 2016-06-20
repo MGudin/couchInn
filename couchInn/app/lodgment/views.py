@@ -130,3 +130,11 @@ def delete_place(request, place_id):
         place.delete()
     return HttpResponseRedirect(reverse('lodgment:index_place'))
 
+@login_required
+def user_lodgment(request):
+    try:
+        lodgments = Lodgment.actives.filter(author=request.user)
+    except Exception as e:
+        print e
+       
+    return render(request,'lodgment/index.html',{'lodgments':lodgments})
