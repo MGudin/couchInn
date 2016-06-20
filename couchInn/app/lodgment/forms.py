@@ -19,7 +19,7 @@ class LodgmentForm(forms.ModelForm):
     finish_date = forms.DateField(label='Fecha de fin',input_formats=['%d/%m/%Y'], widget= forms.DateInput(attrs={'class':'datepicker'}))
     category = forms.ModelChoiceField(queryset=Category.actives.all(), label='Tipo de hospedaje')
 
-    place  = forms.ModelChoiceField(queryset=Place.actives.all())
+    place  = forms.ModelChoiceField(queryset=Place.actives.all(), label='Couch')
     class Meta:
         model = Lodgment
         exclude = ('create_date','reservations_taken','score','deleted','author')
