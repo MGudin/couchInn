@@ -2,6 +2,7 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 {% block content %}
+<div class="col-sm-offset-1 col-sm-10">
 {% if user.is_authenticated %}
 <p>Usted no tiene permisos para realizar esta operacion</p>
 {% endif %}
@@ -15,4 +16,5 @@
     {% endif %}
     <input type="submit" value="Login"/>
 </form>
+</div>
 {% endblock %}
