@@ -34,8 +34,12 @@
           <td>{{ lodgment.category }}</td>
           <td><a type='button' href='{% url "lodgment:detail" lodgment.id %}'>Ver</a></td>
           {% if user.is_authenticated %}
-          <td><a type='button' href='{% url "lodgment:edit_lodgment" lodgment.id %}'>Editar</a></td>
-          <td><a type='button' href='{% url "lodgment:delete_lodgment" lodgment.id %}'>Borrar</a></td>
+            {% if user == lodgment.author %}
+              <td><a type='button' href='{% url "lodgment:edit_lodgment" lodgment.id %}'>Editar</a></td>
+              <td><a type='button' href='{% url "lodgment:delete_lodgment" lodgment.id %}'>Borrar</a></td>
+            {% else %}
+              <td><a type='button' href='#'>Solicitar</a></td>
+            {% endif %}
           {% endif %}
         </tr>
         {% endfor %}
