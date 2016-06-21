@@ -12,6 +12,6 @@ class Donation(models.Model):
     amount = models.PositiveIntegerField('Donacion',
                                          default=2,
                                          validators=[min_amount_validator])
-    donation_date = models.DateField(editable=False)
+    donation_date = models.DateField(editable=False, auto_now_add=True)
 
     user = models.ForeignKey(User, default=None, editable=False)

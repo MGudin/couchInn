@@ -41,6 +41,7 @@ def edit_lodgment(request, lodgment_id):
 @login_required
 def new(request):
     form_lodgment = LodgmentForm(request.POST or None)
+    form_lodgment.fields['place'].queryset = Place.actives.filter(user=request.user)
     if form_lodgment.is_valid():
        lodgment = form_lodgment.save(commit=False)
        lodgment.author = request.user

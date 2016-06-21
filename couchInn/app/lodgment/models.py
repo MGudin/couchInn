@@ -53,7 +53,7 @@ class Place(models.Model):
 
 class LodgmentManager(models.Manager):
     def get_queryset(self):
-        return super(LodgmentManager, self).get_queryset().filter(deleted=False).order_by('-id')
+        return super(LodgmentManager, self).get_queryset().filter(deleted=False).order_by('-author__donation__amount')
 
 class Lodgment(models.Model):
     title = models.CharField('Titulo', max_length=50, default='sin titulo')

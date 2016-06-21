@@ -15,6 +15,7 @@ The `urlpatterns` list routes URLs to views. For more information please see:
         """
 from django.conf.urls import url
 from . import views
+from . import query
 
 urlpatterns = [
     url(r'^hospedaje/(?P<lodgment_id>[0-9]+)/$', views.detail, name='detail'),
@@ -28,5 +29,6 @@ urlpatterns = [
     url(r'^inmueble/editar/(?P<place_id>[0-9]+)/$', views.edit_place, name='edit_place'),
     url(r'^inmueble/nuevo$', views.create_place, name='new_place'),
     url(r'^inmuebles/$', views.index_place, name='index_place'),
+    url(r'^busqueda/$', query.simple_query, name='simple_query'),
     url(r'^$', views.index, name='index'),
 ]
