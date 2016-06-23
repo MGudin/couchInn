@@ -2,19 +2,35 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="col-sm-offset-1 col-sm-10">
-{% if user.is_authenticated %}
-<p>Usted no tiene permisos para realizar esta operacion</p>
-{% endif %}
-<form class='form_container' action="." method="post">
-    {% csrf_token %}
-    {{ form | crispy }}
-    {% if next  %}
-    <input type='hidden' name="next" value="{{ next }}"/>
-    {% else %}
-    <input type='hidden' name="next" value="{% url 'lodgment:index' %}"/>
-    {% endif %}
-    <input type="submit" value="Login"/>
-</form>
+<div class="row">
+  <div class="login-box">
+    <div class="login-box-body">
+      {% if user.is_authenticated %}
+      <p class="login-box-msg">Usted no tiene permisos para realizar esta operacion</p>
+      {% endif %}
+      <form class='form_container' action="." method="post">
+        {% csrf_token %}
+        {{ form | crispy }}
+        {% if next  %}
+        <input type='hidden' name="next" value="{{ next }}"/>
+        {% else %}
+        <input type='hidden' name="next" value="{% url 'lodgment:index' %}"/>
+        {% endif %}
+        <!-- <input type="submit" value="Login"/> -->
+
+        <div class="row">
+          <div class="col-xs-12">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">  Log In</button>
+          </div>
+          
+        </div>
+      </form>
+      <div class="row">
+        <div class="col-xs-12">
+          <a  href="{% url 'session:password_reset' %}" class="">  olvide mi contraseña</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
