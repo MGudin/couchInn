@@ -10,14 +10,14 @@ import pdb
 
 only_numbers_validator = int_list_validator(sep='',
                                             message='El campo debe contener solo numeros')
-max_length_validator_cc = MaxLengthValidator(24,
+max_length_validator_cc = MaxLengthValidator(16,
                                           message='El campo debe tener 24 numeros')
-min_length_validator_cc = MinLengthValidator(24,
+min_length_validator_cc = MinLengthValidator(16,
                                           message='El campo debe tener 24 numeros')
 
 positive_integer_validator_dn = MinValueValidator(1, message='El numero de documento no es correcto')
 
-only_alphabetical_chars_validator_fn = RegexValidator(r'^[a-zA-Z]*$', 'Solo caracteres alfabeticos son permitidos.')
+only_alphabetical_chars_validator_fn = RegexValidator(r'^[a-zA-Z\s]*$', 'Solo caracteres alfabeticos son permitidos.')
 class DonationForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):

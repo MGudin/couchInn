@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator, RegexValidator 
 
-alphanumeric = RegexValidator(r'^[0-9a-zA-Z]*$', 'Solo caracteres alfanumericos son permitidos.')
+alphanumeric = RegexValidator(r'^[0-9a-zA-Z\s]*$', 'Solo caracteres alfanumericos son permitidos.')
 
 class CategoryManager(models.Manager):
     def get_queryset(self):
