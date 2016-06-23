@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static %}
+{% if place %}
+{% block title %}Couch{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="box box-solid box-default">
+            <div class="box-header">
+                <h3 class="box-title"> Detalles del couch </h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+
+                    <div class="col-md-6">
+                        {% if place.place.gallery.photo_set.exists %}
+                        <div id="carousel" class="carousel slide" data-ride="carousel">
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                {% for photo in place.place.gallery.photo_set.all %}
+                                {% if forloop.first %}
+                                <li data-target="#carousel" data-slide-to="{{forloop.counter}}" class="active"></li>
+                                {% else %}
+                                <li data-target="#carousel" data-slide-to="{{forloop.counter}}"></li>
+                                {% endif %}
+                                {% endfor %}
+                            </ol>
+
+                            <!-- Wrapper for slides -->
+                            <div class="carousel-inner" role="listbox">
+                                {% for photo in place.gallery.photo_set.all %}
+                                {% if forloop.first %}
+                                <div class="item active">
+                                    {% else %}
+                                    <div class="item">
+                                        {% endif %}
+                                        <img class="show" src={{ photo.photo.url }} />
+                                    </div>
+
+                                    {% endfor %}
+                                </div>
+                                <!-- Controls -->
+                                <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                            {% else %}
+                            <img  class="show" src="{% static 'default-placeholder.png' %}" />
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6">
+                            <div class="info-box">
+                                <!-- Apply any bg-* class to to the icon to color it -->
+                                <span class="info-box-icon bg-yellow glyphicon glyphicon-star"></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text">Valoracion del couch </span>
+                                    <span class="info-box-number">{{ place.score }}</span>
+                                </div><!-- /.info-box-content -->
+                            </div><!-- /.info-box -->
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <dl class="dl-horizontal">
+                            <dt><strong>Nombre:</strong></dt>
+                            <dd>{{place.name}}</dd>
+                            <dt><strong>Ciudad:</strong></dt>
+                            <dd>{{place.city}}</dd>
+                            <dt><strong>Provincia:</strong></dt>
+                            <dd>{{place.province}}</dd>
+                            <dt><strong>direccion:</strong></dt>
+                            <dd>{{place.direction}}</dd>
+
+
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% endif %}

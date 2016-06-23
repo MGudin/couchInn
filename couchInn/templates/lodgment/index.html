@@ -12,10 +12,13 @@
       <table class='table'>
         <tr>
           <th> </th>
+          <th> Nombre </th>
           <th> Fecha de inicio </th>
           <th> Fecha de fin </th>
           <th> Puntaje </th>
           <th> Categoria </th>
+          <th> Ciudad </th>
+          <th> Provincia </th>
           <th> </th>
           <th> </th>
           <th> </th>
@@ -28,10 +31,13 @@
           <td> <img class="thumbnail" src="/media/default-placeholder.png" /> </td>
           {% endif %}
 
+          <td>{{ lodgment.title }}</td>
           <td>{{ lodgment.initial_date }}</td>
           <td>{{ lodgment.finish_date }}</td>
           <td>{{ lodgment.score }}</td>
           <td>{{ lodgment.category }}</td>
+          <td>{{ lodgment.place.city }}</td>
+          <td>{{ lodgment.place.province }}</td>
           <td><a type='button' href='{% url "lodgment:detail" lodgment.id %}'>Ver</a></td>
           {% if user.is_authenticated %}
             {% if user == lodgment.author %}
@@ -39,6 +45,7 @@
               <td><a type='button' href='{% url "lodgment:delete_lodgment" lodgment.id %}'>Borrar</a></td>
             {% else %}
             <td><a type='button' href='{% url 'lodgment:new_request' lodgment.id %}'>Solicitar</a></td>
+            <td>    </td>
             {% endif %}
           {% endif %}
         </tr>

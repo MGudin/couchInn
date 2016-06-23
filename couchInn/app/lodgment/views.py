@@ -90,6 +90,12 @@ def index_place(request):
     return render(request, 'place/index.html',{'places': places})
 
 @login_required
+def show_place(request,place_id):
+    place = Place.objects.get(pk=place_id)
+    return render(request, 'place/show_place.html',{'place': place})
+
+
+@login_required
 def edit_place(request, place_id):
     place = get_object_or_404(Place, pk=place_id)
     place_form = PlaceForm(request.POST or None,instance=place)
