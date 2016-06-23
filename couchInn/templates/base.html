@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 
 <html>
   <head>
@@ -37,16 +38,12 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-collapse">
 
-                <form class="navbar-form navbar-left" action='{% url "lodgment:simple_query" %}' name='params'role="search">
+                <form class="navbar-form navbar-left" id='simple-search'  action='{% url "lodgment:simple_query" %}' name='params'role="search">
                 <div class="form-group">
                     {% csrf_token %}
                     <input type="text" class="form-control" id="navbar-search-input" placeholder="Search" name='params'{% if params %}value='{{params}}'{% endif %}>
                   <input type='submit' value="Buscar" />
-                  <div class='hidden' id='advance-search'>
-                      <input type="checkbox" class="" id="navbar-search-input" name='fecha'{% if fecha %}value='{{fecha}}'{% endif %}>
-                  </div>
-                  <a href="" id='link-search' style='color:#ffffff'>Busqueda avanzada</a>
-                  <a href="" id='close-search' class='hidden' style='color:#ffffff'>Cerrar busqueda avanzada</a>
+                    <a href="{% url 'lodgment:advance_query' %}" id='link-search' style='color:#ffffff'>Busqueda avanzada</a>
                 </div>
               </form>
               <ul class="nav navbar-nav">
@@ -142,19 +139,21 @@
       $(function() {
       $( ".datepicker" ).datepicker({dateFormat: 'dd/mm/yy'});
       });
-      $('#link-search').click(function(e){
-              e.preventDefault();
-              $('#link-search').addClass('hidden');
-              $('#advance-search').removeClass('hidden');
-              $('#close-search').removeClass('hidden');
-              })
-      $('#close-search').click(function(e){
-              e.preventDefault();
-              $('#close-search').addClass('hidden');
-              $('#advance-search').addClass('hidden');
-              $('#link-search').removeClass('hidden');
-              })
+      // $('#link-search').click(function(e){
+      //         e.preventDefault();
+      //         $('#link-search').addClass('hidden');
+      //         $('#advance-search').removeClass('hidden');
+      //         $('#close-search').removeClass('hidden');
+      //         })
+      // $('#close-search').click(function(e){
+      //         e.preventDefault();
+      //         $('#close-search').addClass('hidden');
+      //         $('#advance-search').addClass('hidden');
+      //         $('#link-search').removeClass('hidden');
+      //         })
     </script>
+    {% block scripts %}
+    {% endblock%}
     
   </body>
 </html>
