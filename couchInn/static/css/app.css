@@ -9,7 +9,9 @@ img.show {
     height: 220px!important;
 }
 
-#id_new_password1, #id_new_password2 {
+#id_new_password1,
+#id_new_password2,
+#id_email {
     width:100%;
 }
     

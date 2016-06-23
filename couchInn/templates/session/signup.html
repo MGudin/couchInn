@@ -3,13 +3,28 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 {% block content %}
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="box">
+      <div class="box-header ">
+        <h3 class="box-title"> Nuevo Hospedaje </h3>
+        <div>
+          <!-- <div class="form_container"> -->
+          <form class="" action="{% url 'session:signup' %}" method="post">
+            {% csrf_token %}
+            {{ user_form | crispy }}
+            <input type="submit" value="Aceptar">
+          </form>
+          
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div class="col-sm-offset-1 col-sm-10">
 
-<form class="" action="{% url 'session:signup' %}" method="post">
-  {% csrf_token %}
-{{ user_form | crispy }}
-<input type="submit" value="Aceptar">
-</form>
 </div>
 {% endblock content %}
