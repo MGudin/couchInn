@@ -22,10 +22,10 @@ class PlaceManager(models.Manager):
 
 class Place(models.Model):
     name = models.TextField('Nombre', max_length=50)
-    direction = models.TextField('Dirección', max_length=100)
+    direction = models.TextField('Direccion', max_length=100)
     city = models.TextField('Ciudad', max_length=100)
     province = models.TextField('Provincia', max_length=100)
-    score = models.FloatField('Valoración', default=0, 
+    score = models.FloatField('Valoracion', default=0, 
         validators = [
             MaxValueValidator(5),
             MinValueValidator(0)
@@ -84,6 +84,9 @@ class Lodgment(models.Model):
 
     def is_used(self):
         return self.request_set.filter(state='acepted').exists()
+
+    def has_donation(self):
+        return self.author.donation_set.exists()
 
 
 class Request(models.Model):
