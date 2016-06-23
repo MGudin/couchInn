@@ -12,11 +12,12 @@
       <table class='table'>
         <tr>
           <th> </th>
+          <th> Titulo </th>
           <th> Fecha de inicio </th>
           <th> Fecha de fin </th>
           <th> Puntaje </th>
           <th> Categoria </th>
-          <th> </th>
+
           <th> </th>
           <th> </th>
         </tr>
@@ -27,10 +28,10 @@
           {% else %}
           <td> <img class="thumbnail" src="/media/default-placeholder.png" /> </td>
           {% endif %}
-
+          <td>{{ lodgment.title }}</td>
           <td>{{ lodgment.initial_date }}</td>
           <td>{{ lodgment.finish_date }}</td>
-          <td>{{ lodgment.score }}</td>
+          <td>{{ lodgment.score|floatformat:"0" }}</td>
           <td>{{ lodgment.category }}</td>
           <td><a type='button' href='{% url "lodgment:detail" lodgment.id %}'>Ver</a></td>
           {% if user.is_authenticated %}
