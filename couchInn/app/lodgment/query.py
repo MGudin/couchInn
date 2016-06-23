@@ -37,11 +37,12 @@ def advance_query(request):
             lodgments = lodgments.filter(category=category)
         if finish_date:
             finish_date = datetime.datetime.strptime(finish_date, "%d/%m/%Y").strftime("%Y-%m-%d")
-            lodgments = lodgments.filter(initial_date__lte=finish_date).order_by('initial_date')
+            lodgments = lodgments.filter(finish_date__gte=finish_date).order_by('initial_date')
+
         else:
             finish_date = datetime.date.today()
         if initial_date:
             initial_date = datetime.datetime.strptime(initial_date, "%d/%m/%Y").strftime("%Y-%m-%d")
-            lodgments = lodgments.filter(finish_date__range=(initial_date,finish_date))
+            lodgments = lodgments.filter(Q(finish_date__gte=finish_date) & Q (initial_date__lte=initial_date))
         return render(request,'lodgment/detail_search.html',{'lodgments':lodgments,'form':form})
     return render(request,'lodgment/detail_search.html',{'lodgments':lodgments, 'form':form})

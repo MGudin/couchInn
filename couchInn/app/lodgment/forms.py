@@ -109,20 +109,20 @@ class SearchForm(forms.Form):
         ,required=False
         )
     
-    def clean(self):
-        print 'saraarararararasraarra'
-        cleaned_data = super(SearchForm, self).clean()
-        print cleaned_data
-        try:
-            today = datetime.date.today()
-            init = cleaned_data.get('initial_date')
-            end = cleaned_data.get('finish_date')
-            if today >= init or today >= end:
-                raise forms.ValidationError('Las fechas tiene que ser mayores que la actual')
-            if end <= init :
-                raise forms.ValidationError('La fecha de fin tiene que ser mayor que la de inicio')
-        except TypeError as e:
-            print e
-
-        return cleaned_data
+    # def clean(self):
+    #     print 'saraarararararasraarra'
+    #     cleaned_data = super(SearchForm, self).clean()
+    #     print cleaned_data
+    #     try:
+    #         today = datetime.date.today()
+    #         init = cleaned_data.get('initial_date')
+    #         end = cleaned_data.get('finish_date')
+    #         if today >= init or today >= end:
+    #             raise forms.ValidationError('Las fechas tiene que ser mayores que la actual')
+    #         if end <= init :
+    #             raise forms.ValidationError('La fecha de fin tiene que ser mayor que la de inicio')
+    #     except TypeError as e:
+    #         print e
+    #
+    #     return cleaned_data
    
