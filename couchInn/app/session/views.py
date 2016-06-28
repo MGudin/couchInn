@@ -3,7 +3,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-
+from django.contrib.auth import login, authenticate
 
 # Create your views here.
 from . import forms
@@ -12,9 +12,11 @@ def signup(request):
     if request.method == 'POST':
         user_form = forms.CouchinnUserCreationForm(request.POST)
         if user_form.is_valid():
-            print "paso el form"
-            # user_form.save()
-            request.user=user_form.save()
+            new_user=user_form.save()
+            username = request.POST['username']
+            password=request.POST['password1']
+            user = authenticate(username=username, password=password)
+            login(request, user)
             return render(request, 'session/signup_succesfull.html')
         else:
             return render(request, 'session/signup.html',{'user_form': user_form})
