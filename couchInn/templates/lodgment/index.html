@@ -4,7 +4,7 @@
 <div class="row">
   <div class='col-md-10 col-md-offset-1'>
     <br>
-    {% if lodgments %}
+    {% if couchs %}
 
     <br>
     <div class="panel panel-default">
@@ -23,27 +23,27 @@
           <th> </th>
           <th> </th>
         </tr>
-        {% for lodgment in lodgments %}
-        <tr {% if lodgment.has_donation %}style='background-color:#ffebcd' {% endif %}>
-          {% if lodgment.place.gallery.photo_set.all.exists %}
-          <td> <img class="thumbnail" src="{{ lodgment.place.gallery.photo_set.first.photo.url }}" /> </td>
+        {% for couch in couchs %}
+        <tr {% if couch.has_donation %}style='background-color:#ffebcd' {% endif %}>
+          {% if couch.place.gallery.photo_set.all.exists %}
+          <td> <img class="thumbnail" src="{{ couch.gallery.photo_set.first.photo.url }}" /> </td>
           {% else %}
           <td> <img class="thumbnail" src="/media/default-placeholder.png" /> </td>
           {% endif %}
-          <td>{{ lodgment.place.name }}</td>
-          <td>{{ lodgment.initial_date }}</td>
-          <td>{{ lodgment.finish_date }}</td>
-          <td>{{ lodgment.score|floatformat:"0" }}</td>
-          <td>{{ lodgment.place.category }}</td>
-          <td>{{ lodgment.place.city }}</td>
-          <td>{{ lodgment.place.province }}</td>
+          <td>{{ couch.name }}</td>
+          <td>{{ couch.initial_date }}</td>
+          <td>{{ couch.finish_date }}</td>
+          <td>{{ couch.score|floatformat:"0" }}</td>
+          <td>{{ couch.category }}</td>
+          <td>{{ couch.city }}</td>
+          <td>{{ couch.province }}</td>
           <td><a type='button' href='{% url "lodgment:detail" lodgment.id %}'>Ver</a></td>
           {% if user.is_authenticated %}
             {% if user == lodgment.place.user %}
               <td><a type='button' href='{% url "lodgment:edit_lodgment" lodgment.id %}'>Editar</a></td>
               <td><a type='button' href='{% url "lodgment:delete_lodgment" lodgment.id %}'>Borrar</a></td>
             {% else %}
-            <td><a type='button' href='{% url 'lodgment:new_request' lodgment.id %}'>Solicitar</a></td>
+            <td><a type='button' href="{% url 'lodgment:new_request' lodgment.id %}">Solicitar</a></td>
             <td>    </td>
             {% endif %}
           {% endif %}

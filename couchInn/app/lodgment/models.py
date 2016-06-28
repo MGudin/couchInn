@@ -16,11 +16,11 @@ ESTADO={
         }
 
 # Create your models here.
-class PlaceManager(models.Manager):
+class CouchManager(models.Manager):
     def get_queryset(self):
-        return super(PlaceManager, self).get_queryset().filter(deleted=False)
+        return super(CouchManager, self).get_queryset().filter(deleted=False)
 
-class Place(models.Model):
+class Couch(models.Model):
     name = models.TextField('Nombre', max_length=50)
     description = models.TextField('Descripción', max_length=500)
     address = models.TextField('Direccion', max_length=100)
@@ -35,13 +35,19 @@ class Place(models.Model):
                               ])
     deleted = models.BooleanField(default=False, editable=False)
     guests = models.IntegerField('Huespedes', default=0)
+    initial_date = models.DateField('Fecha de inicio')
+    finish_date = models.DateField('Fecha de fin')
+    reservations_available = models.IntegerField('Cantidad de huespedes',
+            validators =[MinValueValidator(1)]
+            )
+
     
     user = models.ForeignKey(User, default=None, editable=False)
     gallery = models.ForeignKey(Gallery, default=None, on_delete=models.CASCADE, editable=False)
     
     #managers
     objects = models.Manager()
-    actives = PlaceManager()
+    actives = CouchManager()
     
     class Meta:
         verbose_name ='couch'
@@ -56,41 +62,36 @@ class Place(models.Model):
         # Finally... Is any in the queryset ??
         return self.lodgment_set.all().filter(finish_date__gt=date.today()).exists()
 
-class LodgmentManager(models.Manager):
-    def get_queryset(self):
-        return super(LodgmentManager, self).get_queryset().filter(deleted=False)
+# class CouchManager(models.Manager):
+#     def get_queryset(self):
+#         return super(CouchManager, self).get_queryset().filter(deleted=False)
 
-class Lodgment(models.Model):
-#    title = models.CharField('Titulo', max_length=50)
-    create_date = models.DateTimeField(auto_now_add=True)
-    initial_date = models.DateField('Fecha de inicio')
-    finish_date = models.DateField('Fecha de fin')
-    reservations_available = models.IntegerField('Cantidad de huespedes',
-            validators =[MinValueValidator(1)]
-            )
-    score = models.FloatField('Valoración', default=0, 
-        validators = [
-            MaxValueValidator(5),
-            MinValueValidator(0)
-            ]
-        )
+# class Lodgment(models.Model):
+# #    title = models.CharField('Titulo', max_length=50)
+#     create_date = models.DateTimeField(auto_now_add=True)
+#     score = models.FloatField('Valoración', default=0, 
+#         validators = [
+#             MaxValueValidator(5),
+#             MinValueValidator(0)
+#             ]
+#         )
 
-#    author = models.ForeignKey(User, default=None)
-    place = models.ForeignKey(Place, verbose_name=Place._meta.verbose_name)
-    deleted = models.BooleanField(default=False)
+# #    author = models.ForeignKey(User, default=None)
+#     place = models.ForeignKey(Place, verbose_name=Place._meta.verbose_name)
+#     deleted = models.BooleanField(default=False)
     
 
-    objects = models.Manager()
-    actives = LodgmentManager()
-    class Meta:
-        verbose_name ='Hospedaje'
-        verbose_name_plural ='Hospedajes'
+#     objects = models.Manager()
+#     actives = LodgmentManager()
+#     class Meta:
+#         verbose_name ='Hospedaje'
+#         verbose_name_plural ='Hospedajes'
 
-    def is_used(self):
-        return self.request_set.filter(state='acepted').exists()
+#     def is_used(self):
+#         return self.request_set.filter(state='acepted').exists()
 
-    def has_donation(self):
-        return self.author.donation_set.exists()
+#     def has_donation(self):
+#         return self.author.donation_set.exists()
 
 
 class Request(models.Model):
@@ -107,7 +108,7 @@ class Request(models.Model):
     finish_date = models.DateField('Fecha de fin')
     state = models.CharField(max_length=2, choices=STATE_CHOICES, default=PENDING)
     author = models.ForeignKey(User)
-    lodgment = models.ForeignKey(Lodgment)
+    couch = models.ForeignKey(Couch)
     
     def __str__(self):
       return self.state
@@ -132,7 +133,7 @@ class Review(models.Model):
           MinValueValidator(0)
           ]
         )
-    lodgment = models.ForeignKey(Lodgment)
+    couch = models.ForeignKey(Couch)
 
     def __str__(self):
       return self.text

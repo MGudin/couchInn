@@ -6,8 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory, modelformset_factory, inlineformset_factory
 from django.contrib import messages
 
-from .models import Lodgment, Place, Request
-from .forms import LodgmentForm, PlaceForm, RequestForm
+from .models import Couch, Request
+from .forms import  CouchForm, RequestForm
 from app.gallery.forms import PhotoForm, PhotoFormHelper
 from app.gallery.models import Gallery, Photo
 from app.gallery.widgets import ImagePreviewWidget
@@ -17,13 +17,13 @@ from datetime import datetime
 import pdb;
 def index(request):
     today = datetime.today()
-    try:
-        lodgments = Lodgment.actives.all().exclude(finish_date__lt=today)
-    except Exception as e:
-        print e
+#    try:
+    couchs = Couch.actives.all().exclude(finish_date__lt=today)
+#    except Exception as e:
+#        print e
        
-    return render(request,'lodgment/index.html',{'lodgments':lodgments})
-# Create your views here.
+    return render(request,'lodgment/index.html',{'couches':couchs})
+
 
 @login_required
 def detail(request,lodgment_id):
@@ -63,7 +63,7 @@ def delete_lodgment(request, lodgment_id):
 
 @login_required
 def create_place(request):
-    place_form = PlaceForm(request.POST or None)
+    place_form = CouchForm(request.POST or None)
     PForm = formset_factory(PhotoForm, extra=3)
     photo_form = PForm(request.POST or None, request.FILES or None)
 
@@ -87,7 +87,7 @@ def create_place(request):
                                              'photo_form': photo_form })
 @login_required
 def index_place(request):
-    places = Place.objects.filter(user=request.user)
+    places = Couch.objects.filter(user=request.user)
     return render(request, 'place/index.html',{'places': places})
 
 @login_required
