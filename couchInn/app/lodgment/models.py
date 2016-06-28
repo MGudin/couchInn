@@ -22,25 +22,30 @@ class PlaceManager(models.Manager):
 
 class Place(models.Model):
     name = models.TextField('Nombre', max_length=50)
-    direction = models.TextField('Direccion', max_length=100)
+    description = models.TextField('Descripción', max_length=500)
+    address = models.TextField('Direccion', max_length=100)
     city = models.TextField('Ciudad', max_length=100)
     province = models.TextField('Provincia', max_length=100)
-    score = models.FloatField('Valoracion', default=0, 
-        validators = [
-            MaxValueValidator(5),
-            MinValueValidator(0)
-            ]
-        )
+    category = models.ForeignKey(Category)
+    score = models.FloatField('Valoracion',
+                              default=0, 
+                              validators = [
+                                  MaxValueValidator(5),
+                                  MinValueValidator(0)
+                              ])
+    deleted = models.BooleanField(default=False, editable=False)
+    guests = models.IntegerField('Huespedes', default=0)
+    
     user = models.ForeignKey(User, default=None, editable=False)
     gallery = models.ForeignKey(Gallery, default=None, on_delete=models.CASCADE, editable=False)
-    deleted = models.BooleanField(default=False, editable=False)
+    
     #managers
     objects = models.Manager()
     actives = PlaceManager()
     
     class Meta:
-        verbose_name ='Inmueble'
-        verbose_name_plural ='Inmuebles'
+        verbose_name ='couch'
+        verbose_name_plural ='couches'
 
     def __str__(self):
         return self.name
@@ -53,15 +58,14 @@ class Place(models.Model):
 
 class LodgmentManager(models.Manager):
     def get_queryset(self):
-        return super(LodgmentManager, self).get_queryset().filter(deleted=False).order_by('-author__donation__amount')
+        return super(LodgmentManager, self).get_queryset().filter(deleted=False)
 
 class Lodgment(models.Model):
-    title = models.CharField('Titulo', max_length=50, default='sin titulo')
-    description = models.TextField('Descripción', max_length=500)
+#    title = models.CharField('Titulo', max_length=50)
     create_date = models.DateTimeField(auto_now_add=True)
     initial_date = models.DateField('Fecha de inicio')
     finish_date = models.DateField('Fecha de fin')
-    reservations_available = models.PositiveSmallIntegerField('Cantidad de personas',
+    reservations_available = models.IntegerField('Cantidad de huespedes',
             validators =[MinValueValidator(1)]
             )
     score = models.FloatField('Valoración', default=0, 
@@ -70,8 +74,8 @@ class Lodgment(models.Model):
             MinValueValidator(0)
             ]
         )
-    category = models.ForeignKey(Category)
-    author = models.ForeignKey(User, default=None)
+
+#    author = models.ForeignKey(User, default=None)
     place = models.ForeignKey(Place, verbose_name=Place._meta.verbose_name)
     deleted = models.BooleanField(default=False)
     
