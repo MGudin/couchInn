@@ -10,7 +10,7 @@ def simple_query(request):
     get = request.GET
     param =get.get('params', False)
     if param:
-        lodgments=Lodgment.actives.filter(Q(place__city=param) | Q(title=param) | Q(author__username=param)| Q(category__name=param))
+        lodgments=Lodgment.actives.filter(Q(place__city__icontains=param) | Q(title__icontains=param) | Q(author__username__icontains=param)| Q(category__name__icontains=param))
     else:
         lodgments=Lodgment.actives.all()
     return render(request,'lodgment/index.html',{'lodgments':lodgments, 'params':param})
@@ -30,9 +30,9 @@ def advance_query(request):
         if score:
             lodgments = lodgments.filter(place__score=score)
         if city:
-            lodgments = lodgments.filter(place__city=city)
+            lodgments = lodgments.filter(place__city__icontains=city)
         if province:
-            lodgments = lodgments.filter(place__province=province)
+            lodgments = lodgments.filter(place__province__icontains=province)
         if category:
             lodgments = lodgments.filter(category=category)
         if finish_date:
@@ -40,9 +40,12 @@ def advance_query(request):
             lodgments = lodgments.filter(finish_date__gte=finish_date).order_by('initial_date')
 
         else:
-            finish_date = datetime.date.today()
+            finish_date = datetime.date.today().strftime("%Y-%m-%d")
         if initial_date:
             initial_date = datetime.datetime.strptime(initial_date, "%d/%m/%Y").strftime("%Y-%m-%d")
+            if initial_date >= finish_date:
+                finish_date = initial_date
+
             lodgments = lodgments.filter(Q(finish_date__gte=finish_date) & Q (initial_date__lte=initial_date))
         return render(request,'lodgment/detail_search.html',{'lodgments':lodgments,'form':form})
     return render(request,'lodgment/detail_search.html',{'lodgments':lodgments, 'form':form})

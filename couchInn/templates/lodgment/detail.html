@@ -58,8 +58,8 @@
             <!-- Apply any bg-* class to to the icon to color it -->
             <span class="info-box-icon bg-yellow glyphicon glyphicon-star"></span>
             <div class="info-box-content">
-              <span class="info-box-text">Valoracion de Inmueble</span>
-              <span class="info-box-number">{{ lodgment.place.score }}</span>
+              <span class="info-box-text">Valoracion de Couch</span>
+              <span class="info-box-number">{{ lodgment.place.score | floatformat:"0" }}</span>
             </div><!-- /.info-box-content -->
           </div><!-- /.info-box -->
           <div class="col-md-6">
@@ -90,12 +90,16 @@
           <dd>{{lodgment.place.province}}</dd>
           <dt><strong>direccion:</strong></dt>
           <dd>{{lodgment.place.direction}}</dd>
+          <dt><strong>Cantidad de personas:</strong></dt>
+          <dd>{{lodgment.reservations_available}}</dd>
           
 
         </dl>
         </div>
-          <a type='button' href='/'>Volver</a>
-          <a type='button' href='#'>Solicitar</a>
+        <a type='button' href='/'>Volver</a>
+        {% if lodgment.author != user %}
+        <a type='button' href='{% url "lodgment:new_request" lodgment.id %}'>Solicitar</a>
+        {% endif %}
       </div>
     </div>
   </div>

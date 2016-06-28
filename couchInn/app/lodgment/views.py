@@ -11,13 +11,14 @@ from .forms import LodgmentForm, PlaceForm, RequestForm
 from app.gallery.forms import PhotoForm, PhotoFormHelper
 from app.gallery.models import Gallery, Photo
 from app.gallery.widgets import ImagePreviewWidget
-
+from datetime import datetime
 
 # for development
 import pdb;
 def index(request):
+    today = datetime.today()
     try:
-        lodgments = Lodgment.actives.all()
+        lodgments = Lodgment.actives.all().exclude(finish_date__lt=today)
     except Exception as e:
         print e
        
@@ -88,6 +89,12 @@ def create_place(request):
 def index_place(request):
     places = Place.objects.filter(user=request.user)
     return render(request, 'place/index.html',{'places': places})
+
+@login_required
+def show_place(request,place_id):
+    place = Place.objects.get(pk=place_id)
+    return render(request, 'place/show_place.html',{'place': place})
+
 
 @login_required
 def edit_place(request, place_id):

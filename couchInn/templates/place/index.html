@@ -35,7 +35,7 @@
           <td>{{ place.city }}</td>
           <td>{{ place.province }}</td>
           <td>{{ place.score }}</td>
-          <td><a type='button' href='#'>Ver</a></td>
+          <td><a type='button' href="{% url 'lodgment:show_place' place.id %}">Ver</a></td>
           {% if user.is_authenticated %}
           <td><a type='button' href="{% url 'lodgment:edit_place' place.id %}">Editar</a></td>
           <td><a type='button' href="{% url 'lodgment:delete_place' place.id %}">Borrar</a></td>
