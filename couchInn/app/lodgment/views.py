@@ -17,49 +17,17 @@ from datetime import datetime
 import pdb;
 def index(request):
     today = datetime.today()
-#    try:
-    couchs = Couch.actives.all().exclude(finish_date__lt=today)
-#    except Exception as e:
-#        print e
+    try:
+        couchs = Couch.actives.all().exclude(finish_date__lt=today)
+    except Exception as e:
+       print e
        
-    return render(request,'lodgment/index.html',{'couches':couchs})
-
-
-@login_required
-def detail(request,lodgment_id):
-    lodgment = get_object_or_404(Lodgment, pk=lodgment_id)
-    return render(request,'lodgment/detail.html',{'lodgment':lodgment})
+    return render(request,'lodgment/index.html',{'couchs':couchs})
 
 @login_required
-def edit_lodgment(request, lodgment_id):
-    lodgment = get_object_or_404(Lodgment, pk=lodgment_id)
-    form = LodgmentForm(request.POST or None, instance = lodgment)
-    if form.is_valid():
-        form.save()
-        return redirect(reverse('lodgment:index'))
-    return render(request,'lodgment/edit_lodgment.html',{'form':form, 'lodgment':lodgment})
-
-@login_required
-def new(request):
-    form_lodgment = LodgmentForm(request.POST or None)
-    form_lodgment.fields['place'].queryset = Place.actives.filter(user=request.user)
-    if form_lodgment.is_valid():
-       lodgment = form_lodgment.save(commit=False)
-       lodgment.author = request.user
-       lodgment.save()
-       return redirect(reverse('lodgment:detail', args=[lodgment.id]))
-    return render(request,'lodgment/new.html',{'form':form_lodgment})
-
-@login_required
-def delete_lodgment(request, lodgment_id):
-    u = get_object_or_404(Lodgment, pk=lodgment_id)
-    if u.is_used():
-        u.deleted=True
-        u.save()
-    else:
-        u.delete()
-
-    return HttpResponseRedirect(reverse('lodgment:index'))
+def detail_place(request,couch_id):
+        couch = get_object_or_404(Couch, pk=couch_id)
+        return render(request,'lodgment/detail.html',{'couch':couch})
 
 @login_required
 def create_place(request):
@@ -87,19 +55,19 @@ def create_place(request):
                                              'photo_form': photo_form })
 @login_required
 def index_place(request):
-    places = Couch.objects.filter(user=request.user)
-    return render(request, 'place/index.html',{'places': places})
+    couchs = Couch.objects.filter(user=request.user)
+    return render(request, 'place/index.html',{'places': couchs})
 
 @login_required
 def show_place(request,place_id):
-    place = Place.objects.get(pk=place_id)
+    place = Couch.objects.get(pk=place_id)
     return render(request, 'place/show_place.html',{'place': place})
 
 
 @login_required
 def edit_place(request, place_id):
-    place = get_object_or_404(Place, pk=place_id)
-    place_form = PlaceForm(request.POST or None,instance=place)
+    place = get_object_or_404(Couch, pk=place_id)
+    place_form = CouchForm(request.POST or None,instance=place)
     PForm = inlineformset_factory(Gallery,
                                   Photo,
                                   fields=('photo',),
@@ -131,7 +99,7 @@ def edit_place(request, place_id):
                                               'place': place})
 @login_required
 def delete_place(request, place_id):
-    place = get_object_or_404(Place, pk=place_id)
+    place = get_object_or_404(Couch, pk=place_id)
     if place.is_used():
         place.deleted=True
         place.save()
@@ -140,34 +108,24 @@ def delete_place(request, place_id):
     return HttpResponseRedirect(reverse('lodgment:index_place'))
 
 @login_required
-def user_lodgment(request):
+def new_request(request, couch_id):
     try:
-        lodgments = Lodgment.actives.filter(author=request.user)
+        couch = Couch.actives.get(pk=couch_id)
     except Exception as e:
-        print e
-       
-    return render(request,'lodgment/index.html',{'lodgments':lodgments})
-
-
-@login_required
-def new_request(request, lodgment_id):
-    try:
-        lodgment = Lodgment.actives.get(pk=lodgment_id)
-    except Exception as e:
-        print lodgment
+        print couch
         print e
         messages.error(request, 'El couch solicitado no existe mas.')
-        return redirect(reverse('lodgment:index'))
+        return redirect(reverse('couch:index'))
     form = RequestForm(request.POST or None)
     if form.is_valid():
        n_request = form.save(commit=False)
        n_request.author = request.user
        n_request.state = 'pending'
-       n_request.lodgment = lodgment
+       n_request.couch = couch
        messages.success(request, 'La solicitud a sido enviada.')
        n_request.save()
-       return redirect(reverse('lodgment:index'))
-    return render(request,'lodgment/new_request.html',{'form':form, 'lodgment_id':lodgment_id})
+       return redirect(reverse('couch:index'))
+    return render(request,'lodgment/new_request.html',{'form':form, 'lodgment_id':couch_id})
 
 
 @login_required

@@ -18,15 +18,10 @@ from . import views
 from . import query
 
 urlpatterns = [
-    url(r'^hospedaje/(?P<lodgment_id>[0-9]+)/$', views.detail, name='detail'),
-    url(r'^hospedaje/editar/(?P<lodgment_id>[0-9]+)/$', views.edit_lodgment, name='edit_lodgment'),
-    url(r'^hospedaje/borrar/(?P<lodgment_id>[0-9]+)/$', views.delete_lodgment, name='delete_lodgment'),
-    url(r'^solicitud/(?P<lodgment_id>[0-9]+)/$', views.new_request, name='new_request'),
-    url(r'^mis_hospedajes/$', views.user_lodgment, name='user_lodgment'),
     url(r'^mis_solicitudes/$', views.request_index, name='request_index'),
-    url(r'^nuevo/$', views.new, name='new'),
     url(r'^couch/eliminar/(?P<place_id>[0-9]+)/$', views.delete_place, name='delete_place'),
     url(r'^couch/editar/(?P<place_id>[0-9]+)/$', views.edit_place, name='edit_place'),
+    url(r'^couch/ver/(?P<couch_id>[0-9]+)/$', views.detail_place, name='detail_place'),
     url(r'^couch/(?P<place_id>[0-9]+)/$', views.show_place, name='show_place'),
     url(r'^couch/nuevo$', views.create_place, name='new_place'),
     url(r'^mis_couchs/$', views.index_place, name='index_place'),

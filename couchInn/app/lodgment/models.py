@@ -60,38 +60,10 @@ class Couch(models.Model):
         # get all the lodgment related to me.
         # Then give me the ones wich are not currently in progress.
         # Finally... Is any in the queryset ??
-        return self.lodgment_set.all().filter(finish_date__gt=date.today()).exists()
+        return self.request_set.all().filter(finish_date__gt=date.today()).exists()
 
-# class CouchManager(models.Manager):
-#     def get_queryset(self):
-#         return super(CouchManager, self).get_queryset().filter(deleted=False)
-
-# class Lodgment(models.Model):
-# #    title = models.CharField('Titulo', max_length=50)
-#     create_date = models.DateTimeField(auto_now_add=True)
-#     score = models.FloatField('Valoración', default=0, 
-#         validators = [
-#             MaxValueValidator(5),
-#             MinValueValidator(0)
-#             ]
-#         )
-
-# #    author = models.ForeignKey(User, default=None)
-#     place = models.ForeignKey(Place, verbose_name=Place._meta.verbose_name)
-#     deleted = models.BooleanField(default=False)
-    
-
-#     objects = models.Manager()
-#     actives = LodgmentManager()
-#     class Meta:
-#         verbose_name ='Hospedaje'
-#         verbose_name_plural ='Hospedajes'
-
-#     def is_used(self):
-#         return self.request_set.filter(state='acepted').exists()
-
-#     def has_donation(self):
-#         return self.author.donation_set.exists()
+    def has_donation(self):
+        return self.user.donation_set.exists()
 
 
 class Request(models.Model):

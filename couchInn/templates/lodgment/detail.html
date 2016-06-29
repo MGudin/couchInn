@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% if lodgment %}
+{% if couch %}
 {% block title %}Hospedaje{% endblock %}
 {% block content %}
 <div class="row">
@@ -13,11 +13,11 @@
         <div class="row">
           
           <div class="col-md-6">
-            {% if lodgment.place.gallery.photo_set.exists %}
+            {% if couch.gallery.photo_set.exists %}
             <div id="carousel" class="carousel slide" data-ride="carousel">
               <!-- Indicators -->
               <ol class="carousel-indicators">
-                {% for photo in lodgment.place.gallery.photo_set.all %}
+                {% for photo in couch.gallery.photo_set.all %}
                 {% if forloop.first %}
                 <li data-target="#carousel" data-slide-to="{{forloop.counter}}" class="active"></li>
                 {% else %}
@@ -28,7 +28,7 @@
 
               <!-- Wrapper for slides -->
               <div class="carousel-inner" role="listbox">
-                {% for photo in lodgment.place.gallery.photo_set.all %}
+                {% for photo in couch.gallery.photo_set.all %}
                 {% if forloop.first %}
                 <div class="item active">
                   {% else %}
@@ -59,19 +59,19 @@
             <span class="info-box-icon bg-yellow glyphicon glyphicon-star"></span>
             <div class="info-box-content">
               <span class="info-box-text">Valoracion de Couch</span>
-              <span class="info-box-number">{{ lodgment.place.score | floatformat:"0" }}</span>
+              <span class="info-box-number">{{ couch.score | floatformat:"0" }}</span>
             </div><!-- /.info-box-content -->
           </div><!-- /.info-box -->
           <div class="col-md-6">
             <div class="callout callout-success">
               <h4>Fecha de inicio</h4>
-              <p>{{ lodgment.initial_date }}</p>
+              <p>{{ couch.initial_date }}</p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="callout callout-danger">
               <h4>Fecha de fin</h4>
-              <p>{{ lodgment.finish_date }}</p>
+              <p>{{ couch.finish_date }}</p>
             </div>
           </div>
         </div>
@@ -79,26 +79,25 @@
         <div class="box-footer">
         <dl class="dl-horizontal">
           <dt><strong>Descripcion:</strong></dt>
-          <dd>{{lodgment.description}}</dd>
+          <dd>{{couch.description}}</dd>
           <dt><strong>Tipo de hospedaje:</strong></dt>
-          <dd>{{lodgment.category}}</dd>
+          <dd>{{couch.category}}</dd>
           <dt><strong>Publicado por:</strong></dt>
-          <dd><a href="#"> {{lodgment.author.username}}</a></dd>
+          <dd><a href="#"> {{couch.user.username}}</a></dd>
           <dt><strong>Ciudad:</strong></dt>
-          <dd>{{lodgment.place.city}}</dd>
+          <dd>{{couch.city}}</dd>
           <dt><strong>Provincia:</strong></dt>
-          <dd>{{lodgment.place.province}}</dd>
+          <dd>{{couch.province}}</dd>
           <dt><strong>direccion:</strong></dt>
-          <dd>{{lodgment.place.direction}}</dd>
+          <dd>{{couch.address}}</dd>
           <dt><strong>Cantidad de personas:</strong></dt>
-          <dd>{{lodgment.reservations_available}}</dd>
+          <dd>{{couch.reservations_available}}</dd>
           
 
         </dl>
         </div>
         <a type='button' href='/'>Volver</a>
-        {% if lodgment.author != user %}
-        <a type='button' href='{% url "lodgment:new_request" lodgment.id %}'>Solicitar</a>
+        {% if couch.user != user %}
         {% endif %}
       </div>
     </div>

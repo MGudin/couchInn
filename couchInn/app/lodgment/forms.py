@@ -49,15 +49,34 @@ class CouchForm(forms.ModelForm):
         self.helper = FormHelper(self)
         self.helper.form_tag = False
 
+    initial_date = forms.DateField(label='Fecha de inicio',input_formats=['%d/%m/%Y'], widget= forms.DateInput(attrs={'class':'datepicker'}))
+    finish_date = forms.DateField(label='Fecha de fin',input_formats=['%d/%m/%Y'], widget= forms.DateInput(attrs={'class':'datepicker'}))
+    category = forms.ModelChoiceField(queryset=Category.actives.all(), label='Tipo de hospedaje')
     class Meta:
         model = Couch
-        exclude = ('score', 'user', 'gallery')
+#         exclude = ('create_date','reservations_taken','score','deleted','author')
+        exclude = ('score', 'user', 'gallery', 'deleted','guests')
         widgets = {
             'name' : forms.TextInput,
             'address' : forms.TextInput,
             'city' : forms.TextInput,
             'province' : forms.TextInput,
             }
+
+    def clean(self):
+        cleaned_data = super(CouchForm, self).clean()
+        try:
+            today = datetime.date.today()
+            init = cleaned_data.get('initial_date')
+            end = cleaned_data.get('finish_date')
+            if today >= init or today >= end:
+                raise forms.ValidationError('Las fechas tiene que ser mayores que la actual')
+            if end <= init :
+                raise forms.ValidationError('La fecha de fin tiene que ser mayor que la de inicio')
+        except TypeError as e:
+            print e
+
+        return cleaned_data
 
 
 class RequestForm(forms.ModelForm):
