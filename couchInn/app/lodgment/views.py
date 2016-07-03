@@ -6,8 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory, modelformset_factory, inlineformset_factory
 from django.contrib import messages
 
-from .models import Lodgment, Place, Request
-from .forms import LodgmentForm, PlaceForm, RequestForm
+from .models import Place, Request
+from .forms import PlaceForm, RequestForm
 from app.gallery.forms import PhotoForm, PhotoFormHelper
 from app.gallery.models import Gallery, Photo
 from app.gallery.widgets import ImagePreviewWidget
@@ -18,7 +18,7 @@ import pdb;
 def index(request):
     today = datetime.today()
     try:
-        lodgments = Lodgment.actives.all().exclude(finish_date__lt=today)
+        lodgments = Place.actives.all().exclude(finish_date__lt=today)
     except Exception as e:
         print e
        
@@ -27,13 +27,13 @@ def index(request):
 
 @login_required
 def detail(request,lodgment_id):
-    lodgment = get_object_or_404(Lodgment, pk=lodgment_id)
+    lodgment = get_object_or_404(Place, pk=lodgment_id)
     return render(request,'lodgment/detail.html',{'lodgment':lodgment})
 
 @login_required
 def edit_lodgment(request, lodgment_id):
-    lodgment = get_object_or_404(Lodgment, pk=lodgment_id)
-    form = LodgmentForm(request.POST or None, instance = lodgment)
+    lodgment = get_object_or_404(Place, pk=lodgment_id)
+    form = PlaceForm(request.POST or None, instance = lodgment)
     if form.is_valid():
         form.save()
         return redirect(reverse('lodgment:index'))
@@ -41,18 +41,17 @@ def edit_lodgment(request, lodgment_id):
 
 @login_required
 def new(request):
-    form_lodgment = LodgmentForm(request.POST or None)
-    form_lodgment.fields['place'].queryset = Place.actives.filter(user=request.user)
+    form_lodgment = PlaceForm(request.POST or None)
     if form_lodgment.is_valid():
        lodgment = form_lodgment.save(commit=False)
-       lodgment.author = request.user
+       lodgment.user = request.user
        lodgment.save()
        return redirect(reverse('lodgment:detail', args=[lodgment.id]))
     return render(request,'lodgment/new.html',{'form':form_lodgment})
 
 @login_required
 def delete_lodgment(request, lodgment_id):
-    u = get_object_or_404(Lodgment, pk=lodgment_id)
+    u = get_object_or_404(Place, pk=lodgment_id)
     if u.is_used():
         u.deleted=True
         u.save()
@@ -142,7 +141,7 @@ def delete_place(request, place_id):
 @login_required
 def user_lodgment(request):
     try:
-        lodgments = Lodgment.actives.filter(author=request.user)
+        lodgments = Place.actives.filter(user=request.user)
     except Exception as e:
         print e
        
@@ -152,7 +151,7 @@ def user_lodgment(request):
 @login_required
 def new_request(request, lodgment_id):
     try:
-        lodgment = Lodgment.actives.get(pk=lodgment_id)
+        lodgment = Place.actives.get(pk=lodgment_id)
     except Exception as e:
         print lodgment
         print e
@@ -163,7 +162,7 @@ def new_request(request, lodgment_id):
        n_request = form.save(commit=False)
        n_request.author = request.user
        n_request.state = 'pending'
-       n_request.lodgment = lodgment
+       n_request.couch = lodgment
        messages.success(request, 'La solicitud a sido enviada.')
        n_request.save()
        return redirect(reverse('lodgment:index'))

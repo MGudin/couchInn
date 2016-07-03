@@ -5,14 +5,33 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 from crispy_forms.helper import FormHelper
 
-from models import Lodgment, Place, Request
+from models import Place, Request
 from app.backend.models import Category
 
 
-class LodgmentForm(forms.ModelForm):
+# class LodgmentForm(forms.ModelForm):
+#
+#     def __init__(self, *args, **kwargs):
+#         super(LodgmentForm, self).__init__(*args, **kwargs)
+#         self.helper = FormHelper(self)
+#         self.helper.form_tag = False
+#
+#     initial_date = forms.DateField(label='Fecha de inicio',input_formats=['%d/%m/%Y'], widget= forms.DateInput(attrs={'class':'datepicker'}))
+#     finish_date = forms.DateField(label='Fecha de fin',input_formats=['%d/%m/%Y'], widget= forms.DateInput(attrs={'class':'datepicker'}))
+#     category = forms.ModelChoiceField(queryset=Category.actives.all(), label='Tipo de hospedaje')
+#
+#     place  = forms.ModelChoiceField(queryset=Place.actives.all(), label='Couch')
+#     class Meta:
+#         model = Lodgment
+#         exclude = ('create_date','reservations_taken','score','deleted','author')
+#
+
+
+class PlaceForm(forms.ModelForm):
+#    photo = forms.ImageField()
 
     def __init__(self, *args, **kwargs):
-        super(LodgmentForm, self).__init__(*args, **kwargs)
+        super(PlaceForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper(self)
         self.helper.form_tag = False
 
@@ -20,13 +39,17 @@ class LodgmentForm(forms.ModelForm):
     finish_date = forms.DateField(label='Fecha de fin',input_formats=['%d/%m/%Y'], widget= forms.DateInput(attrs={'class':'datepicker'}))
     category = forms.ModelChoiceField(queryset=Category.actives.all(), label='Tipo de hospedaje')
 
-    place  = forms.ModelChoiceField(queryset=Place.actives.all(), label='Couch')
     class Meta:
-        model = Lodgment
-        exclude = ('create_date','reservations_taken','score','deleted','author')
-
+        model = Place
+        exclude = ('create_date','reservations_taken','score','deleted','user', 'gallery')
+        widgets = {
+            'name' : forms.TextInput,
+            'direction' : forms.TextInput,
+            'city' : forms.TextInput,
+            'province' : forms.TextInput,
+            }
     def clean(self):
-        cleaned_data = super(LodgmentForm, self).clean()
+        cleaned_data = super(PlaceForm, self).clean()
         try:
             today = datetime.date.today()
             init = cleaned_data.get('initial_date')
@@ -41,25 +64,6 @@ class LodgmentForm(forms.ModelForm):
         return cleaned_data
 
 
-class PlaceForm(forms.ModelForm):
-#    photo = forms.ImageField()
-
-    def __init__(self, *args, **kwargs):
-        super(PlaceForm, self).__init__(*args, **kwargs)
-        self.helper = FormHelper(self)
-        self.helper.form_tag = False
-
-    class Meta:
-        model = Place
-        exclude = ('score', 'user', 'gallery')
-        widgets = {
-            'name' : forms.TextInput,
-            'direction' : forms.TextInput,
-            'city' : forms.TextInput,
-            'province' : forms.TextInput,
-            }
-
-
 class RequestForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
@@ -72,7 +76,7 @@ class RequestForm(forms.ModelForm):
 
     class Meta:
         model = Request
-        exclude = ('author', 'lodgment', 'create_date','state')
+        exclude = ('author', 'couch', 'create_date','state')
 
     def clean(self):
         cleaned_data = super(RequestForm, self).clean()

@@ -25,8 +25,8 @@
         </tr>
         {% for lodgment in lodgments %}
         <tr {% if lodgment.has_donation %}style='background-color:#ffebcd' {% endif %}>
-          {% if lodgment.place.gallery.photo_set.all.exists %}
-          <td> <img class="thumbnail" src="{{ lodgment.place.gallery.photo_set.first.photo.url }}" /> </td>
+          {% if lodgment.gallery.photo_set.all.exists %}
+          <td> <img class="thumbnail" src="{{ lodgment.gallery.photo_set.first.photo.url }}" /> </td>
           {% else %}
           <td> <img class="thumbnail" src="/media/default-placeholder.png" /> </td>
           {% endif %}
@@ -35,12 +35,12 @@
           <td>{{ lodgment.finish_date }}</td>
           <td>{{ lodgment.score|floatformat:"0" }}</td>
           <td>{{ lodgment.category }}</td>
-          <td>{{ lodgment.place.city }}</td>
-          <td>{{ lodgment.place.province }}</td>
+          <td>{{ lodgment.city }}</td>
+          <td>{{ lodgment.province }}</td>
           <td><a type='button' href='{% url "lodgment:detail" lodgment.id %}'>Ver</a></td>
           {% if user.is_authenticated %}
-            {% if user == lodgment.author %}
-              <td><a type='button' href='{% url "lodgment:edit_lodgment" lodgment.id %}'>Editar</a></td>
+            {% if user == lodgment.user%}
+              <td><a type='button' href='{% url "lodgment:edit_place" lodgment.id %}'>Editar</a></td>
               <td><a type='button' href='{% url "lodgment:delete_lodgment" lodgment.id %}'>Borrar</a></td>
             {% else %}
             <td><a type='button' href='{% url 'lodgment:new_request' lodgment.id %}'>Solicitar</a></td>

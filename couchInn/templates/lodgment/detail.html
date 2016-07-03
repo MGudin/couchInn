@@ -13,11 +13,11 @@
         <div class="row">
           
           <div class="col-md-6">
-            {% if lodgment.place.gallery.photo_set.exists %}
+            {% if lodgment.gallery.photo_set.exists %}
             <div id="carousel" class="carousel slide" data-ride="carousel">
               <!-- Indicators -->
               <ol class="carousel-indicators">
-                {% for photo in lodgment.place.gallery.photo_set.all %}
+                {% for photo in lodgment.gallery.photo_set.all %}
                 {% if forloop.first %}
                 <li data-target="#carousel" data-slide-to="{{forloop.counter}}" class="active"></li>
                 {% else %}
@@ -28,7 +28,7 @@
 
               <!-- Wrapper for slides -->
               <div class="carousel-inner" role="listbox">
-                {% for photo in lodgment.place.gallery.photo_set.all %}
+                {% for photo in lodgment.gallery.photo_set.all %}
                 {% if forloop.first %}
                 <div class="item active">
                   {% else %}
@@ -59,7 +59,7 @@
             <span class="info-box-icon bg-yellow glyphicon glyphicon-star"></span>
             <div class="info-box-content">
               <span class="info-box-text">Valoracion de Couch</span>
-              <span class="info-box-number">{{ lodgment.place.score | floatformat:"0" }}</span>
+              <span class="info-box-number">{{ lodgment.score | floatformat:"0" }}</span>
             </div><!-- /.info-box-content -->
           </div><!-- /.info-box -->
           <div class="col-md-6">
@@ -83,21 +83,20 @@
           <dt><strong>Tipo de hospedaje:</strong></dt>
           <dd>{{lodgment.category}}</dd>
           <dt><strong>Publicado por:</strong></dt>
-          <dd><a href="#"> {{lodgment.author.username}}</a></dd>
+          <dd><a href="#"> {{lodgment.user.username}}</a></dd>
           <dt><strong>Ciudad:</strong></dt>
-          <dd>{{lodgment.place.city}}</dd>
+          <dd>{{lodgment.city}}</dd>
           <dt><strong>Provincia:</strong></dt>
-          <dd>{{lodgment.place.province}}</dd>
+          <dd>{{lodgment.province}}</dd>
           <dt><strong>direccion:</strong></dt>
-          <dd>{{lodgment.place.direction}}</dd>
+          <dd>{{lodgment.direction}}</dd>
           <dt><strong>Cantidad de personas:</strong></dt>
           <dd>{{lodgment.reservations_available}}</dd>
-          
 
         </dl>
         </div>
         <a type='button' href='/'>Volver</a>
-        {% if lodgment.author != user %}
+        {% if lodgment.user != user %}
         <a type='button' href='{% url "lodgment:new_request" lodgment.id %}'>Solicitar</a>
         {% endif %}
       </div>

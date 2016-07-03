@@ -48,7 +48,6 @@
               </form>
               <ul class="nav navbar-nav">
                 {% if user.is_authenticated %}
-                <li><a href="{% url 'lodgment:new'%}">Crear Hospedaje <span class="sr-only">(current)</span></a></li>
                 <li><a href="{% url 'lodgment:new_place'%}">Agregar couch <span class="sr-only">(current)</span></a></li>
                 <li><a href="{% url 'donation:donate'%}">Donar <span class="sr-only">(current)</span></a></li>
                 
@@ -108,8 +107,7 @@
           <ul class="sidebar-menu">
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
-            <li <!--class="active"-->><a href='{% url "lodgment:index_place" %}'><span>Mis couch</span></a></li>
-            <li><a href="{% url 'lodgment:user_lodgment' %}"><span>Mis hospedajes</span></a></li>
+            <li <!--class="active"-->><a href='{% url "lodgment:index_place" %}'><span>Mis couchs</span></a></li>
             <li class="treeview">
               <a href="#"><span>solicitudes</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
