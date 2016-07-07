@@ -21,14 +21,13 @@ class PlaceManager(models.Manager):
         return super(PlaceManager, self).get_queryset().filter(deleted=False)
 
 class Place(models.Model):
-    name = models.TextField('Nombre', max_length=50)
+    title = models.CharField('Titulo', max_length=50, default='sin titulo')
     direction = models.TextField('Direccion', max_length=100)
     city = models.TextField('Ciudad', max_length=100)
     province = models.TextField('Provincia', max_length=100)
     user = models.ForeignKey(User, default=None, editable=False)
     gallery = models.ForeignKey(Gallery, default=None, on_delete=models.CASCADE, editable=False)
     deleted = models.BooleanField(default=False, editable=False)
-    title = models.CharField('Titulo', max_length=50, default='sin titulo')
     description = models.TextField('Descripción', max_length=500)
     create_date = models.DateTimeField(auto_now_add=True)
     initial_date = models.DateField('Fecha de inicio')
