@@ -183,5 +183,14 @@ def request_index(request):
         print requests
     except Exception as e:
         print e
-
     return render(request,'lodgment/request_index.html',{'requests':requests})
+
+
+@login_required
+def couch_request(request):
+    try:
+        requests = Request.objects.filter(couch__user=request.user).filter(state='PE')
+    except Exception as e:
+        print e
+    return render(request,'lodgment/couch_request.html',{'requests':requests})
+

@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^solicitud/(?P<lodgment_id>[0-9]+)/$', views.new_request, name='new_request'),
     # url(r'^mis_hospedajes/$', views.user_lodgment, name='user_lodgment'),
     url(r'^mis_solicitudes/$', views.request_index, name='request_index'),
+    url(r'^solicitudes_de_couchs/$', views.couch_request, name='couch_request'),
     # url(r'^couch/nuevo/$', views.new, name='new'),
     # url(r'^couch/eliminar/(?P<place_id>[0-9]+)/$', views.delete_place, name='delete_place'),
     url(r'^couch/editar/(?P<place_id>[0-9]+)/$', views.edit_place, name='edit_place'),

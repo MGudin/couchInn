@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Counchin{% endblock %}
+{% block content %}
+<div class="row">
+    <div class='col-md-10 col-md-offset-1'>
+        <br>
+        {% if requests %}
+
+        <br>
+        <div class="panel panel-default">
+            <div class="panel-heading">Solicitudes a tus couch</div>
+            <table class='table'>
+                <tr>
+                    <th> Couch </th>
+                    <th> Fecha de inicio </th>
+                    <th> Fecha de fin </th>
+                    <th> Estado </th>
+                    <th>Lo solicito </th>
+                    <th> </th>
+                    <th> </th>
+                </tr>
+                {% for request in requests %}
+                <tr>
+                    <td><a href='{% url "lodgment:detail" request.couch.id %}'>{{ request.couch }}</a></td>
+                    <td>{{ request.initial_date }}</td>
+                    <td>{{ request.finish_date }}</td>
+                    <td>{{ request.get_state }}</td>
+                    <td><a href='#'>{{ request.author }}</a></td>
+                    <td><a href='#'>Aceptar</a></td>
+                    <td><a href='#'>Rechazar</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        {% else %}
+        <p>En este momento no tenes solicitudes.</p>
+        {% endif %}
+        </ br>
+    </div>
+    {% endblock %}
