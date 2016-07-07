@@ -54,7 +54,7 @@ def new(request):
 def delete_lodgment(request, lodgment_id):
     place = get_object_or_404(Place, pk=lodgment_id)
     if place.is_used():
-        messages.error(request, 'El couch ya tiene solicitudes aceptadas.')
+        messages.warning(request, 'El couch ya tiene solicitudes aceptadas.')
     else:
         messages.success(request, 'El couch ha sido eliminado.')
         print request
