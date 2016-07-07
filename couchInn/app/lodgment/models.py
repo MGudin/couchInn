@@ -52,16 +52,10 @@ class Place(models.Model):
         verbose_name_plural ='Couchs'
 
     def __str__(self):
-        return self.name
+        return self.title
 
     def is_used(self):
-        # get all the lodgment related to me.
-        # Then give me the ones wich are not currently in progress.
-        # Finally... Is any in the queryset ??
-        return self.lodgment_set.all().filter(finish_date__gt=date.today()).exists()
-
-    def is_used(self):
-        return self.request_set.filter(state='acepted').exists()
+        return self.request_set.filter(state='AC').exists()
 
     def has_donation(self):
         return self.user.donation_set.exists()

@@ -51,14 +51,14 @@ def new(request):
 
 @login_required
 def delete_lodgment(request, lodgment_id):
-    u = get_object_or_404(Place, pk=lodgment_id)
-    if u.is_used():
-        u.deleted=True
-        u.save()
+    place = get_object_or_404(Place, pk=lodgment_id)
+    if place.is_used():
+        messages.error(request, 'El couch ya tiene solicitudes aceptadas.')
     else:
-        u.delete()
-
-    return HttpResponseRedirect(reverse('lodgment:index'))
+        messages.success(request, 'El couch ha sido eliminado.')
+        print request
+        place.delete()
+    return HttpResponseRedirect(reverse('lodgment:index_place'))
 
 @login_required
 def create_place(request):
@@ -132,9 +132,10 @@ def edit_place(request, place_id):
 def delete_place(request, place_id):
     place = get_object_or_404(Place, pk=place_id)
     if place.is_used():
-        place.deleted=True
-        place.save()
+        messages.error(request, 'El couch ya tiene solicitudes aceptadas.')
     else:
+        messages.success(request, 'El couch ha sido eliminado.')
+        print request.messages
         place.delete()
     return HttpResponseRedirect(reverse('lodgment:index_place'))
 

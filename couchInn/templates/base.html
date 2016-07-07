@@ -123,7 +123,7 @@
       {% endif %}
       <div class="content-wrapper">
       {% if messages %}
-      <div class="messages">
+      <div class="messages text-center">
         {% for message in messages %}
            <p {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
         {% endfor %}
