@@ -95,7 +95,7 @@
 
         </dl>
         </div>
-        <a type='button' href='/'>Volver</a>
+        <a type='button' href='{{ request.META.HTTP_REFERER }}'>Volver</a>
         {% if lodgment.user != user %}
         <a type='button' href='{% url "lodgment:new_request" lodgment.id %}'>Solicitar</a>
         {% endif %}

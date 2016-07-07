@@ -11,15 +11,16 @@
             <div class="panel-heading">Tus solicitudes</div>
             <table class='table'>
                 <tr>
+                    <th> Couch </th>
                     <th> Fecha de inicio </th>
                     <th> Fecha de fin </th>
                     <th> Estado </th>
                     <th> </th>
                     <th> </th>
-                    <th> </th>
                 </tr>
                 {% for request in requests %}
                 <tr>
+                    <td><a href='{% url "lodgment:detail" request.couch.id %}'>{{ request.couch }}</a></td>
                     <td>{{ request.initial_date }}</td>
                     <td>{{ request.finish_date }}</td>
                     <td>{{ request.get_state }}</td>
