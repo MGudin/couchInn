@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.forms import formset_factory, modelformset_factory, inlineformset_factory
 from django.contrib import messages
+from dateutil import rrule, parser
 
 from .models import Place, Request
 from .forms import PlaceForm, RequestForm, PlaceEditForm
@@ -154,15 +155,20 @@ def new_request(request, lodgment_id):
     try:
         lodgment = Place.actives.get(pk=lodgment_id)
     except Exception as e:
-        print lodgment
-        print e
         messages.error(request, 'El couch solicitado no existe mas.')
         return redirect(reverse('lodgment:index'))
-    form = RequestForm(request.POST or None)
+    date_choices=tuple(rrule.rrule(3,
+        dtstart=lodgment.initial_date,
+        until=lodgment.finish_date))
+    form = RequestForm(request.POST or None,date_choices=date_choices)
+    print form.is_valid()
     if form.is_valid():
+       initial_date = form.cleaned_data.get('initial_date')
+       finish_date = form.cleaned_data.get('finish_date')
+       print initial_date, finish_date
        n_request = form.save(commit=False)
        n_request.author = request.user
-       n_request.state = 'pending'
+       n_request.state = 'PE'
        n_request.couch = lodgment
        messages.success(request, 'La solicitud a sido enviada.')
        n_request.save()

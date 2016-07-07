@@ -83,13 +83,19 @@ class PlaceEditForm(forms.ModelForm):
 
 class RequestForm(forms.ModelForm):
 
-    def __init__(self, *args, **kwargs):
+    initial_date = forms.ChoiceField(label='Fecha de inicio')
+    finish_date = forms.ChoiceField(label='Fecha de fin')
+    def __init__(self,*args, **kwargs):
+        date_choices=kwargs.pop('date_choices')
         super(RequestForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper(self)
         self.helper.form_tag = False
+       # self.fields['initial_date'].choices = date_choices
+        initial_choices =(((date.strftime("%Y-%m-%d"), u"{}/{}/{}".format(date.day,date.month,date.year)) for date in date_choices))
+        finish_choices =(((date.strftime("%Y-%m-%d"), u"{}/{}/{}".format(date.day,date.month,date.year)) for date in date_choices))
+        self.fields['initial_date'].choices = initial_choices
+        self.fields['finish_date'].choices = finish_choices
 
-    initial_date = forms.DateField(label='Fecha de inicio',input_formats=['%d/%m/%Y'], widget= forms.DateInput(attrs={'class':'datepicker'}))
-    finish_date = forms.DateField(label='Fecha de fin',input_formats=['%d/%m/%Y'], widget= forms.DateInput(attrs={'class':'datepicker'}))
 
     class Meta:
         model = Request
@@ -98,9 +104,11 @@ class RequestForm(forms.ModelForm):
     def clean(self):
         cleaned_data = super(RequestForm, self).clean()
         try:
-            today = datetime.date.today()
+            today = datetime.datetime.now()
             init = cleaned_data.get('initial_date')
             end = cleaned_data.get('finish_date')
+            init = datetime.datetime.strptime(init,'%Y-%m-%d')
+            end  = datetime.datetime.strptime(end,'%Y-%m-%d')
             if today >= init or today >= end:
                 raise forms.ValidationError('Las fechas tiene que ser mayores que la actual')
             if end <= init :

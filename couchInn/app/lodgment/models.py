@@ -102,6 +102,11 @@ class Request(models.Model):
     PENDING = 'PE'
     REJECTED = 'RJ'
     ACEPTED = 'AC'
+    STATE ={
+            PENDING: u'Pendiente',
+            REJECTED: u'Rechazada',
+            ACEPTED: u'Aceptada',
+            }
     STATE_CHOICES = (
         (PENDING, 'pending'),
         (REJECTED, 'rejected'),
@@ -123,7 +128,7 @@ class Request(models.Model):
         verbose_name_plural ='Solicitudes'
 
     def get_state(self):
-        return ESTADO[self.state] 
+        return self.STATE[self.state] 
 
 
 
