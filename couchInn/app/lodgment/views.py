@@ -7,7 +7,7 @@ from django.forms import formset_factory, modelformset_factory, inlineformset_fa
 from django.contrib import messages
 
 from .models import Place, Request
-from .forms import PlaceForm, RequestForm
+from .forms import PlaceForm, RequestForm, PlaceEditForm
 from app.gallery.forms import PhotoForm, PhotoFormHelper
 from app.gallery.models import Gallery, Photo
 from app.gallery.widgets import ImagePreviewWidget
@@ -33,7 +33,7 @@ def detail(request,lodgment_id):
 @login_required
 def edit_lodgment(request, lodgment_id):
     lodgment = get_object_or_404(Place, pk=lodgment_id)
-    form = PlaceForm(request.POST or None, instance = lodgment)
+    form = PlaceEditForm(request.POST or None, instance = lodgment)
     if form.is_valid():
         form.save()
         return redirect(reverse('lodgment:index'))
@@ -98,7 +98,7 @@ def show_place(request,place_id):
 @login_required
 def edit_place(request, place_id):
     place = get_object_or_404(Place, pk=place_id)
-    place_form = PlaceForm(request.POST or None,instance=place)
+    place_form = PlaceEditForm(request.POST or None,instance=place)
     PForm = inlineformset_factory(Gallery,
                                   Photo,
                                   fields=('photo',),
@@ -123,7 +123,7 @@ def edit_place(request, place_id):
                     else:
                         
                         form.save()
-            return redirect(reverse('lodgment:index_place'))
+            return redirect(reverse('lodgment:detail',args=place_id))
 
     return render(request, 'place/edit.html',{'place_form': place_form,
                                               'photo_form': photo_form,

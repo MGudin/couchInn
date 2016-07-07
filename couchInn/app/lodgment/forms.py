@@ -64,6 +64,23 @@ class PlaceForm(forms.ModelForm):
         return cleaned_data
 
 
+class PlaceEditForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(PlaceEditForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.form_tag = False
+
+    class Meta:
+        model = Place
+        widgets = {
+            'name' : forms.TextInput,
+            }
+        exclude = ('create_date','reservations_taken','score','deleted','user',
+                'gallery','city', 'direction', 'province', 'initial_date','finish_date','reservations_available')
+
+
+
 class RequestForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
