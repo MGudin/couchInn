@@ -9,7 +9,6 @@ categories = [
     'Cama',
     'Cama king Size',
     'Cuarto',
-    'Cuarto con baño',
     'Departamento',
     'Casa',
     'Casa Quinta'
