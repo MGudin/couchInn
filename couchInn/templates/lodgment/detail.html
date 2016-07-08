@@ -149,6 +149,30 @@
             </div>
           </div>
         </div>
+        <div class="box-footer">
+        <dl class="dl-horizontal">
+          <dt><strong>Descripcion:</strong></dt>
+          <dd>{{lodgment.description}}</dd>
+          <dt><strong>Tipo de hospedaje:</strong></dt>
+          <dd>{{lodgment.category}}</dd>
+          <dt><strong>Publicado por:</strong></dt>
+          <dd><a href="#"> {{lodgment.user.username}}</a></dd>
+          <dt><strong>Ciudad:</strong></dt>
+          <dd>{{lodgment.city}}</dd>
+          <dt><strong>Provincia:</strong></dt>
+          <dd>{{lodgment.province}}</dd>
+          <dt><strong>direccion:</strong></dt>
+          <dd>{{lodgment.direction}}</dd>
+          <dt><strong>Cantidad de personas:</strong></dt>
+          <dd>{{lodgment.reservations_available}}</dd>
+
+        </dl>
+        </div>
+        <a type='button' href='{{ request.META.HTTP_REFERER }}'>Volver</a>
+        {% if lodgment.user != user %}
+        <a type='button' href='{% url "lodgment:new_request" lodgment.id %}'>Solicitar</a>
+        {% endif %}
+
       </div>
   </div>
 </div>

@@ -10,3 +10,4 @@ Pygments==2.1.3
 requests==2.10.0
 six==1.10.0
 wcwidth==0.1.6
+dateutils==0.6.6
