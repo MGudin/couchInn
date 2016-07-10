@@ -30,7 +30,12 @@ def index(request):
 @login_required
 def detail(request,lodgment_id):
     lodgment = get_object_or_404(Place, pk=lodgment_id)
-    question_form = QuestionForm()
+    if request.session.has_key('post_data'):
+        post_data = request.session.pop('post_data')
+    else:
+        post_data = None
+        
+    question_form = QuestionForm(post_data)
     questions = lodgment.question_set.all().order_by('-created_at')
     return render(request,'lodgment/detail.html',{'lodgment':lodgment,
                                                   'question_form': question_form,
@@ -99,6 +104,7 @@ def index_place(request):
 @login_required
 def show_place(request,place_id):
     question_form = QuestionForm()
+    question_form.body = request.session['answer_body']
     place = Place.objects.get(pk=place_id)
     return render(request, 'place/show_place.html',{'place': place,
                                                     'question_form' : question_form})

@@ -100,81 +100,73 @@
           {% if lodgment.user != user %}
           <a type='button' class="btn btn-success" href='{% url "lodgment:new_request" lodgment.id %}'>Solicitar</a>
           {% endif %}
-              </div>
-            </div>
-          </div>
         </div>
-        <div class="row">
-          <div class="col-md-10 col-md-offset-1">
-            <div class="box box-solid box-default">
-              <div class="box-header">
-                <h3 class="box-title"> Preguntas </h3>
-              </div>
-              <form action="{% url 'qa:ask' lodgment.pk %}" role="form" method="post" >
-                <div class="box-body">
-                  {% crispy question_form %}
-                  <div class="pull-right">
-                    <button type="submit" class="btn btn-primary" > preguntar </button>
-                  </div>
-                </div>
-              </form>
-              
-              <div class="box-footer box-comments">
-                {% for question in questions %}
-                <div class="box-comment">
-                  <div class="comment-text">
-                    <span class="username">
-                      un usuario
-                      <span class="text-muted pull-right">
-                        {{ question.created_at }}
-                      </span>
-                    </span>
-                     <p>{{ question.body }}</p>
-                    <div class="box-comment">
-                  <div class="comment-text" style="border: 1px solid black; 
-                                                   background-color: #eee;
-                                                   border-radius: 5px" >
-                    <span class="username">
-                      Respuesta
-                      <span class="text-muted pull-right">
-                        {{ question.created_at }}
-                      </span>
-                    </span>
-                      respuesta aca
-                  </div>
-                  </div>
-                </div>
-                {% endfor %}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="box-footer">
-        <dl class="dl-horizontal">
-          <dt><strong>Descripcion:</strong></dt>
-          <dd>{{lodgment.description}}</dd>
-          <dt><strong>Tipo de hospedaje:</strong></dt>
-          <dd>{{lodgment.category}}</dd>
-          <dt><strong>Publicado por:</strong></dt>
-          <dd><a href="#"> {{lodgment.user.username}}</a></dd>
-          <dt><strong>Ciudad:</strong></dt>
-          <dd>{{lodgment.city}}</dd>
-          <dt><strong>Provincia:</strong></dt>
-          <dd>{{lodgment.province}}</dd>
-          <dt><strong>direccion:</strong></dt>
-          <dd>{{lodgment.direction}}</dd>
-          <dt><strong>Cantidad de personas:</strong></dt>
-          <dd>{{lodgment.reservations_available}}</dd>
-
-        </dl>
-        </div>
-        <a type='button' href='{{ request.META.HTTP_REFERER }}'>Volver</a>
-        {% if lodgment.user != user %}
-        <a type='button' href='{% url "lodgment:new_request" lodgment.id %}'>Solicitar</a>
-        {% endif %}
-
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="box box-solid box-default">
+        <div class="box-header">
+          <h3 class="box-title"> Preguntas </h3>
+        </div>
+        {% if lodgment.user != user %}
+
+        <form action="{% url 'qa:ask' lodgment.pk %}" role="form" method="post" >
+          <div class="box-body">
+            {% crispy question_form %}
+            <div class="pull-right">
+              <button type="submit" class="btn btn-primary" > preguntar </button>
+            </div>
+          </div>
+        </form>
+        {% endif %}
+        <div class="box-footer box-comments">
+          {% if questions %}
+          {% for question in questions %}
+          <div class="box-comment" style="">
+            <div class="comment-text">
+              <span class="username">
+                {{ question.user.user.username }}
+                <span class="text-muted pull-right">
+                  {{ question.created_at }}
+                </span>
+              </span>
+              <p>{{ question.body }}</p>
+              
+              <a type="button" id="responder" class="btn btn-default"> Responder </a>
+              <div id="response-form" class="hide">
+                <p>form de respuesta </p>
+              </div>
+              <!-- <div class="box-comment"> -->
+              <!--   <div class="comment-text" style="  -->
+              <!--                                    background-color: #aaa; -->
+              <!--                                    " > -->
+              <!--     <span class="username"> -->
+              <!--       Respuesta -->
+              <!--       <span class="text-muted pull-right"> -->
+              <!--         {{ question.created_at }} -->
+              <!--       </span> -->
+              <!--     </span> -->
+              <!--     respuesta aca -->
+              <!--   </div> -->
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          {% else %}
+          <p> no hay preguntas al couch </p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="box-footer">
+    </div>
   </div>
 </div>
+</div>
+<script>
+  var boton = $('#responder').on('click', function(){ $('#response-form').toggleClass('hide'); $(this).addClass('hide')});
+</script>
 {% endblock %}
 {% endif %}
