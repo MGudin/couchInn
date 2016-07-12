@@ -133,26 +133,24 @@
                 </span>
               </span>
               <p>{{ question.body }}</p>
-              
-              <a type="button" id="btn-responder-{{ forloop.counter }}" class="btn btn-default"> Responder </a>
-              <div id="response-form-{{ forloop.counter }}" class="hide">
-                <p>form de respuesta </p>
-              </div>
-              <script>
-                var boton = $('#btn-responder-{{ forloop.counter }}').on('click', function(){ $('#response-form-{{ forloop.counter }}').toggleClass('hide'); $(this).addClass('hide')});
-              </script>
-              <!-- <div class="box-comment"> -->
-              <!--   <div class="comment-text" style="  -->
-              <!--                                    background-color: #aaa; -->
-              <!--                                    " > -->
-              <!--     <span class="username"> -->
-              <!--       Respuesta -->
-              <!--       <span class="text-muted pull-right"> -->
-              <!--         {{ question.created_at }} -->
-              <!--       </span> -->
-              <!--     </span> -->
-              <!--     respuesta aca -->
-              <!--   </div> -->
+              {% if question.answer %}
+              <div class="box-comment">
+                <div class="comment-text" style="
+                                                 background-color: #aaa;
+                                                 " >
+                  <span class="username">
+                    {{ question.answer.user.user.username }}
+                    <span class="text-muted pull-right">
+                      {{ question.answer.created_at }}
+                    </span>
+                  </span>
+                  {{ question.answer.body }}
+                </div>
+              {% else %}
+                {% if lodgment.user = user %}
+                <a href="{% url 'qa:answer' question.id %}" type="button" id="btn-responder-{{ forloop.counter }}" class="btn btn-default"> Responder </a>
+                {% endif %}
+              {% endif %}
               </div>
             </div>
             {% endfor %}

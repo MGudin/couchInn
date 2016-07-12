@@ -14,10 +14,10 @@ class Question(models.Model):
     couch = models.ForeignKey(Place)
 
 
-# class Answer(models.Model):
-#     body = models.CharField('Respuesta', max_length=250)
-#     created_at = models.DateTimeField(auto_now_add=True)
+class Answer(models.Model):
+    body = models.CharField('Respuesta', max_length=500, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     
-#     user = models.ForeignKey(CouchinnUser)
-#     question = models.OneToOneField(Question, on_delete=models.CASCADE)
+    user = models.ForeignKey(CouchinnUser)
+    question = models.OneToOneField(Question, on_delete=models.CASCADE)
     

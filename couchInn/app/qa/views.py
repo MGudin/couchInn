@@ -4,7 +4,7 @@ from django.core.urlresolvers import reverse
 
 from app.lodgment.models import Place
 from app.session.models import CouchinnUser
-from .forms import QuestionForm
+from .forms import QuestionForm, AnswerForm
 from .models import Question
 
 
@@ -22,4 +22,20 @@ def ask(request, lodgment_id):
     else:
         request.session['post_data'] = request.POST
     return HttpResponseRedirect(reverse('lodgment:detail', args=(lodgment_id,)))
+    
+
+def answer(request, question_id):
+    form = AnswerForm(request.POST or None)
+    question = get_object_or_404(Question, pk=question_id)
+    if request.method == 'POST':
+        if form.is_valid():
+            print "entro al valid che"
+            answer = form.save(commit=False)
+            answer.user = request.user.couchinnuser
+            answer.question = question
+            answer.save()
+            lodgment_id = question.couch.id
+            return HttpResponseRedirect(reverse('lodgment:detail', args=(lodgment_id,)))
+    return render(request, 'qa/answer.html', { 'form' : form, 'question': question})
+
     
