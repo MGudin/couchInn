@@ -29,7 +29,6 @@ def answer(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     if request.method == 'POST':
         if form.is_valid():
-            print "entro al valid che"
             answer = form.save(commit=False)
             answer.user = request.user.couchinnuser
             answer.question = question
