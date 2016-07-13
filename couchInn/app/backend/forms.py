@@ -18,8 +18,14 @@ class CategoryForm(forms.ModelForm):
 
 
 class DonationFilterForm(forms.Form):
-    initial_date = forms.DateField(label='Fecha de inicio',input_formats=['%d/%m/%Y'], widget= forms.DateInput(attrs={'class':'datepicker'}))
-    finish_date = forms.DateField(label='Fecha de fin',input_formats=['%d/%m/%Y'], widget= forms.DateInput(attrs={'class':'datepicker'}))
+    initial_date = forms.DateField(label='Fecha de inicio',
+                                   input_formats=['%d/%m/%Y'],
+                                   widget= forms.DateInput(attrs={'class':'datepicker',
+                                                                  'placeholder':'fecha de inicio'}))
+    finish_date = forms.DateField(label='Fecha de fin',
+                                  input_formats=['%d/%m/%Y'],
+                                  widget= forms.DateInput(attrs={'class':'datepicker',
+                                                                 'placeholder':'fecha de fin'}))
 
     def __init__(self, *args, **kwargs):
         super(DonationFilterForm, self).__init__(*args, **kwargs)
