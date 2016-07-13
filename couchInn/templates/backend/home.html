@@ -55,7 +55,7 @@
         </div><!-- /.box-tools -->
       </div><!-- /.box-header -->
       <div class="box-body">
-        {% if donations %}
+   
         <table class='table'>
           {% if donation_filter_form.non_field_errors %}
           {% for error in donation_filter_form.non_field_errors %}
@@ -86,7 +86,9 @@
               {% endif %}
             </td>
           </tr>
+          {% if donations %}
           <tr>
+            
             <th> Monto </th>
             <th> Fecha</th>
             <th> Usuario</th>

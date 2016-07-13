@@ -33,7 +33,7 @@ class DonationFilterForm(forms.Form):
         #     today = datetime.date.today()
         init = cleaned_data.get('initial_date')
         end = cleaned_data.get('finish_date')
-        if end <= init :
+        if end < init :
             raise forms.ValidationError('La fecha de fin tiene que ser mayor que la de inicio')
             
         return cleaned_data
