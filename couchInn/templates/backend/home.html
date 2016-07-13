@@ -1,36 +1,118 @@
 {% extends "base.html" %}
-{% block title %}Backend{% endblock %}
+{% load crispy_forms_tags %}
+{% block title %}Administracion{% endblock %}
 {% block content %}
 <div class="row">
   <div class='col-md-10 col-md-offset-1'>
     <br>
-    {% if categories %}
+    <div class="box box-default collapsed-box">
+      <div class="box-header with-border">
+        <h3 class="box-title">Categorias</h3>
+        <div class="box-tools pull-right">
+          <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+        </div><!-- /.box-tools -->
+      </div><!-- /.box-header -->
+      <div class="box-body">
+        {% if categories %}
 
-    <br>
-    <div class="panel panel-default">
-      <div class="panel-heading">Categorias de Hospedajes</div>
-      <table class='table'>
-        <tr>
-          <th> Nombre </th>
-          <th> </th>
-          <th> </th>
-          <th> </th>
-        </tr>
-        {% for category in categories %}
-        <tr>
-          <td>{{ category.name }}</td>
-          <td><a type='button' href='{% url "backend:edit_category" category.id %}'>Editar</a></td>
-          <td><a type='button' href='{% url "backend:show_category" category.id %}'>Ver</a></td>
-          <td><a type='button' href='{% url "backend:delete_category" category.id %}'>Borrar</a></td>
-        </tr>
-        {% endfor %}
-      </table>
-    </div>
-    {% else %}
-    <p>En este momento no hay categorias disponibles.</p>
-    {% endif %}
-
-    <a type='button' href='{% url "backend:new_category" %}'>Crear</a>
-    </ br>
+        
+        
+        <table class='table'>
+          <tr>
+            <th> Nombre </th>
+            <th> </th>
+            <th> </th>
+            <th> </th>
+          </tr>
+          {% for category in categories %}
+          <tr>
+            <td>{{ category.name }}</td>
+            <td><a type='button' href='{% url "backend:edit_category" category.id %}'>Editar</a></td>
+            <td><a type='button' href='{% url "backend:show_category" category.id %}'>Ver</a></td>
+            <td><a type='button' href='{% url "backend:delete_category" category.id %}'>Borrar</a></td>
+          </tr>
+          {% endfor %}
+        </table>
+        {% else %}
+        <p>En este momento no hay categorias disponibles.</p>
+        {% endif %}
+      </div><!-- /.box-body -->
+      <div class="box-footer">
+          <a type='button'  class="btn btn-default pull-right" href='{% url "backend:new_category" %}'>Crear</a>
+      </div>
+    </div><!-- /.box -->
   </div>
-  {% endblock %}
+</div> <!-- /. categorias -->
+
+<div class="row">
+  <div class='col-md-10 col-md-offset-1'>
+    <br>
+    <div class="box box-default">
+      <div class="box-header with-border">
+        <h3 class="box-title">Donaciones</h3> 
+        <div class="box-tools pull-right">
+          <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+        </div><!-- /.box-tools -->
+      </div><!-- /.box-header -->
+      <div class="box-body">
+   
+        <table class='table'>
+          {% if donation_filter_form.non_field_errors %}
+          {% for error in donation_filter_form.non_field_errors %}
+          <div class="callout callout-danger">
+            {{error}}
+          </div>
+          {% endfor %}
+          {% endif %}
+
+          <tr>
+            <form action="" method="post">
+              {% csrf_token %}
+              {% for field in donation_filter_form %}
+              <td>
+                {{ field }}
+              </td>
+              {% endfor %}
+              <td>
+                <button type="submit" class="btn btn-default"> Filtrar </button>
+                <a href="{% url 'backend:home' %}" class="btn btn-default"> borrar </button>
+              </td>
+          </form>
+            <td>
+              Total: $
+              {% if total_donations %}
+              {{ total_donations }}
+              {% else %}
+              0
+              {% endif %}
+            </td>
+          </tr>
+          {% if donations %}
+          <tr>
+            
+            <th> Monto </th>
+            <th> Fecha</th>
+            <th> Usuario</th>
+            <th> </th>
+          </tr>
+          {% for donation in donations %}
+          <tr>
+            <td>{{ donation.amount }}</td>
+            <td>{{ donation.donation_date }}</td>
+            <td>{{ donation.user }}</td>
+            <td></td>
+          </tr>
+          {% endfor %}
+        </table>
+        {% else %}
+        <p>No hay donaciones que mostrar</p>
+        {% endif %}
+      </div><!-- /.box-body -->
+      <div class="box-footer">
+
+      </div>
+    </div><!-- /.box -->
+  </div>
+</div>
+
+{% endblock %}

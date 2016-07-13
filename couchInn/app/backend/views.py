@@ -3,8 +3,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from models import Category
-from forms import CategoryForm
-from django.contrib.auth.decorators import login_required, permission_required 
+from forms import CategoryForm, DonationFilterForm
+from django.contrib.auth.decorators import login_required, permission_required
+from django.db.models import Sum
+from app.donation.models import Donation
+import datetime
 # Create your views here.
 
 @login_required
@@ -32,10 +35,30 @@ def show_category(request, category_id):
     category = get_object_or_404(Category, pk=category_id)
     return render(request,'backend/show_category.html',{'category': category})
 
+import pdb
 @login_required
+
 def home(request):
     categories = Category.objects.exclude(deleted=True)
-    return render(request,'backend/home.html',{'categories': categories})
+    donation_filter_form = DonationFilterForm(request.POST or None)
+    if request.method == 'POST':
+        if donation_filter_form.is_valid():
+            initial_date = request.POST['initial_date']
+            initial_date = datetime.datetime.strptime(initial_date, "%d/%m/%Y").strftime("%Y-%m-%d")
+            finish_date = request.POST['finish_date']
+            finish_date = datetime.datetime.strptime(finish_date, "%d/%m/%Y").strftime("%Y-%m-%d")
+            donations = Donation.objects.filter(donation_date__gt=initial_date).filter(donation_date__lt=finish_date)
+        else:
+            donations = Donation.objects.none()
+    else:
+        donations = Donation.objects.all()
+
+
+    total_donations = donations.aggregate(Sum('amount'))
+    return render(request,'backend/home.html',{'categories': categories,
+                                               'donations' : donations,
+                                               'donation_filter_form':donation_filter_form,
+                                               'total_donations': total_donations['amount__sum']})
 
 @login_required
 @permission_required('backend.delete_category')
@@ -48,3 +71,4 @@ def delete_category(request, category_id):
         u.delete()
 
     return HttpResponseRedirect(reverse('backend:home'))
+

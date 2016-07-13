@@ -13,7 +13,8 @@ from app.gallery.forms import PhotoForm, PhotoFormHelper
 from app.gallery.models import Gallery, Photo
 from app.gallery.widgets import ImagePreviewWidget
 from datetime import datetime
-
+from app.qa.forms import QuestionForm
+from app.qa.models import Question
 # for development
 import pdb;
 def index(request):
@@ -29,7 +30,16 @@ def index(request):
 @login_required
 def detail(request,lodgment_id):
     lodgment = get_object_or_404(Place, pk=lodgment_id)
-    return render(request,'lodgment/detail.html',{'lodgment':lodgment})
+    if request.session.has_key('post_data'):
+        post_data = request.session.pop('post_data')
+    else:
+        post_data = None
+        
+    question_form = QuestionForm(post_data)
+    questions = lodgment.question_set.all().order_by('-created_at')
+    return render(request,'lodgment/detail.html',{'lodgment':lodgment,
+                                                  'question_form': question_form,
+                                                  'questions': questions})
 
 @login_required
 def edit_lodgment(request, lodgment_id):
@@ -88,12 +98,16 @@ def create_place(request):
 @login_required
 def index_place(request):
     places = Place.objects.filter(user=request.user)
+
     return render(request, 'place/index.html',{'places': places})
 
 @login_required
 def show_place(request,place_id):
+    question_form = QuestionForm()
+    question_form.body = request.session['answer_body']
     place = Place.objects.get(pk=place_id)
-    return render(request, 'place/show_place.html',{'place': place})
+    return render(request, 'place/show_place.html',{'place': place,
+                                                    'question_form' : question_form})
 
 
 @login_required
