@@ -17,6 +17,7 @@ def signup(request):
         if user_form.is_valid():
             request.user=user_form.save()
             user = authenticate(username=request.POST['username'], password=request.POST['password1'])
+            user_form.save()
             login(request, user)
             return render(request, 'session/signup_succesfull.html')
         else:
