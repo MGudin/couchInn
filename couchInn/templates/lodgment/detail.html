@@ -97,7 +97,7 @@
             </dl>
           </div>
           <a type='button' class="btn btn-danger" href='/'>Volver</a>
-          {% if lodgment.user != user %}
+          {% if lodgment.user != user and lodgment.have_space %}
           <a type='button' class="btn btn-success" href='{% url "lodgment:new_request" lodgment.id %}'>Solicitar</a>
           {% endif %}
         </div>

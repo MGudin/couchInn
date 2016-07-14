@@ -24,6 +24,7 @@
           <th> </th>
         </tr>
         {% for lodgment in lodgments %}
+        {% if lodgment.have_space %}
         <tr {% if lodgment.has_donation %}style='background-color:#ffebcd' {% endif %}>
           {% if lodgment.gallery.photo_set.all.exists %}
           <td> <img class="thumbnail" src="{{ lodgment.gallery.photo_set.first.photo.url }}" /> </td>
@@ -48,6 +49,7 @@
             {% endif %}
           {% endif %}
         </tr>
+        {% endif %}
         {% endfor %}
       </table>
     </div>
