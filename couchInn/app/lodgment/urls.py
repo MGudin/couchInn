@@ -34,6 +34,7 @@ urlpatterns = [
     # url(r'^couch/(?P<place_id>[0-9]+)/$', views.show_place, name='show_place'),
     url(r'^couch/nuevo$', views.create_place, name='new_place'),
     url(r'^mis_couchs/$', views.index_place, name='index_place'),
+    url(r'^mis_hospedajes/$', views.history, name='history'),
     url(r'^busqueda/$', query.simple_query, name='simple_query'),
     url(r'^busqueda_avanzada/$', query.advance_query, name='advance_query'),
     url(r'^$', views.index, name='index'),

@@ -248,3 +248,11 @@ def reject_request(request,lodgment_id):
         print e
 
     return HttpResponseRedirect(reverse('lodgment:couch_request'))
+
+@login_required
+def history(request):
+    today = datetime.today()
+    couchs = Request.objects.filter(author=request.user).filter(state='AC').filter(finish_date__lt=today)
+
+    return render(request,'lodgment/history.html',{'lodgments':couchs})
+
