@@ -199,6 +199,13 @@ def request_index(request):
         print e
     return render(request,'lodgment/request_index.html',{'requests':requests})
 
+@login_required
+def detail_request(request,lodgment_id):
+    try:
+        place = Request.objects.get(pk=lodgment_id)
+    except Exception as e:
+        print e
+    return render(request,'lodgment/request_detail.html',{'request':place})
 
 @login_required
 def couch_request(request):
@@ -208,3 +215,31 @@ def couch_request(request):
         print e
     return render(request,'lodgment/couch_request.html',{'requests':requests})
 
+@login_required
+def acept_request(request,lodgment_id):
+    try:
+        place = Request.objects.get(pk=lodgment_id)
+        if place.couch.have_space():
+            place.state='AC'
+            place.save()
+            if not place.couch.have_space():
+                place.couch.auto_reject()
+        requests = Request.objects.filter(couch__user=request.user).filter(state='PE')
+
+    except Exception as e:
+        print e
+
+    return HttpResponseRedirect(reverse('lodgment:couch_request'))
+
+
+@login_required
+def reject_request(request,lodgment_id):
+    try:
+        place = Request.objects.get(pk=lodgment_id)
+        place.state='RJ'
+        place.save()
+        requests = Request.objects.filter(couch__user=request.user).filter(state='PE')
+    except Exception as e:
+        print e
+
+    return HttpResponseRedirect(reverse('lodgment:couch_request'))

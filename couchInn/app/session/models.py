@@ -19,3 +19,12 @@ class CouchinnUser(models.Model):
     premium = models.BooleanField(default=False, editable=False)
     total_donations = models.PositiveIntegerField(default=0, editable=False)
     profile_img = models.ImageField(upload_to='session', blank=True)
+
+    def score(self):
+        requests = self.user.request_set.filter(is_score=True)
+        if requests:
+            for req in requests:
+                score += req.score
+            return score
+        return '0'
+

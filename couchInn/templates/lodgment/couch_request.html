@@ -17,7 +17,6 @@
                     <th> Estado </th>
                     <th>Lo solicito </th>
                     <th> </th>
-                    <th> </th>
                 </tr>
                 {% for request in requests %}
                 <tr>
@@ -26,8 +25,7 @@
                     <td>{{ request.finish_date }}</td>
                     <td>{{ request.get_state }}</td>
                     <td><a href='#'>{{ request.author }}</a></td>
-                    <td><a href='#'>Aceptar</a></td>
-                    <td><a href='#'>Rechazar</a></td>
+                    <td><a href='{% url 'lodgment:detail_request' request.id %}'>Detalle</a></td>
                 </tr>
                 {% endfor %}
             </table>

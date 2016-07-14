@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+{% if place %}
+{% block title %}Counchin{% endblock %}
+{% block content %}
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="box box-solid box-default">
+      <div class="box-header">
+        <h3 class="box-title"> Detalles de Hospedaje </h3>
+      </div>
+      <div class="box-body">
+        <div class="row">
+           <div class="col-md-6">
+            <dl class="dl-horizontal">
+              <dt><strong>Solicitante:</strong></dt>
+              <dd>{{request.author}}</dd>
+              <dt><strong>Email:</strong></dt>
+              <dd>{{request.author.email}}</dd>
+              <dt><strong>Couch:</strong></dt>
+              <dd>{{request.couch}}</dd>
+              <dt><strong>Ciudad del couch:</strong></dt>
+              <dd>{{request.couch.city}}</dd>
+              <dt><strong>Direccion del couch:</strong></dt>
+              <dd>{{request.couch.direction}}</dd>
+            </dl>
+            <div class='col-md-offset-1'>
+                <a type='button' class="btn btn-success" href='{% url 'lodgment:acept_request' request.id%}'>Aceptar</a>
+              <a type='button' class="btn btn-danger" style='margin-left:20px' href='{% url 'lodgment:reject_request' request.id%}'>Rechazar</a>
+            </div>
+           </div>
+           <div class="col-md-6">
+              <div class="info-box">
+                <!-- Apply any bg-* class to to the icon to color it -->
+                <span class="info-box-icon bg-yellow glyphicon glyphicon-star"></span>
+                <div class="info-box-content">
+                  <span class="info-box-text">Valoracion del solicitante</span>
+                  <span class="info-box-number">{{ request.author.couchinnuser.score | floatformat:"0" }}</span>
+                </div><!-- /.info-box-content -->
+              </div><!-- /.info-box -->
+              <div class="col-md-6">
+                <div class="callout callout-success">
+                  <h4>Fecha de inicio</h4>
+                  <p>{{ request.initial_date }}</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="callout callout-danger">
+                  <h4>Fecha de fin</h4>
+                  <p>{{ request.finish_date }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="box-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+{% endif %}

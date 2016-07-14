@@ -60,6 +60,12 @@ class Place(models.Model):
     def has_donation(self):
         return self.user.donation_set.exists()
 
+    def have_space(self):
+        return (self.reservations_available > self.request_set.filter(state='AC').count())
+
+    def auto_reject(self):
+        self.request_set.filter(state='PE').update(state='RJ')
+
 # class LodgmentManager(models.Manager):
 #     def get_queryset(self):
 #         return super(LodgmentManager, self).get_queryset().filter(deleted=False).order_by('-author__donation__amount')
@@ -118,6 +124,13 @@ class Request(models.Model):
     state = models.CharField(max_length=2, choices=STATE_CHOICES, default=PENDING)
     author = models.ForeignKey(User)
     couch = models.ForeignKey(Place)
+    score = models.FloatField('Valoración', default=0, 
+        validators = [
+          MaxValueValidator(5),
+          MinValueValidator(0)
+          ]
+        )
+    is_score = models.BooleanField(default=False)
     
     def __str__(self):
       return self.state
