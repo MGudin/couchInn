@@ -15,9 +15,10 @@ def signup(request):
     if request.method == 'POST':
         user_form = forms.CouchinnUserCreationForm(request.POST)
         if user_form.is_valid():
-            request.user=user_form.save()
+            couchinnuser = user_form.save()
+#            request.user=couchinnuser.user
             user = authenticate(username=request.POST['username'], password=request.POST['password1'])
-            user_form.save()
+
             login(request, user)
             return render(request, 'session/signup_succesfull.html')
         else:
