@@ -14,36 +14,48 @@ def seed_donations(apps, schema_editor):
     juan = User.objects.get(username='juan88')
     mica = User.objects.get(username='micaela_sk8')
     donation = apps.get_model('donation', 'Donation')
+
+    
     d1 = donation(amount=50)
     d1.user_id = juan.id
+    juan.couchinnuser.total_donations = juan.couchinnuser.total_donations + d1.amount
     d1.save()
     d1.donation_date=datetime.date(2016,7,1)
     d1.save()
+    
     d2 = donation(amount=100 )
     d2.user_id = mica.id
+    mica.couchinnuser.total_donations = mica.couchinnuser.total_donations + d2.amount
     d2.save()
     d2.donation_date=datetime.date(2016,6,1)
     d2.save()
+    
     d3 = donation(amount=75)
     d3.user_id = juan.id
+    juan.couchinnuser.total_donations = juan.couchinnuser.total_donations + d3.amount
     d3.save()
     d3.donation_date=datetime.date(2016,6,30)
     d3.save()
+    
     d4 = donation(amount=50)
     d4.user_id = mica.id
     d4.save()
+    mica.couchinnuser.total_donations = mica.couchinnuser.total_donations + d4.amount
     d4.donation_date=datetime.date(2016,7,8)
     d4.save()
+    
     d5 = donation(amount=10)
     d5.user_id = juan.id
+    juan.couchinnuser.total_donations = juan.couchinnuser.total_donations + d5.amount
     d5.save()
     d5.donation_date=datetime.date(2016,3,1)
     d5.save()
+    
     # por tener donaciones los usuarios deben ser premium
     juan.couchinnuser.premium = True
-    juan.save()
+    juan.couchinnuser.save()
     mica.couchinnuser.premium = True
-    mica.save()
+    mica.couchinnuser.save()
     
 class Migration(migrations.Migration):
 
