@@ -222,8 +222,12 @@ def acept_request(request,lodgment_id):
         if place.couch.have_space():
             place.state='AC'
             place.save()
+            messages.success(request, 'La solicitud a sido aceptada.')
             if not place.couch.have_space():
                 place.couch.auto_reject()
+        else:
+            messages.warning(request, 'El couch ya no tiene lugar.')
+
         requests = Request.objects.filter(couch__user=request.user).filter(state='PE')
 
     except Exception as e:
@@ -238,6 +242,7 @@ def reject_request(request,lodgment_id):
         place = Request.objects.get(pk=lodgment_id)
         place.state='RJ'
         place.save()
+        messages.success(request, 'La solicitud a sido rechazada.')
         requests = Request.objects.filter(couch__user=request.user).filter(state='PE')
     except Exception as e:
         print e
