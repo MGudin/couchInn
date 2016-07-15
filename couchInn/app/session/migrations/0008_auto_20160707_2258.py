@@ -62,15 +62,16 @@ couchinnuser_data = [
           
 
 def add_app_users(apps, schema_editor):
-    ### creates 3 app users with their current profile 
+    ### creates 3 app users with their current profile
+    cu = apps.get_model('session', 'CouchinnUser')
     for user, profile in zip(users_data, couchinnuser_data):
         #creates the user and stores in db
         u = User(**user)
         u.set_password('pass12345')
         u.save()
         # creates the profile and relates tu user
-        p = CouchinnUser(**profile)
-        p.user = u
+        p = cu(**profile)
+        p.user_id = u.id
         p.save()
         
          

@@ -35,7 +35,7 @@ class Place(models.Model):
     reservations_available = models.PositiveSmallIntegerField('Cantidad de personas',
             validators =[MinValueValidator(1)]
             )
-    score = models.FloatField('Valoración', default=0, 
+    score = models.PositiveSmallIntegerField('Valoración', default=0, 
         validators = [
             MaxValueValidator(5),
             MinValueValidator(0)
@@ -130,7 +130,8 @@ class Request(models.Model):
           MinValueValidator(0)
           ]
         )
-    is_score = models.BooleanField(default=False)
+    host_scored = models.BooleanField(default=False)
+    tenant_scored = models.BooleanField(default=False)
     
     def __str__(self):
       return self.state

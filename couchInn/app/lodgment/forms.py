@@ -155,3 +155,19 @@ class SearchForm(forms.Form):
     #
     #     return cleaned_data
    
+class ScoreForm(forms.Form):
+    
+    def __init__(self, *args, **kwargs):
+        super(ScoreForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.form_tag = False
+
+    CHOICES = (( 1, 'mala',),
+               ( 2, 'regular',),
+               ( 3, 'buena',),
+               ( 4, 'muy buena',),
+               (5, 'excelente'))
+    score = forms.ChoiceField(label='Seleccione un puntaje', widget=forms.RadioSelect, choices=CHOICES)
+    review = forms.CharField(widget=forms.Textarea(attrs={ 'placeholder' : 'Si lo desea puede dejar un comentario'}), required=False)
+    
+    
