@@ -8,23 +8,30 @@ from django.contrib import messages
 from dateutil import rrule, parser
 
 from .models import Place, Request
-from .forms import PlaceForm, RequestForm, PlaceEditForm
+from .forms import PlaceForm, RequestForm, PlaceEditForm, ScoreForm
 from app.gallery.forms import PhotoForm, PhotoFormHelper
 from app.gallery.models import Gallery, Photo
 from app.gallery.widgets import ImagePreviewWidget
 from datetime import datetime
 from app.qa.forms import QuestionForm
 from app.qa.models import Question
+
 # for development
 import pdb;
+
 def index(request):
     today = datetime.today()
     try:
-        lodgments = Place.actives.all().exclude(finish_date__lt=today)
+        lodgments = Place.actives.all()#.exclude(finish_date__lt=today)
     except Exception as e:
         print e
+    if request.user.is_authenticated():
+        estadia_sin_puntuar = Request.objects.filter(author=request.user).filter(finish_date__lt=today).filter(host_scored=False)
+    else:
+       estadia_sin_puntuar = None
        
-    return render(request,'lodgment/index.html',{'lodgments':lodgments})
+    return render(request,'lodgment/index.html',{'lodgments':lodgments,
+                                                 'estadia_sin_puntuar': estadia_sin_puntuar})
 # Create your views here.
 
 @login_required
@@ -256,3 +263,23 @@ def history(request):
 
     return render(request,'lodgment/history.html',{'lodgments':couchs})
 
+
+
+@login_required
+def score_couch(request, couch_id, request_id):
+    form = ScoreForm(request.POST or None)
+    req = get_object_or_404(Request, pk=request_id)
+    couch = get_object_or_404(Place, pk=couch_id)
+    if request.method == 'POST':
+        if form.is_valid():
+            score = form.cleaned_data['score']
+            score = int(score)
+            couch.score = score
+            req.host_scored = True
+            couch.user.couchinnuser.as_tenant_rank = score
+            couch.user.couchinnuser.save()
+            couch.save()
+            req.save()
+            return HttpResponseRedirect(reverse('lodgment:index'))
+    return render(request, 'lodgment/score_couch.html', {'form': form})
+            

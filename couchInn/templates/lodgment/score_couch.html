@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Counchin{% endblock %}
+{% block content %}
+<div class="row">
+  <div class='col-md-10 col-md-offset-1'>
+    <div class="box">
+      <div class="box-header with-border">
+        <h3 class="box-title">Puntuar Estadia</h3>
+        <div class="box-tools pull-right">
+          <!-- Buttons, labels, and many other things can be placed here! -->
+          <!-- Here is a label for example -->
+        </div><!-- /.box-tools -->
+      </div><!-- /.box-header -->
+      <div class="callout callout-info">
+        <h4><i class="icon fa fa-info"></i>  Aclaracion </h4>
+        <p> Una vez que puntue su estadia,
+          dicha puntuacion sera irreversible
+        </p>
+      </div>
+      <form method="post" action="">
+      <div class="box-body">
+
+          {% crispy form %}
+          
+
+      </div><!-- /.box-body -->
+      <div class="box-footer">
+        <a class="btn btn-danger" href="{% url 'lodgment:index' %}"> volver </a>
+        <button type="submit" class="btn btn-success "> Puntuar! </button>
+
+      </div><!-- box-footer -->
+      </form>
+    </div><!-- /.box -->
+
+  </div>
+</div>
+  {% endblock %}
