@@ -86,7 +86,7 @@
             
             <td>{{ estadia.initial_date}}</td>
             <td>{{ estadia.finish_date}}</td>
-            <td> {% if estadia.host_scored %} <span class="label label-primary">Puntuada</span> {% else %} <a href="{% url 'lodgment:score_couch' estadia.id %}" class="btn btn-success"> Puntuar </a> {% endif %}
+            <td> {% if estadia.host_scored %} <span class="label label-primary">Puntuada</span> {% else %} <span class="label label-warning"> Aun no puntuaste</span> {% endif %}
             </td>
           </tr>
           {% endfor %}
@@ -131,7 +131,7 @@
             </td>
             <td>{{ estadia.initial_date}}</td>
             <td>{{ estadia.finish_date}}</td>
-            <td> {% if estadia.tenant_scored %} <span class="label label-primary">Puntuado</span> {% else %} <a href="{% url 'lodgment:score_host' estadia.id %}" class="btn btn-success"> Puntuar </a> {% endif %}
+            <td> {% if estadia.tenant_scored %} <span class="label label-primary">Puntuado</span> {% else %}<span class="label label-warning">Aun no puntuaste </span> {% endif %}
             </td>
           </tr>
           {% endfor %}

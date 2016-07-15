@@ -287,7 +287,7 @@ def score_couch(request, request_id):
             couch.score = score
             req.host_scored = True
             req.tenant_score = score
-            couch.user.couchinnuser.as_tenant_rank = score
+            couch.user.couchinnuser.as_tenant_rank = couch.user.couchinnuser.as_tenant_rank + score
             couch.user.couchinnuser.save()
             couch.save()
             req.save()
