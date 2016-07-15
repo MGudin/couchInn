@@ -137,6 +137,9 @@ class Request(models.Model):
                                                   ])
     host_scored = models.BooleanField(default=False)
     tenant_scored = models.BooleanField(default=False)
+
+    date_accepted = models.DateField('fecha de aceptacion')
+
     
     def __str__(self):
       return self.state
