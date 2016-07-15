@@ -99,7 +99,7 @@ class RequestForm(forms.ModelForm):
 
     class Meta:
         model = Request
-        exclude = ('author', 'couch', 'create_date','state', 'score', 'is_score')
+        exclude = ('author', 'couch', 'create_date','state', 'score', 'host_score', 'tenant_score', 'host_scored', 'tenant_scored', 'date_accepted')
 
     def clean(self):
         cleaned_data = super(RequestForm, self).clean()

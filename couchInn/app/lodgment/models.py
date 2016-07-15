@@ -18,7 +18,9 @@ ESTADO={
 # Create your models here.
 class PlaceManager(models.Manager):
     def get_queryset(self):
-        return super(PlaceManager, self).get_queryset().filter(deleted=False)
+        return super(PlaceManager, self).get_queryset().filter(deleted=False).order_by('-user__donation__amount')
+
+
 
 class Place(models.Model):
     title = models.CharField('Titulo', max_length=50, default='sin titulo')
@@ -65,10 +67,6 @@ class Place(models.Model):
 
     def auto_reject(self):
         self.request_set.filter(state='PE').update(state='RJ')
-
-# class LodgmentManager(models.Manager):
-#     def get_queryset(self):
-#         return super(LodgmentManager, self).get_queryset().filter(deleted=False).order_by('-author__donation__amount')
 #
 # class Lodgment(models.Model):
 #     title = models.CharField('Titulo', max_length=50, default='sin titulo')

@@ -199,6 +199,7 @@ def new_request(request, lodgment_id):
        n_request.author = request.user
        n_request.state = 'PE'
        n_request.couch = lodgment
+       n_request.date_accepted = datetime.today()
        messages.success(request, 'La solicitud a sido enviada.')
        n_request.save()
        return redirect(reverse('lodgment:index'))
@@ -236,6 +237,7 @@ def acept_request(request,lodgment_id):
         place = Request.objects.get(pk=lodgment_id)
         if place.couch.have_space():
             place.state='AC'
+            place.date_accepted = datetime.today()
             place.save()
             messages.success(request, 'La solicitud a sido aceptada.')
             if not place.couch.have_space():
