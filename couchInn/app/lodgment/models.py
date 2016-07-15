@@ -67,6 +67,11 @@ class Place(models.Model):
 
     def auto_reject(self):
         self.request_set.filter(state='PE').update(state='RJ')
+
+    @property
+    def is_finished(self):
+        return self.finish_date < date.today()
+        
 #
 # class Lodgment(models.Model):
 #     title = models.CharField('Titulo', max_length=50, default='sin titulo')

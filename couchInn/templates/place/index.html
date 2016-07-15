@@ -37,8 +37,12 @@
           <td>{{ place.score }}</td>
           <td><a type='button' href="{% url 'lodgment:detail' place.id %}">Ver</a></td>
           {% if user.is_authenticated %}
+          {% if place.is_finished %}
+          <td><span class="label label-warning"> hospedaje finalizado </span></td>      {% else %}
           <td><a type='button' href="{% url 'lodgment:edit_place' place.id %}">Editar</a></td>
           <td><a type='button' href="{% url 'lodgment:delete_lodgment' place.id %}">Borrar</a></td>
+          {% endif %}
+          
           {% endif %}
           {% endif %}
         </tr>
