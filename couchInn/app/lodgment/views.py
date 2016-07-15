@@ -25,13 +25,21 @@ def index(request):
         lodgments = Place.actives.all()#.exclude(finish_date__lt=today)
     except Exception as e:
         print e
+    # si hay usuario logueado traete las solicitudes que no 
+    # puntuo como inquilino
     if request.user.is_authenticated():
-        estadia_sin_puntuar = Request.objects.filter(author=request.user).filter(finish_date__lt=today).filter(host_scored=False)
+        estadias_sin_puntuar = Request.objects.filter(author=request.user).filter(finish_date__lt=today).filter(host_scored=False)
     else:
-       estadia_sin_puntuar = None
-       
+       estadias_sin_puntuar = None
+    # si hay usuario logueado traete las solicitudes que no 
+    # puntuo como dueño del couch
+    if request.user.is_authenticated():
+        inquilinos_sin_puntuar = Request.objects.filter(couch__user=request.user).filter(finish_date__lt=today).filter(tenant_scored=False)
+    else:
+       inquilinos_sin_puntuar = None
     return render(request,'lodgment/index.html',{'lodgments':lodgments,
-                                                 'estadia_sin_puntuar': estadia_sin_puntuar})
+                                                 'estadias_sin_puntuar': estadias_sin_puntuar,
+                                                 'inquilinos_sin_puntuar': inquilinos_sin_puntuar})
 # Create your views here.
 
 @login_required
@@ -266,10 +274,10 @@ def history(request):
 
 
 @login_required
-def score_couch(request, couch_id, request_id):
+def score_couch(request, request_id):
     form = ScoreForm(request.POST or None)
     req = get_object_or_404(Request, pk=request_id)
-    couch = get_object_or_404(Place, pk=couch_id)
+    couch = req.couch
     if request.method == 'POST':
         if form.is_valid():
             score = form.cleaned_data['score']
@@ -281,5 +289,22 @@ def score_couch(request, couch_id, request_id):
             couch.save()
             req.save()
             return HttpResponseRedirect(reverse('lodgment:index'))
-    return render(request, 'lodgment/score_couch.html', {'form': form})
-            
+    return render(request, 'lodgment/score_couch.html', {'form': form,
+                                                         'req':req})
+
+@login_required
+def score_host(request,request_id):
+    form = ScoreForm(request.POST or None)
+    req = get_object_or_404(Request, pk=request_id)
+    if request.method == 'POST':
+        if form.is_valid():
+            score = form.cleaned_data['score']
+            score = int(score)
+            couchinnuser = req.author.couchinnuser
+            couchinnuser.as_host_rank = couchinnuser.as_host_rank + score
+            req.tenant_scored = True
+            couchinnuser.save()
+            req.save()
+            return HttpResponseRedirect(reverse('lodgment:index'))
+    return render(request, 'lodgment/score_host.html', {'form': form,
+                                                        'req': req})

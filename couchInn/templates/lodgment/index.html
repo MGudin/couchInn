@@ -5,7 +5,7 @@
   <div class='col-md-10 col-md-offset-1'>
     <br>
     {% if user.is_authenticated %}
-    {% if estadia_sin_puntuar %}
+    {% if estadias_sin_puntuar %}
     <div class="box box-default collapsed-box">
       <div class="box-header with-border">
         <h3 class="box-title">Usted tiene estadias sin puntuar</h3>
@@ -22,12 +22,12 @@
           <th> Fecha de fin </th>
           <th>  </th>
         </tr>
-        {% for couch in estadia_sin_puntuar %}
+        {% for couch in estadias_sin_puntuar %}
         <tr>
           <td> {{ couch.couch.title }} </td>
           <td> {{ couch.initial_date }} </td>
           <td> {{ couch.finish_date }} </td>
-          <td> <a class="btn btn-success" href="{% url 'lodgment:score_couch'  couch_id=couch.couch.id request_id=couch.id %}"> puntuar </a> </td>
+          <td> <a class="btn btn-success" href="{% url 'lodgment:score_couch' request_id=couch.id %}"> puntuar </a> </td>
         </tr>
           {% endfor %}
         </table>
@@ -36,6 +36,42 @@
     
     {% endif %}
     {% endif %}
+
+    {% if user.is_authenticated %}
+    {% if inquilinos_sin_puntuar %}
+    <div class="box box-default collapsed-box">
+      <div class="box-header with-border">
+        <h3 class="box-title">Usted tiene inquilinos sin puntuar</h3>
+        <div class="box-tools pull-right">
+          <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+        </div><!-- /.box-tools -->
+      </div><!-- /.box-header -->
+      <div class="box-body">
+        <table class="table">
+        <tr>
+
+          <th> Nombre del couch </th>
+          <th> Nombre del inquilino </th>
+          <th> Fecha de inicio </th>
+          <th> Fecha de fin </th>
+          <th>  </th>
+        </tr>
+        {% for couch in inquilinos_sin_puntuar %}
+        <tr>
+          <td> {{ couch.couch.title }} </td>
+          <td> {{ couch.author }} </td>
+          <td> {{ couch.initial_date }} </td>
+          <td> {{ couch.finish_date }} </td>
+          <td> <a class="btn btn-success" href="{% url 'lodgment:score_host' request_id=couch.id %}"> puntuar </a> </td>
+        </tr>
+          {% endfor %}
+        </table>
+      </div><!-- /.box-body -->
+    </div><!-- /.box -->
+    
+    {% endif %}
+    {% endif %}
+
     {% if lodgments %}
 
     <br>

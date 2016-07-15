@@ -37,6 +37,7 @@ urlpatterns = [
     url(r'^mis_hospedajes/$', views.history, name='history'),
     url(r'^busqueda/$', query.simple_query, name='simple_query'),
     url(r'^busqueda_avanzada/$', query.advance_query, name='advance_query'),
-    url(r'^score_couch/(?P<couch_id>[0-9]+)/(?P<request_id>[0-9]+)$', views.score_couch, name='score_couch'),
+    url(r'^score_couch/(?P<request_id>[0-9]+)$', views.score_couch, name='score_couch'),
+    url(r'^score_host/(?P<request_id>[0-9]+)$', views.score_host, name='score_host'),
     url(r'^$', views.index, name='index'),
 ]

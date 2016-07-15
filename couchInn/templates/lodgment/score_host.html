@@ -14,22 +14,25 @@
       </div><!-- /.box-header -->
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <p> Usted esta puntuando su estadia en
-            el couch <strong>{{ req.couch }} </strong>
-            a cargo de <strong> {{ req.couch.user }} </strong>
-            entre las fechas <strong>{{ req.initial_date }} </strong>
-            y <strong> {{ req.finish_date }} </strong>
-          </p>
+      <p> Usted esta puntuando la estadia de
+          <strong>{{ req.author }}</strong>
+          que se hospedo en su couch
+          <strong> {{ req.couch.title }} </strong>
+          entre los dias <strong>{{ req.couch.initial_date }}</strong>
+          y <strong>{{ req.couch.finish_date }} </strong>
+        </p>
       <div class="callout callout-info">
+        
         <h4><i class="icon fa fa-info"></i>  Tenga en cuenta: </h4>
-        <p> Una vez que puntue su estadia,
+        <p> Una vez que puntue al inquilino,
           dicha puntuacion sera irreversible
         </p>
       </div>
       </div>
       </div>
       <form method="post" action="">
-      <div class="box-body">
+        <div class="box-body">
+
 
           {% crispy form %}
           
