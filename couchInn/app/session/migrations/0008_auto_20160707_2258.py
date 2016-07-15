@@ -13,12 +13,15 @@ from app.session.models import CouchinnUser
 
 def add_superuser(apps, schema_editor):
     # creates a base superuser
+    cu = apps.get_model('session', 'CouchinnUser')
     su = User(username='admin', email='admin@admin.com')
-    su.set_password('sarasarasa')
+    su.set_password('pass12345')
     su.is_superuser = True,
     su.is_staff = True,
     su.save()
-
+    profile = cu()
+    profile.user_id = su.id
+    profile.save()
 
     
 ## users Data

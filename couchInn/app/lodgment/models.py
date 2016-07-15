@@ -18,7 +18,7 @@ ESTADO={
 # Create your models here.
 class PlaceManager(models.Manager):
     def get_queryset(self):
-        return super(PlaceManager, self).get_queryset().filter(deleted=False).order_by('-user__donation__amount')
+        return super(PlaceManager, self).get_queryset().filter(deleted=False)#.order_by('-user__donation__amount')
 
 
 
