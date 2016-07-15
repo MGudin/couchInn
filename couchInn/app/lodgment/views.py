@@ -284,7 +284,7 @@ def score_couch(request, request_id):
         if form.is_valid():
             score = form.cleaned_data['score']
             score = int(score)
-            couch.score = score
+            couch.score = couch.score + score
             req.host_scored = True
             req.tenant_score = score
             couch.user.couchinnuser.as_tenant_rank = couch.user.couchinnuser.as_tenant_rank + score
