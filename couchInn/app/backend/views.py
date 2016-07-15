@@ -3,10 +3,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from models import Category
-from forms import CategoryForm, DonationFilterForm
+from forms import CategoryForm, DateFilterForm, RequestFilterForm
 from django.contrib.auth.decorators import login_required, permission_required
 from django.db.models import Sum
 from app.donation.models import Donation
+from app.lodgment.models import Request
 import datetime
 # Create your views here.
 
@@ -40,14 +41,16 @@ import pdb
 
 def home(request):
     categories = Category.objects.exclude(deleted=True)
-    donation_filter_form = DonationFilterForm(request.POST or None)
+    donation_filter_form = DateFilterForm(request.POST or None)
+    request_filter_form = RequestFilterForm()
+    requests = Request.objects.filter(state='AC')
     if request.method == 'POST':
         if donation_filter_form.is_valid():
             initial_date = request.POST['initial_date']
             initial_date = datetime.datetime.strptime(initial_date, "%d/%m/%Y").strftime("%Y-%m-%d")
             finish_date = request.POST['finish_date']
             finish_date = datetime.datetime.strptime(finish_date, "%d/%m/%Y").strftime("%Y-%m-%d")
-            donations = Donation.objects.filter(donation_date__gt=initial_date).filter(donation_date__lt=finish_date)
+            donations = Donation.objects.filter(donation_date__gte=initial_date).filter(donation_date__lte=finish_date)
         else:
             donations = Donation.objects.none()
     else:
@@ -58,8 +61,40 @@ def home(request):
     return render(request,'backend/home.html',{'categories': categories,
                                                'donations' : donations,
                                                'donation_filter_form':donation_filter_form,
-                                               'total_donations': total_donations['amount__sum']})
+                                               'total_donations': total_donations['amount__sum'],
+                                               'request_filter_form':request_filter_form,
+                                               'requests':requests})
 
+
+def request_filter(request):
+    categories = Category.objects.exclude(deleted=True)
+    donation_filter_form = DateFilterForm()
+    donations = Donation.objects.all()
+    total_donations = donations.aggregate(Sum('amount'))
+
+    request_filter_form = RequestFilterForm(request.POST or None)
+
+    if request.method == 'POST':
+        if request_filter_form.is_valid():
+            initial_date = request.POST['initial_date_s']
+            initial_date = datetime.datetime.strptime(initial_date, "%d/%m/%Y").strftime("%Y-%m-%d")
+            finish_date = request.POST['finish_date_s']
+            finish_date = datetime.datetime.strptime(finish_date, "%d/%m/%Y").strftime("%Y-%m-%d")
+            requests = Request.objects.filter(state="AC").filter(date_accepted__gte=initial_date).filter(date_accepted__lte=finish_date)
+        else:
+            requests = Request.objects.none()
+    else:
+        requests = Request.objects.filter(state='AC')
+
+    return render(request,'backend/home.html',{'categories': categories,
+                                               'donations' : donations,
+                                               'donation_filter_form':donation_filter_form,
+                                               'total_donations': total_donations['amount__sum'],
+                                               'requests':requests,
+                                               'request_filter_form':request_filter_form})
+
+    
+    
 @login_required
 @permission_required('backend.delete_category')
 def delete_category(request, category_id):

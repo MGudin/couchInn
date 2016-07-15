@@ -17,7 +17,7 @@ class CategoryForm(forms.ModelForm):
         fields = ['name']
 
 
-class DonationFilterForm(forms.Form):
+class DateFilterForm(forms.Form):
     initial_date = forms.DateField(label='Fecha de inicio',
                                    input_formats=['%d/%m/%Y'],
                                    widget= forms.DateInput(attrs={'class':'datepicker',
@@ -28,13 +28,13 @@ class DonationFilterForm(forms.Form):
                                                                  'placeholder':'fecha de fin'}))
 
     def __init__(self, *args, **kwargs):
-        super(DonationFilterForm, self).__init__(*args, **kwargs)
+        super(DateFilterForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper(self)
         self.helper.form_tag = False
 
     
     def clean(self):
-        cleaned_data = super(DonationFilterForm, self).clean()
+        cleaned_data = super(DateFilterForm, self).clean()
         # try:
         #     today = datetime.date.today()
         init = cleaned_data.get('initial_date')
@@ -43,3 +43,36 @@ class DonationFilterForm(forms.Form):
             raise forms.ValidationError('La fecha de fin tiene que ser mayor que la de inicio')
             
         return cleaned_data
+
+
+class RequestFilterForm(forms.Form):
+
+
+    initial_date_s = forms.DateField(label='Fecha de inicio',
+                                   input_formats=['%d/%m/%Y'],
+                                   widget= forms.DateInput(attrs={
+                                                                  'placeholder':'fecha de inicio',
+                                                                  'id':'datepicker2'}))
+    finish_date_s = forms.DateField(label='Fecha de fin',
+                                  input_formats=['%d/%m/%Y'],
+                                  widget= forms.DateInput(attrs={
+                                                                 'placeholder':'fecha de fin',
+                                                                 'id': 'datepicker3'}))
+
+    def __init__(self, *args, **kwargs):
+        super(RequestFilterForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.form_tag = False
+
+        
+    def clean(self):
+        cleaned_data = super(RequestFilterForm, self).clean()
+        # try:
+        #     today = datetime.date.today()
+        init = cleaned_data.get('initial_date_s')
+        end = cleaned_data.get('finish_date_s')
+        if end < init :
+            raise forms.ValidationError('La fecha de fin tiene que ser mayor que la de inicio')
+            
+        return cleaned_data
+

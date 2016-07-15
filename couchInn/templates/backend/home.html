@@ -115,4 +115,70 @@
   </div>
 </div>
 
+<div class="row">
+  <div class='col-md-10 col-md-offset-1'>
+    <br>
+    <div class="box box-default">
+      <div class="box-header with-border">
+        <h3 class="box-title">Solicitudes aceptadas</h3> 
+        <div class="box-tools pull-right">
+          <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+        </div><!-- /.box-tools -->
+      </div><!-- /.box-header -->
+      <div class="box-body">
+   
+        <table class='table'>
+          {% if request_filter_form.non_field_errors %}
+          {% for error in request_filter_form.non_field_errors %}
+          <div class="callout callout-danger">
+            {{error}}
+          </div>
+          {% endfor %}
+          {% endif %}
+
+          <tr>
+            <form action="{% url 'backend:filtro_solicitudes' %}" method="post">
+              {% csrf_token %}
+              {% for field in request_filter_form %}
+              <td>
+                {{ field }}
+              </td>
+              {% endfor %}
+              <td>
+                <button type="submit" class="btn btn-default"> Filtrar </button>
+                <a href="{% url 'backend:home' %}" class="btn btn-default"> borrar </button>
+              </td>
+          </form>
+          </tr>
+          {% if requests %}
+          <tr>
+            
+            <th> Solicitada por </th>
+            <th> fecha</th>
+            <th> Aceptada por</th>
+            <th> </th>
+          </tr>
+          {% for request in requests %}
+          <tr>
+            <td>{{ request.author }}</td>
+            <td>{{ request.date_accepted }}</td>
+            <td>{{ request.couch.user }}</td>
+            <td></td>
+          </tr>
+          {% endfor %}
+        </table>
+        {% else %}
+        <p>No hay solicitudes que mostrar</p>
+        {% endif %}
+      </div><!-- /.box-body -->
+      <div class="box-footer">
+
+      </div>
+    </div><!-- /.box -->
+  </div>
+</div>
+<script>
+  $('#datepicker2').datepicker({dateFormat: 'dd/mm/yy'});
+  $('#datepicker3').datepicker({dateFormat: 'dd/mm/yy'})
+</script>
 {% endblock %}
