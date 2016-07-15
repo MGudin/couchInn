@@ -124,12 +124,17 @@ class Request(models.Model):
     state = models.CharField(max_length=2, choices=STATE_CHOICES, default=PENDING)
     author = models.ForeignKey(User)
     couch = models.ForeignKey(Place)
-    score = models.FloatField('Valoración', default=0, 
+    host_score = models.PositiveSmallIntegerField('Valoración', default=0, 
         validators = [
           MaxValueValidator(5),
           MinValueValidator(0)
           ]
         )
+    tenant_score = models.PositiveSmallIntegerField('Valoración', default=0, 
+                                                  validators = [
+                                                      MaxValueValidator(5),
+                                                      MinValueValidator(0)
+                                                  ])
     host_scored = models.BooleanField(default=False)
     tenant_scored = models.BooleanField(default=False)
     

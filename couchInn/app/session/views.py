@@ -5,11 +5,12 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
+import datetime
 
 # Create your views here.
 from . import forms
 from .models import CouchinnUser
-
+from app.lodgment.models import Request
 
 def signup(request):
     if request.method == 'POST':
@@ -30,8 +31,13 @@ def signup(request):
 
 @login_required
 def profile(request):
+    today = datetime.date.today()
     profile = request.user.couchinnuser
-    return render(request, 'session/profile.html', {'profile':profile})
+    estadias_vencidas = Request.objects.filter(author=request.user).filter(finish_date__lt=today).filter(state='AC')
+    couchs_vencidos = Request.objects.filter(couch__user=request.user).filter(finish_date__lt=today).filter(state='AC')
+    return render(request, 'session/profile.html', {'profile':profile,
+                                                    'estadias_vencidas': estadias_vencidas,
+                                                    'couchs_vencidos':couchs_vencidos})
 
 import pdb
 @login_required

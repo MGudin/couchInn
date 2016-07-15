@@ -284,6 +284,7 @@ def score_couch(request, request_id):
             score = int(score)
             couch.score = score
             req.host_scored = True
+            req.tenant_score = score
             couch.user.couchinnuser.as_tenant_rank = score
             couch.user.couchinnuser.save()
             couch.save()
@@ -303,6 +304,7 @@ def score_host(request,request_id):
             couchinnuser = req.author.couchinnuser
             couchinnuser.as_host_rank = couchinnuser.as_host_rank + score
             req.tenant_scored = True
+            req.host_score = score
             couchinnuser.save()
             req.save()
             return HttpResponseRedirect(reverse('lodgment:index'))

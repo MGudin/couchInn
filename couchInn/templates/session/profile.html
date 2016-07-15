@@ -51,6 +51,98 @@
       </div>
     </div>
   </div>
+  <div class="col-md-8">
+    <div class="box box-solid box-warning">
+      <div class="box-header">
+        <h3 class="box-title">Mis estadias finalizadas</h3>
+        <div class="box-tools pull-right">
+          <!-- Buttons, labels, and many other things can be placed here! -->
+          <!-- Here is a label for example -->
+          
+        </div><!-- /.box-tools -->
+      </div><!-- /.box-header -->
+      <div class="box-body">
+        {% if estadias_vencidas %}
+        <table class="table">
+          <tr>
+            <th> couch </th>
+            <th> titular </th>
+            <th> puntuacion </th>
+            <th> fecha de inicio </th>
+            <th> fecha de fin </th>
+            <th></th>
+          </tr>
+          {% for estadia in estadias_vencidas %}
+          <tr>
+            <td>{{ estadia.couch }}</td>
+            <td>{{ estadia.couch.user }}</td>
+            <td>
+              {% if estadia.tenant_scored %}
+              <span class="label label-success">{{ estadia.host_score }}</span>
+              {% else %}
+              <span class="label label-primary">no puntuo aun</span>
+              {% endif %}
+            </td>
+            
+            <td>{{ estadia.initial_date}}</td>
+            <td>{{ estadia.finish_date}}</td>
+            <td> {% if estadia.host_scored %} <span class="label label-primary">Puntuada</span> {% else %} <a href="{% url 'lodgment:score_couch' estadia.id %}" class="btn btn-success"> Puntuar </a> {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+        {% else %}
+        <p> No hay estadias que mostrar </p>
+        {% endif %}
+      </div><!-- /.box-body -->
+    </div><!-- /.box -->
+  </div>
+    <div class="col-md-8">
+    <div class="box box-solid box-warning">
+      <div class="box-header">
+        <h3 class="box-title">Mis couchs finalizados</h3>
+        <div class="box-tools pull-right">
+          <!-- Buttons, labels, and many other things can be placed here! -->
+          <!-- Here is a label for example -->
+          
+        </div><!-- /.box-tools -->
+      </div><!-- /.box-header -->
+      <div class="box-body">
+        {% if couchs_vencidos %}
+        <table class="table">
+          <tr>
+            <th> couch </th>
+            <th> inquilino </th>
+            <th> puntuacion </th>
+            <th> fecha de inicio </th>
+            <th> fecha de fin </th>
+            <th></th>
+          </tr>
+          {% for estadia in couchs_vencidos %}
+          <tr>
+            <td>{{ estadia.couch }}</td>
+            <td>{{ estadia.author }}</td>
+            <td>
+              {% if estadia.host_scored %}
+              <span class="label label-success">{{ estadia.tenant_score }}</span>
+              {% else %}
+              <span class="label label-primary">no puntuo aun</span>
+              {% endif %}
+            </td>
+            <td>{{ estadia.initial_date}}</td>
+            <td>{{ estadia.finish_date}}</td>
+            <td> {% if estadia.tenant_scored %} <span class="label label-primary">Puntuado</span> {% else %} <a href="{% url 'lodgment:score_host' estadia.id %}" class="btn btn-success"> Puntuar </a> {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+        {% else %}
+        <p> No hay couchs que mostrar </p>
+        {% endif %}
+      </div><!-- /.box-body -->
+      </div><!-- /.box -->
+
+  </div>
 </div>
 
 {% endblock %}
