@@ -18,8 +18,11 @@ class QuestionForm(forms.ModelForm):
     def clean(self):
         cleaned_data = super(QuestionForm, self).clean()
         body = self.cleaned_data.get('body')
-        max_length = MaxLengthValidator(250, message='El texto ingresado es muy largo')
-        max_length(body)
+        if body:
+            max_length = MaxLengthValidator(250, message='El texto ingresado es muy largo')
+            min_length = MinLengthValidator(1, message='')
+            min_length(body)
+            max_length(body)
 
         
     class Meta:
