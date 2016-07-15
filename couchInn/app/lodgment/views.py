@@ -22,7 +22,7 @@ import pdb;
 def index(request):
     today = datetime.today()
     try:
-        lodgments = Place.actives.all()#.exclude(finish_date__lt=today)
+        lodgments = Place.actives.all().exclude(finish_date__lt=today)
     except Exception as e:
         print e
     # si hay usuario logueado traete las solicitudes que no 
